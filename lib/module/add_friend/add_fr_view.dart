@@ -8,6 +8,12 @@ class AddFriendPage extends StatefulWidget {
 class _AddFriendPageState extends State<AddFriendPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Text("Quyen xinh dep o day!"),
+      color: Colors.red,
+    );
   }
+  //something
+  //aa
+  //color picker
 }
