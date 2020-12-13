@@ -1,5 +1,5 @@
-import 'package:fb_clone_ctg/module/notification/notification.dart';
 import 'package:fb_clone_ctg/module/notification/notification_widget.dart';
+import 'package:fb_clone_ctg/shared/entities/notification.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatefulWidget {
