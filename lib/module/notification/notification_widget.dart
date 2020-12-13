@@ -1,4 +1,4 @@
-import 'package:fb_clone_ctg/module/notification/notify_constant.dart';
+import 'package:fb_clone_ctg/constant/notify_constant.dart';
 import 'package:fb_clone_ctg/shared/entities/notification.dart';
 import 'package:flutter/material.dart';
 
