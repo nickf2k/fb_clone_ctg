@@ -10,11 +10,10 @@ class RouteConstant {
   static const PRE_ORDER_BOOK = "/pre_order";
   static const PERSON_BOOK = "/person_book";
   static const REGISTER = "/register";
-
+  static const ADD_FRIEND = "/add_friend";
+  static const VIDEO = "/video";
   static const NOTIFICATIONS = "/notifications";
   static const MANAGER_ACCOUNT = "/manager_account";
-
-
 
   static const POLICY = "/policy";
 }
