@@ -23,15 +23,19 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          // height: double.infinity,
-          child: ListView.builder(itemBuilder: (context, index) {
-              return NotiWidget(notification: listNotify[index],);
-          },
-          itemCount: listNotify.length,),
-
-
+        appBar: AppBar(
+          title: Text("Thông báo"),
+          actions: <Widget>[IconButton(icon: Icons.search_sharp, onPressed: () {})],
         ),
+        body: Container(
+          // height: 100,
+          child: ListView.builder(itemBuilder: (context, index) {
+            return NotiWidget(notification: listNotify[index],);
+          },
+            itemCount: listNotify.length,),
+
+
+        )
       ),
     );
   }
