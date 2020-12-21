@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Sign in With Bloc',
         theme: themeConfig(),
-        initialRoute: RouteConstant.HOME,
+        initialRoute: RouteConstant.SIGN_IN,
         // onGenerateRoute: (setting) => PageRouteBuilder(
         //     pageBuilder: (context, _, __) => routeConfig()[setting.name]),
         routes: routeConfig());

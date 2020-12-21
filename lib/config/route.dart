@@ -10,7 +10,7 @@ import '../shared/widgets/notification_view.dart';
 
 Map<String, WidgetBuilder> routeConfig() {
   return <String, WidgetBuilder>{
-    RouteConstant.SIGN_IN: (context) => LoginPage(),
+    RouteConstant.SIGN_IN: (context) => SignInPage(),
     RouteConstant.NOTIFICATIONS: (context) => NotificationPage(),
     RouteConstant.HOME: (context) => HomePage(),
     RouteConstant.ADD_FRIEND: (context) => HomePage(),
