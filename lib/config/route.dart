@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../constant/route_constant.dart';
 import '../constant/route_constant.dart';
 import '../constant/route_constant.dart';
-import '../shared/widgets/notification_view.dart';
+import '../module/notification/notification_view.dart';
 
 Map<String, WidgetBuilder> routeConfig() {
   return <String, WidgetBuilder>{

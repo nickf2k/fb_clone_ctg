@@ -37,6 +37,87 @@ class NotifyObject {
 
       ),
       NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+
+      NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+
+      NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+
+      NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+      NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+      NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+      NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+      NotifyObject(
+          code: "123",
+          message: "1234",
+          data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
+            "https://znews-photo.zadn.vn/w1920/Uploaded/qhj_yvobvhfwbv/2018_07_18/Nguyen_Huy_Binh1.jpg","0","1"],
+          lastUpdate: "1234",
+          badge: "12347"
+
+      ),
+
+
+
+
+
+
+      NotifyObject(
           code: "1234",
           message: "12344",
           data: ["12345","65478","Sáng nay Sơn Tùng - MTP vừa đăng một bức ảnh úp mở về một số điện thoại với dòng caption “Gọi anh”. ","34422","4 phút trước",
