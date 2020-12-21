@@ -51,7 +51,10 @@ class PageContainer extends StatelessWidget {
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[SearchBar(), TopNavBar(), child],
+                      children: <Widget>[
+                        SearchBar(),
+                        TopNavBar(),
+                      ],
                     ),
                   ),
                 )

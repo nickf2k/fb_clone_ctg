@@ -19,9 +19,7 @@ class _SearchIconState extends State<SearchIcon> {
         color: Color(0xfff0f1f6),
       ),
       child: IconButton(
-
         icon: Icon(
-
           Icons.search,
           size: widget.size,
           color: Colors.black,

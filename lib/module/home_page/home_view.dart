@@ -18,7 +18,131 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return PageContainer(
       hasTopNavBar: true,
-      child: Container(),
+      child: Container(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  Container(
+                    color: Colors.grey[300],
+                    height: 5,
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        //  color: Colors.grey,
+                        child: Row(
+                          children: <Widget>[
+                            CircleAvatar(
+                              radius: 25,
+                              backgroundImage: NetworkImage(
+                                  "https://scontent.fhan2-2.fna.fbcdn.net/v/t1.0-9/110290021_1357409777788777_1825203631231437782_n.jpg?_nc_cat=111&ccb=2&_nc_sid=09cbfe&_nc_ohc=rgIUQ6osAQEAX89VG_N&_nc_ht=scontent.fhan2-2.fna&oh=7e0cd97c3af53e535b5f97a7e0631820&oe=6006B75F"),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(25)),
+                              child: RaisedButton(
+                                onPressed: () {},
+                                color: Colors.grey[200],
+                                child: Row(
+                                  children: <Widget>[
+                                    Text("Bạn đang nghĩ gì?"),
+                                    SizedBox(
+                                      width: 80,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Divider(
+                    height: 2,
+                    thickness: 1,
+                    color: Colors.grey,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  // Container(
+                  //   height: 40,
+                  //   child: ListTile(
+                  //     leading: Icon(Icons.account_circle),
+                  //     title:
+                  //         Align(alignment: Alignment(-1.2, 0), child: Text("live")),
+                  //   ),
+                  // ),
+
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Divider(
+                    height: 2,
+                    thickness: 10,
+                    color: Colors.grey[400],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Container(
+                    color: Colors.blue,
+                    height: 100,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: <Widget>[
+                          ClipRRect(
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            child: Container(
+                              width: 170,
+                              height: 60,
+                              color: Colors.grey[400],
+                              child: Row(
+                                children: <Widget>[
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Icon(
+                                    Icons.video_call,
+                                    color: Colors.teal,
+                                    size: 54,
+                                  ),
+                                  Text(
+                                    "Create Room",
+                                    style: TextStyle(
+                                        color: Colors.indigo[800],
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
     // return SafeArea(child: Scaffold(body: TopNavBar()));
   }
