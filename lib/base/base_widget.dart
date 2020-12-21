@@ -22,8 +22,8 @@ class PageContainer extends StatelessWidget {
   PageContainer({
     this.child,
     this.topNavBar,
-    this.canSearch = false,
-    this.hasTopNavBar,
+    this.canSearch = true,
+    this.hasTopNavBar = true,
     this.bloc,
   });
 
@@ -44,7 +44,7 @@ class PageContainer extends StatelessWidget {
         bottom: false,
         child: Scaffold(
           key: _scaffoldKey,
-          body: child,
+          body: SingleChildScrollView(child: child),
           appBar: hasTopNavBar
               ? CustomAppBar(
                   height: 100,

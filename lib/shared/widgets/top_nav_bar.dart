@@ -17,7 +17,7 @@ class TopNavBar extends StatelessWidget {
           ),
           Expanded(
             child:
-                TopNavBarItem(iconData: Icons.group, route: RouteConstant.HOME),
+                TopNavBarItem(iconData: Icons.group, route: RouteConstant.ADD_FRIEND),
             flex: 1,
           ),
           Expanded(
