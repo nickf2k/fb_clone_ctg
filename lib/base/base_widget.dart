@@ -2,6 +2,7 @@ import 'package:fb_clone_ctg/config/app_color.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/shared/widgets/custom_app_bar.dart';
+import 'package:fb_clone_ctg/shared/widgets/detail_appbar.dart';
 import 'package:fb_clone_ctg/shared/widgets/search_bar.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,7 +15,6 @@ import '../shared/widgets/top_nav_bar.dart';
 class PageContainer extends StatelessWidget {
   final Widget child;
   final List<SingleChildCloneableWidget> bloc;
-
   final Widget topNavBar;
   final bool canSearch;
   final bool hasTopNavBar;
@@ -62,26 +62,29 @@ class PageContainer extends StatelessWidget {
         ));
   }
 
-  // Widget _getAppbarTitle(context) {
-  //   if (this.specialTitle != null) {
-  //     return this.specialTitle;
-  //   }
-  //   return this.title != null ? _buildTitle() : _buildSearchBox(context);
-  // }
-  //
-  // Text _buildTitle() {
-  //   return Text(
-  //     this.title,
-  //     textAlign: TextAlign.center,
-  //     style: TextStyle(
-  //       color: AppColor.blueMain,
-  //       fontWeight: FontWeight.w600,
-  //       fontSize: 17,
-  //     ),
-  //   );
-  // }
-
   Widget _buildSearchBox(BuildContext context) {
     // return SearchBox(canSearch);
+  }
+}
+
+class DetailContainer extends StatelessWidget {
+  final Widget child;
+
+  const DetailContainer({Key key, this.child}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final _scaffoldKey = GlobalKey<ScaffoldState>();
+    // TODO: implement build
+    return SafeArea(
+      bottom: false,
+      child: Scaffold(
+        body: child,
+        appBar: CustomAppBar(
+          height: 50,
+          child: DetailAppBar(),
+        ),
+      ),
+    );
   }
 }

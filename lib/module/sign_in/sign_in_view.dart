@@ -2,7 +2,7 @@ import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/module/sign_in/sign_in_bloc.dart';
-import 'package:fb_clone_ctg/module/sign_in/sing_in_event.dart';
+import 'package:fb_clone_ctg/module/sign_in/sign_in_event.dart';
 import 'package:fb_clone_ctg/shared/entities/login_result.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
@@ -21,15 +21,14 @@ class _SignInPageState extends State<SignInPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_){
-      if (!SpUtil.getString(SPrefCacheConstant.KEY_TOKEN).isEmpty){
-        Navigator.pushNamedAndRemoveUntil(context, RouteConstant.HOME, (Route<dynamic> route) => false);
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!SpUtil.getString(SPrefCacheConstant.KEY_TOKEN).isEmpty) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, RouteConstant.HOME, (Route<dynamic> route) => false);
       }
     });
-
-
   }
+
   @override
   Widget build(BuildContext context) {
     SignInBloc signInBloc = SignInBloc();
@@ -73,8 +72,8 @@ class _SignInPageState extends State<SignInPage> {
                           labelText: "USESERNAME",
                           errorText: "err",
                           // snapshot.hasError ? snapshot.error : null,
-                          labelStyle: TextStyle(
-                              color: Colors.black54, fontSize: 15)),
+                          labelStyle:
+                              TextStyle(color: Colors.black54, fontSize: 15)),
                     )),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),

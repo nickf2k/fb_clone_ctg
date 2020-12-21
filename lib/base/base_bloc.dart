@@ -17,7 +17,7 @@ abstract class BaseBloc<T extends BaseEvent> {
 
   void dispose();
 
-  void eventHandle(BaseEvent event) {}
+  void eventHandle(BaseEvent event);
 
   void setContext(BuildContext context) {
     this.context = context;

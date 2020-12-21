@@ -1,9 +1,12 @@
+import 'package:fb_clone_ctg/module/home_page/add_post/add_post_bloc.dart';
+
 class RouteConstant {
   static const SIGN_IN = "/sign_in";
   static const SIGN_UP = "/sign_up";
   static const CHECK_OUT = "/check_out";
   static const HOME = "/home";
   static const PERSON = "/person";
+  static const ADD_POST = "/add_post";
   static const PERSON_EDIT = "/person_edit";
   static const PROFILE = "/profile";
   static const NO_INTERNET = "/no_internet";

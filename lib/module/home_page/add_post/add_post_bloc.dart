@@ -1,7 +1,7 @@
 import 'package:fb_clone_ctg/base/base_bloc.dart';
 import 'package:fb_clone_ctg/base/base_event.dart';
 
-class AddFriendBloc extends BaseBloc {
+class AddPost extends BaseBloc {
   @override
   void dispose() {
     // TODO: implement dispose

@@ -9,6 +9,16 @@ class UserService {
         .post(APIConstant.LOGIN, queryParameters: queryParameter);
   }
 
+  Future<Response> signUp(String phoneNumber, String password, String uuid) {
+    var queryParameter = {
+      "phonenumber": phoneNumber,
+      "password": password,
+      "uuid": uuid
+    };
+    return FacebookAPIConnector.instance.dio
+        .post(APIConstant.SIGN_UP, queryParameters: queryParameter);
+  }
+
   Future<Response> getSavedSearch(String token, int count, int index) {
     var queryParameter = {"token": token, "index": index, "count": count};
 

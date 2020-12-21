@@ -51,16 +51,22 @@ class _HomePageState extends State<HomePage> {
                             ClipRRect(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(25)),
-                              child: RaisedButton(
-                                onPressed: () {},
-                                color: Colors.grey[200],
-                                child: Row(
-                                  children: <Widget>[
-                                    Text("Bạn đang nghĩ gì?"),
-                                    SizedBox(
-                                      width: 80,
-                                    )
-                                  ],
+                              child: SizedBox(
+                                width: 260,
+                                height: 40,
+                                child: RaisedButton(
+                                  onPressed: () => Navigator.pushNamed(
+                                      context, RouteConstant.ADD_POST,
+                                      arguments: 105),
+                                  color: Colors.grey[200],
+                                  child: Row(
+                                    children: <Widget>[
+                                      Text(
+                                        "Bạn đang nghĩ gì?",
+                                        style: TextStyle(fontSize: 17),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             )
@@ -109,34 +115,40 @@ class _HomePageState extends State<HomePage> {
                         children: <Widget>[
                           ClipRRect(
                             borderRadius: BorderRadius.all(Radius.circular(25)),
-                            child: Container(
-                              width: 170,
-                              height: 60,
-                              color: Colors.grey[400],
-                              child: Row(
-                                children: <Widget>[
-                                  SizedBox(
-                                    width: 5,
+                            child: SizedBox(
+                              child: RaisedButton(
+                                color: Colors.grey[400],
+                                onPressed: () {},
+                                child: Container(
+                                  width: 170,
+                                  height: 60,
+                                  color: Colors.grey[400],
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Icon(
+                                        Icons.video_call,
+                                        color: Colors.teal,
+                                        size: 54,
+                                      ),
+                                      Text(
+                                        "Create Room",
+                                        style: TextStyle(
+                                            color: Colors.indigo[800],
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
                                   ),
-                                  Icon(
-                                    Icons.video_call,
-                                    color: Colors.teal,
-                                    size: 54,
-                                  ),
-                                  Text(
-                                    "Create Room",
-                                    style: TextStyle(
-                                        color: Colors.indigo[800],
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
+                                ),
                               ),
                             ),
                           )
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -146,4 +158,6 @@ class _HomePageState extends State<HomePage> {
     );
     // return SafeArea(child: Scaffold(body: TopNavBar()));
   }
+
+  onAddPostClick() {}
 }
