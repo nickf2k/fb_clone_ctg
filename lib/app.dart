@@ -16,8 +16,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Sign in With Bloc',
         theme: themeConfig(),
-        initialRoute: RouteConstant.SIGN_IN,
+        //initialRoute: RouteConstant.SIGN_IN,
+        initialRoute: RouteConstant.ADD_FRIENDS,
         routes: routeConfig());
+
   }
 }
 
