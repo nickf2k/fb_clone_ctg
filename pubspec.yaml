@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -78,9 +78,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: icomoon
+    - family: icielpanton
       fonts:
-        - asset: assets/fonts/IcoMoon.ttf
+        - asset: res/fonts/icielpanton-light.otf
+        - asset: res/fonts/icielpanton-lightitalic.otf
+        - asset: res/fonts/icielpanton-black.otf
+        - asset: res/fonts/icielpanton-blackitalic.otf
   # fonts:
   #   - family: Schyler
   #     fonts:

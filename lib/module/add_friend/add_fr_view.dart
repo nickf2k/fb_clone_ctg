@@ -1,3 +1,4 @@
+import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/module/add_friend/friend_request.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,71 +11,71 @@ class AddFriendPage extends StatefulWidget {
 class _AddFriendPageState extends State<AddFriendPage> {
   static const double pagePadding = 10;
   var listRequests = FriendRequest.getListAddFriend();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
+    return PageContainer(
+      canSearch: false,
+      hasTopNavBar: true,
+      child: Container(
         margin: EdgeInsets.symmetric(vertical: 0, horizontal: pagePadding),
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(
-                      "Bạn bè",
-                    ),
-                    IconButton(
-                      onPressed: null,
-                      icon: Icon(Icons.search),
-                    ),
-                  ],
-                ),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Bạn bè",
+                  ),
+                  IconButton(
+                    onPressed: null,
+                    icon: Icon(Icons.search),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    getBadge("Gợi ý"),
-                    VerticalDivider(
-                      width: 10,
-                    ),
-                    getBadge("Tất cả bạn bè"),
-                  ],
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  getBadge("Gợi ý"),
+                  VerticalDivider(
+                    width: 10,
+                  ),
+                  getBadge("Tất cả bạn bè"),
+                ],
               ),
-              Divider(),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    RichText(
-                        text: TextSpan(
-                            style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                            children: <TextSpan>[
-                          TextSpan(text: "Lời mời kết bạn "),
-                          TextSpan(
-                              text: "42",
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.red)),
-                        ])),
-                    Text(
-                      "Xem tất cả",
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ],
-                ),
+            ),
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  RichText(
+                      text: TextSpan(
+                          style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                          children: <TextSpan>[
+                        TextSpan(text: "Lời mời kết bạn "),
+                        TextSpan(
+                            text: "42",
+                            style: TextStyle(fontSize: 15, color: Colors.red)),
+                      ])),
+                  Text(
+                    "Xem tất cả",
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                ],
               ),
-              getListRequest(listRequests),
-            ],
-          ),
+            ),
+            getListRequest(listRequests),
+          ],
         ),
         color: Colors.white,
       ),
@@ -104,28 +105,30 @@ class _AddFriendPageState extends State<AddFriendPage> {
         getItemRequest(),
         getItemRequest(),
         getItemRequest(),
-
+        getItemRequest(),
+        getItemRequest(),
+        getItemRequest(),
       ],
     );
   }
 
   Widget getActionButton(String content, {bool submit}) {
     return Container(
-       height: 35,
+      height: 35,
       margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
-        color: submit?Color(0xff1677f4):Color(0xffe5e6eb),
-        borderRadius: BorderRadius.circular(5)
-
-      ),
+          color: submit ? Color(0xff1677f4) : Color(0xffe5e6eb),
+          borderRadius: BorderRadius.circular(5)),
       child: MaterialButton(
-        child: Text(content,
-          style: TextStyle(color: submit?Colors.white:Colors.black),
+        child: Text(
+          content,
+          style: TextStyle(color: submit ? Colors.white : Colors.black),
         ),
       ),
     );
   }
-  Widget getItemRequest(){
+
+  Widget getItemRequest() {
     return Container(
       width: double.infinity,
       child: Row(
@@ -151,13 +154,11 @@ class _AddFriendPageState extends State<AddFriendPage> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      margin:    EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-
                           Text("Nguyen Trung Duc"),
-
                           Text("2 năm"),
                         ],
                       ),
@@ -165,9 +166,14 @@ class _AddFriendPageState extends State<AddFriendPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Expanded(child: getActionButton("Chấp nhận", submit: true), flex: 1,),
-
-                        Expanded(child: getActionButton("Xóa", submit: false), flex: 1,),
+                        Expanded(
+                          child: getActionButton("Chấp nhận", submit: true),
+                          flex: 1,
+                        ),
+                        Expanded(
+                          child: getActionButton("Xóa", submit: false),
+                          flex: 1,
+                        ),
                       ],
                     )
                   ],
