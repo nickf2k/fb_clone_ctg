@@ -24,6 +24,7 @@ class _SignInPageState extends State<SignInPage> {
     WidgetsBinding.instance.addPostFrameCallback((_){
       if (!SpUtil.getString(SPrefCacheConstant.KEY_TOKEN).isEmpty){
         Navigator.pushNamedAndRemoveUntil(context, RouteConstant.HOME, (Route<dynamic> route) => false);
+        bloc.setContext(context);
 
       }
     });
@@ -151,6 +152,6 @@ class _SignInPageState extends State<SignInPage> {
     // }
     bloc.eventController.sink.add(SignInEvent(
         phoneNumber: _userController.text, password: _passController.text));
-    Navigator.pushReplacementNamed(context, RouteConstant.HOME);
+    // Navigator.pushReplacementNamed(context, RouteConstant.HOME);
   }
 }
