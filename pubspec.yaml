@@ -62,9 +62,56 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  assets:
+    - cover.jpg
+    - profile.jpg
+    - nghia.jpg
+    - nghia1.jpg
+    - nghia2.jpg
+    - quyen.jpg
+    - vuong.jpg
+    - nghia3.jpg
+    - newfeed.png
+    - help&support.png
+    - helpcenter.png
+    - boxsupport.png
+    - communityhelp.png
+    - reportproblem.png
+    - policy&rules.png
+    - settings&private.png
+    - settings.png
+    - privates.png
+    - timeinfacebook.png
+    - darkmode.png
+    - languages.png
+    - 5g.png
+    - key.png
+    - logout.png
+    - eye.png
+    - avatar.png
+    - fundraisingcampaign.png
+    - facebookpay.png
+    - themostnearhere.png
+    - advertisement.png
+    - smallmessenger.png
+    - weather.png
+    - findwifi.png
+    - emergencyresponsel.png
+    - interestrate.png
+    - livevideo.png
+    - requetfromdevices.png
+    - findfriend.png
+    - saved.png
+    - watchvideo.png
+    - page.png
+    - event.png
+    - friends.png
+    - marketplace.png
+    - job.png
+    - gruop.png
+    - kyniem.png
+    - dating.png
+    - playgame.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
