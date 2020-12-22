@@ -66,11 +66,11 @@ class UserRepo {
 
   void getSavedSearch(int index, int count, ISearchListener listener) {
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
-    var futures =
-        _userService.getSavedSearch(token, index, count).then((response) async {
-      SavedSearchList savedSearchList;
-      SpUtil.getInstance();
-      savedSearchList = SavedSearchList.fromJson(response.data);
-    });
+    // var futures =
+    //     _userService.getSavedSearch(token, index, count).then((response) async {
+    //   SavedSearchList savedSearchList;
+    //   SpUtil.getInstance();
+    //   savedSearchList = SavedSearchList.fromJson(response.data);
+    // });
   }
 }

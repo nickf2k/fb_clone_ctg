@@ -19,9 +19,6 @@ class _DetailAppBarState extends State<DetailAppBar> {
             onPressed: () => Navigator.pop(context),
             icon: Icon(Icons.arrow_back),
           ),
-          SizedBox(
-            width: 20,
-          ),
           Text("Tạo bài viết")
         ],
       ),

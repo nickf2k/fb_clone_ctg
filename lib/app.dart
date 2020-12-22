@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'config/route.dart';
-import 'config/route.dart';
+
 import 'config/theme.dart';
 import 'constant/route_constant.dart';
 
@@ -18,8 +18,10 @@ class MyApp extends StatelessWidget {
         title: 'Sign in With Bloc',
         theme: themeConfig(),
         initialRoute: RouteConstant.SIGN_IN,
-        // onGenerateRoute: (setting) => PageRouteBuilder(
-        //     pageBuilder: (context, _, __) => routeConfig()[setting.name]),
+
+
+
         routes: routeConfig());
+
   }
 }

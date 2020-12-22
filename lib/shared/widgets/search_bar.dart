@@ -36,7 +36,9 @@ class _SearchBarState extends State<SearchBar> {
                     Icons.search,
                     color: Colors.black,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    showSearch(context: context, delegate: DataSearch());
+                  },
                 ),
               ),
               Container(
@@ -53,6 +55,45 @@ class _SearchBarState extends State<SearchBar> {
           )
         ],
       ),
+    );
+  }
+}
+
+class DataSearch extends SearchDelegate<String> {
+  final listRes = ["1","2","3","4","5"];
+  final listSug= ["1", "2", "3"];
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(icon: Icon(Icons.clear), onPressed: (){},)
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.search_ellipsis,
+        progress: transitionAnimation,
+      ),
+      onPressed: (){},
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final suggestions = query.isEmpty?listSug:listRes;
+    return ListView.builder(
+      itemBuilder: (context, index) => ListTile(
+        leading: Icon(Icons.search),
+        title: Text(listRes[index]),
+
+      ),
+      itemCount: suggestions.length,
     );
   }
 }

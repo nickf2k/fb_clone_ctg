@@ -42,8 +42,8 @@ class _HomePageState extends State<HomePage> {
                           children: <Widget>[
                             CircleAvatar(
                               radius: 25,
-                              backgroundImage: NetworkImage(
-                                  "https://scontent.fhan2-2.fna.fbcdn.net/v/t1.0-9/110290021_1357409777788777_1825203631231437782_n.jpg?_nc_cat=111&ccb=2&_nc_sid=09cbfe&_nc_ohc=rgIUQ6osAQEAX89VG_N&_nc_ht=scontent.fhan2-2.fna&oh=7e0cd97c3af53e535b5f97a7e0631820&oe=6006B75F"),
+                              backgroundImage:
+                                  AssetImage("assets/images/men.jpg"),
                             ),
                             SizedBox(
                               width: 15,
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Row(
                                     children: <Widget>[
                                       Text(
-                                        "Bạn đang nghĩ gì?",
+                                        "What's on your mind?",
                                         style: TextStyle(fontSize: 17),
                                       ),
                                     ],
@@ -148,6 +148,53 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
+                  ),
+                  Divider(
+                    height: 2,
+                    thickness: 2,
+                    color: Colors.grey[400],
+                  ),
+                  Container(
+                    height: 40,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        FlatButton.icon(
+                            onPressed: () => print('Live'),
+                            icon: Icon(
+                              Icons.videocam,
+                              color: Colors.red,
+                            ),
+                            label: Text("Live")),
+                        VerticalDivider(
+                          width: 8.0,
+                          color: Colors.grey[400],
+                        ),
+                        FlatButton.icon(
+                            onPressed: () => print('Live'),
+                            icon: Icon(
+                              Icons.photo_library,
+                              color: Colors.green,
+                            ),
+                            label: Text("Live")),
+                        VerticalDivider(
+                          width: 8.0,
+                          color: Colors.grey[400],
+                        ),
+                        FlatButton.icon(
+                            onPressed: () => print('Live'),
+                            icon: Icon(
+                              Icons.video_call,
+                              color: Colors.purpleAccent,
+                            ),
+                            label: Text("Live")),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    height: 2,
+                    thickness: 2,
+                    color: Colors.grey[400],
                   ),
                 ],
               ),

@@ -19,10 +19,4 @@ class UserService {
         .post(APIConstant.SIGN_UP, queryParameters: queryParameter);
   }
 
-  Future<Response> getSavedSearch(String token, int count, int index) {
-    var queryParameter = {"token": token, "index": index, "count": count};
-
-    return FacebookAPIConnector.instance.dio
-        .post(APIConstant.GET_SAVED_SEARCH, queryParameters: queryParameter);
-  }
 }

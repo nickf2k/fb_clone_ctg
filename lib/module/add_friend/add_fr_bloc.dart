@@ -11,4 +11,5 @@ class AddFriendBloc extends BaseBloc {
   void eventHandle(BaseEvent event) {
     // TODO: implement eventHandle
   }
+
 }
