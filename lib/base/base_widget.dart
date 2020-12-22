@@ -13,14 +13,18 @@ import '../shared/widgets/top_nav_bar.dart';
 
 class PageContainer extends StatelessWidget {
   final Widget child;
+  final List<SingleChildCloneableWidget> bloc;
 
   final Widget topNavBar;
   final bool canSearch;
+  final bool hasTopNavBar;
 
   PageContainer({
     this.child,
     this.topNavBar,
-    this.canSearch = false,
+    this.canSearch = true,
+    this.hasTopNavBar = true,
+    this.bloc,
   });
 
   @override
@@ -36,23 +40,23 @@ class PageContainer extends StatelessWidget {
 //      },
 //    ));
 
-    return Scaffold(
-      body: SafeArea(
-          bottom: false,
-          child: Scaffold(
-            key: _scaffoldKey,
-            body: child,
-            appBar: CustomAppBar(
-              height: 100,
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[SearchBar(), TopNavBar()],
-                ),
-              ),
-            ),
-          )),
-    );
+    return SafeArea(
+        bottom: false,
+        child: Scaffold(
+          key: _scaffoldKey,
+          body: SingleChildScrollView(child: child),
+          appBar: hasTopNavBar
+              ? CustomAppBar(
+                  height: 100,
+                  child: Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[SearchBar(), TopNavBar()],
+                    ),
+                  ),
+                )
+              : null,
+        ));
   }
 
   // Widget _getAppbarTitle(context) {
