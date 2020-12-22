@@ -1,11 +1,13 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/config/app_color.dart';
 import 'package:fb_clone_ctg/constant/notify_constant.dart';
-import 'package:fb_clone_ctg/shared/entities/notification.dart';
+import 'package:fb_clone_ctg/data/repo/notification_repo.dart';
+import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
+
 import 'package:flutter/material.dart';
 
 class NotiItem extends StatelessWidget {
-  final NotifyObject notification;
+  final NotificationResult notification;
 
   const NotiItem({Key key, this.notification}) : super(key: key);
 
@@ -64,7 +66,30 @@ class NotiItem extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(flex: 1, child: Icon(Icons.more_horiz)),
+          Expanded(
+              flex: 1,
+              child: IconButton(
+                icon: Icon(Icons.more_horiz),
+                onPressed: () {
+                  showModalBottomSheet(
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      builder: (context) {
+                        return Container(
+                          height: 270,
+                          decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20))),
+                          child: bottomSheetContent(
+                              imageUrl: data[5], title: data[2]),
+                        );
+                      });
+                },
+              )),
         ],
       ),
       // child: ListTile(
@@ -82,6 +107,93 @@ class NotiItem extends StatelessWidget {
       //   trailing: Icon(Icons.more_horiz),
       //   subtitle: Text(data[4], maxLines: 3,),
       // ),
+    );
+  }
+
+  bottomSheetContent({String imageUrl, String title, int type}) {
+    return Column(
+      children: [
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: CircleAvatar(
+              maxRadius: 30,
+              // radius: 40,
+              backgroundImage: NetworkImage(
+                imageUrl,
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Text(
+              title,
+              maxLines: 1,
+              style: TextStyle(color: AppColor.textGrey),
+            ),
+          ),
+        ),
+        Center(
+          child: Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child: Center(
+                          child: Icon(
+                        Icons.delete_forever,
+                        color: AppColor.darkGray,
+                        size: 30,
+                      ))),
+                  Expanded(
+                    flex: 8,
+                    child: Text("Gỡ thông báo này"),
+                  )
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child: Center(
+                          child: Icon(
+                        Icons.save_alt,
+                        color: AppColor.darkGray,
+                        size: 30,
+                      ))),
+                  Expanded(
+                    flex: 8,
+                    child: Text("Lưu bài viết"),
+                  )
+                ],
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child: Center(
+                          child: Icon(
+                        Icons.takeout_dining,
+                        color: AppColor.darkGray,
+                        size: 30,
+                      ))),
+                  Expanded(
+                    flex: 8,
+                    child: Text(
+                        "Chỉ nhận thông báo về bài viết của bạn bè trong nhóm này"),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
