@@ -19,63 +19,68 @@ class _AddFriendPageState extends State<AddFriendPage> {
       hasTopNavBar: true,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 0, horizontal: pagePadding),
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    "Bạn bè",
-                  ),
-                  IconButton(
-                    onPressed: null,
-                    icon: Icon(Icons.search),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          physics: ScrollPhysics(),
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "Bạn bè",
+                    ),
+                    IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.search),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  getBadge("Gợi ý"),
-                  VerticalDivider(
-                    width: 10,
-                  ),
-                  getBadge("Tất cả bạn bè"),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    getBadge("Gợi ý"),
+                    VerticalDivider(
+                      width: 10,
+                    ),
+                    getBadge("Tất cả bạn bè"),
+                  ],
+                ),
               ),
-            ),
-            Divider(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  RichText(
-                      text: TextSpan(
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold),
-                          children: <TextSpan>[
-                        TextSpan(text: "Lời mời kết bạn "),
-                        TextSpan(
-                            text: "42",
-                            style: TextStyle(fontSize: 15, color: Colors.red)),
-                      ])),
-                  Text(
-                    "Xem tất cả",
-                    style: TextStyle(color: Colors.blue),
-                  ),
-                ],
+              Divider(),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    RichText(
+                        text: TextSpan(
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
+                            children: <TextSpan>[
+                          TextSpan(text: "Lời mời kết bạn "),
+                          TextSpan(
+                              text: "42",
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.red)),
+                        ])),
+                    Text(
+                      "Xem tất cả",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            getListRequest(listRequests),
-          ],
+              getListRequest(listRequests),
+            ],
+          ),
         ),
         color: Colors.white,
       ),
@@ -98,6 +103,7 @@ class _AddFriendPageState extends State<AddFriendPage> {
   Widget getListRequest(List<FriendRequest> listRequests) {
     return ListView(
       scrollDirection: Axis.vertical,
+      physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       children: <Widget>[
         getItemRequest(),
@@ -130,6 +136,7 @@ class _AddFriendPageState extends State<AddFriendPage> {
 
   Widget getItemRequest() {
     return Container(
+      padding: EdgeInsets.only(top: 1, bottom: 5),
       width: double.infinity,
       child: Row(
         children: <Widget>[
@@ -138,10 +145,12 @@ class _AddFriendPageState extends State<AddFriendPage> {
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 0, horizontal: 5),
               child: Container(
+                // color: Colors.cyan,
                 child: CircleAvatar(
                   backgroundImage: NetworkImage(
                       'https://scontent.fhan2-1.fna.fbcdn.net/v/t1.0-9/126043617_1036131606862090_1132759911096420906_o.jpg?_nc_cat=106&ccb=2&_nc_sid=09cbfe&_nc_ohc=NL795JrKZ7YAX99QpxV&_nc_ht=scontent.fhan2-1.fna&oh=bde3c631ce2919fc6d0487a42191da39&oe=5FFC19DD'),
-                  radius: 40,
+                  // radius: 40,
+                  maxRadius: 45,
                 ),
               ),
             ),
@@ -149,6 +158,7 @@ class _AddFriendPageState extends State<AddFriendPage> {
           Expanded(
             flex: 3,
             child: Container(
+                padding: EdgeInsets.only(left: 2),
                 width: double.infinity,
                 decoration: BoxDecoration(),
                 child: Column(
