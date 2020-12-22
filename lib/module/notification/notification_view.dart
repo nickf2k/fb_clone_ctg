@@ -2,6 +2,7 @@ import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/module/notification/notification_item.dart';
 import 'package:fb_clone_ctg/shared/entities/notification.dart';
 import 'package:fb_clone_ctg/shared/widgets/search_icon.dart';
+import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -10,7 +11,7 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  TabController _tabController;
+  // TabController _tabController;
   NotifyObject demoNotification = NotifyObject(
       code: "123",
       message: "1234",
@@ -31,23 +32,29 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return PageContainer(
+      navBarIndex: NavBarIndex.NOTIFICATION,
       child: Container(
         // height: 100,
         child: ListView.builder(
           itemBuilder: (context, index) {
-            if (index ==0) return getNotificationLabel();
-            if (index == 1) return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
-              child: Text("Mới", style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),),
-            );
+            if (index == 0) return getNotificationLabel();
+            if (index == 1)
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                child: Text(
+                  "Mới",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              );
             return NotiItem(
-              notification: listNotify[index-2],
+              notification: listNotify[index - 2],
             );
           },
-          itemCount: listNotify.length+2,
+          itemCount: listNotify.length + 2,
           semanticChildCount: 0,
         ),
       ),
@@ -56,12 +63,10 @@ class _NotificationPageState extends State<NotificationPage> {
 
   Widget getNotificationLabel() {
     return Padding(
-
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-
           Text(
             "Thông báo",
             style: TextStyle(
@@ -70,9 +75,11 @@ class _NotificationPageState extends State<NotificationPage> {
               color: Colors.black,
             ),
           ),
-          SearchIcon(onPressed: null,size: 25,),
+          SearchIcon(
+            onPressed: null,
+            size: 25,
+          ),
         ],
-
       ),
     );
   }
