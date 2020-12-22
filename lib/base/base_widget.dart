@@ -18,6 +18,7 @@ class PageContainer extends StatelessWidget {
   final Widget topNavBar;
   final bool canSearch;
   final bool hasTopNavBar;
+  final int navBarIndex;
 
   PageContainer({
     this.child,
@@ -25,6 +26,7 @@ class PageContainer extends StatelessWidget {
     this.canSearch = true,
     this.hasTopNavBar = true,
     this.bloc,
+    this.navBarIndex = 0,
   });
 
   @override
@@ -51,7 +53,12 @@ class PageContainer extends StatelessWidget {
                   child: Container(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[SearchBar(), TopNavBar()],
+                      children: <Widget>[
+                        SearchBar(),
+                        TopNavBar(
+                          currentIndex: navBarIndex,
+                        )
+                      ],
                     ),
                   ),
                 )

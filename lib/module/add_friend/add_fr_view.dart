@@ -1,5 +1,6 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/module/add_friend/friend_request.dart';
+import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class _AddFriendPageState extends State<AddFriendPage> {
     return PageContainer(
       canSearch: false,
       hasTopNavBar: true,
+      navBarIndex: NavBarIndex.FRIEND,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 0, horizontal: pagePadding),
         child: Column(
