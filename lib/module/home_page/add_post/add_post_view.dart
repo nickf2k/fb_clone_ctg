@@ -1,4 +1,5 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
+import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:use_html_t/style.dart';
@@ -40,7 +41,7 @@ class _AddPostPageState extends State<AddPostPage> {
               Center(
                 child: CircleAvatar(
                   radius: 25,
-                  backgroundImage: AssetImage("assets/images/women.jpg"),
+                  backgroundImage: AssetImage(MediaConstant.DEFAUT_AVATAR_1),
                 ),
               ),
             ],
