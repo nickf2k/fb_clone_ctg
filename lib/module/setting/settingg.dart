@@ -74,20 +74,24 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
-                            child: RichText(
-                              textAlign: TextAlign.start,
-                              text: TextSpan(children: <TextSpan>[
-                                TextSpan(
-                                    text: "Phạm Tuấn Nghĩa",
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold)),
-                                TextSpan(
-                                    text: "\nXem trang cá nhân của bạn ",
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.black54)),
-                              ]),
+                            child: MaterialButton(
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamed(RouteConstant.PROFILE),
+                              child: RichText(
+                                textAlign: TextAlign.start,
+                                text: TextSpan(children: <TextSpan>[
+                                  TextSpan(
+                                      text: "Phạm Tuấn Nghĩa",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold)),
+                                  TextSpan(
+                                      text: "\nXem trang cá nhân của bạn ",
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black54)),
+                                ]),
+                              ),
                             ),
                           )
                         ],
