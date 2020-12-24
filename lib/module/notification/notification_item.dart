@@ -7,16 +7,15 @@ import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
 import 'package:flutter/material.dart';
 
 class NotiItem extends StatelessWidget {
-  final NotificationResult notification;
+  final MyNotification notification;
 
   const NotiItem({Key key, this.notification}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var data = notification.data;
     //data [7] = read;
     var color =
-        data[7] == NotifyConstant.READER ? Colors.white : Color(0xffe7f3ff);
+        notification.isRead == NotifyConstant.READER ? Colors.white : Color(0xffe7f3ff);
     return Container(
       decoration: BoxDecoration(color: color),
 
@@ -33,9 +32,9 @@ class NotiItem extends StatelessWidget {
                 child: CircleAvatar(
                   maxRadius: 35,
                   // radius: 40,
-                  backgroundImage: NetworkImage(
-                    data[5],
-                  ),
+                  backgroundImage: notification.avatar!=null?NetworkImage(
+                    notification.avatar,
+                  ):NetworkImage("https://i.pinimg.com/originals/0e/3a/02/0e3a0209ebf915f34279ac867bd2ea26.jpg"),
                   // radius: 35,
                 ),
               ),
@@ -51,14 +50,14 @@ class NotiItem extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
                     child: Text(
-                      data[2],
+                      notification.description,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(),
                     ),
                   ),
                   Text(
-                    data[4],
+                    notification.createdAt,
                     maxLines: 1,
                     style: TextStyle(color: AppColor.textGrey),
                   ),
@@ -85,7 +84,8 @@ class NotiItem extends StatelessWidget {
                                   topLeft: Radius.circular(20),
                                   topRight: Radius.circular(20))),
                           child: bottomSheetContent(
-                              imageUrl: data[5], title: data[2]),
+                              imageUrl: notification.avatar??"https://i.pinimg.com/originals/0e/3a/02/0e3a0209ebf915f34279ac867bd2ea26.jpg",
+                              title: notification.description),
                         );
                       });
                 },
