@@ -4,8 +4,10 @@ import 'dart:wasm';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
+import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:fb_clone_ctg/shared/widgets/status_widget.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -83,7 +85,7 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: <Widget>[
                   _allSizebox(w: 7),
-                  _circleAvatar(),
+                  ProfileAvatar(),
                   _allSizebox(w: 15),
                   ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -112,34 +114,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         _allSizebox(h: 30),
-      ],
-    );
-  }
-
-  _circleAvatar({bool hasBorder = false}) {
-    return Stack(
-      children: <Widget>[
-        CircleAvatar(
-          radius: 25.0,
-          backgroundColor: Colors.blue,
-          child: CircleAvatar(
-            radius: hasBorder ? 18.0 : 25.0,
-            backgroundImage: AssetImage('assets/images/batman.jpg'),
-            backgroundColor: Colors.grey[200],
-          ),
-        ),
-        Positioned(
-          bottom: 0.0,
-          right: 0.0,
-          child: Container(
-            height: 15.0,
-            width: 15.0,
-            decoration: BoxDecoration(
-                color: Colors.green,
-                shape: BoxShape.circle,
-                border: Border.all(width: 2.0, color: Colors.white)),
-          ),
-        )
       ],
     );
   }
@@ -178,19 +152,19 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 _allSizebox(w: 8),
-                _circleAvatar(),
+                ProfileAvatar(),
                 _allSizebox(w: 8),
-                _circleAvatar(),
+                ProfileAvatar(),
                 _allSizebox(w: 8),
-                _circleAvatar(),
+                ProfileAvatar(),
                 _allSizebox(w: 8),
-                _circleAvatar(),
+                ProfileAvatar(),
                 _allSizebox(w: 8),
-                _circleAvatar(),
+                ProfileAvatar(),
                 _allSizebox(w: 8),
-                _circleAvatar(),
+                ProfileAvatar(),
                 _allSizebox(w: 8),
-                _circleAvatar(),
+                ProfileAvatar(),
               ],
             ),
           ),
@@ -267,40 +241,55 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   _getStoryWidget(
                       child: IconButton(
-                    padding: EdgeInsets.zero,
-                    icon: Icon(Icons.add),
-                    iconSize: 30,
-                    color: Colors.blueAccent,
-                    onPressed: () => print('Add to Story'),
-                  )),
+                        padding: EdgeInsets.zero,
+                        icon: Icon(Icons.add),
+                        iconSize: 30,
+                        color: Colors.blueAccent,
+                        onPressed: () => print('Add to Story'),
+                      ),
+                      name: 'Add to Story'),
                   SizedBox(
                     width: 7,
                   ),
-                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  _getStoryWidget(
+                      child: ProfileAvatar(hasBorder: true),
+                      name: "Nguyễn Minh Toàn"),
                   SizedBox(
                     width: 7,
                   ),
-                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  _getStoryWidget(
+                      child: ProfileAvatar(hasBorder: true),
+                      name: "Phạm Tuấn Nghĩa"),
                   SizedBox(
                     width: 7,
                   ),
-                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  _getStoryWidget(
+                      child: ProfileAvatar(hasBorder: true),
+                      name: "Phạm Tuấn Nghĩa"),
                   SizedBox(
                     width: 7,
                   ),
-                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  _getStoryWidget(
+                      child: ProfileAvatar(hasBorder: true),
+                      name: "Phạm Tuấn Nghĩa"),
                   SizedBox(
                     width: 7,
                   ),
-                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  _getStoryWidget(
+                      child: ProfileAvatar(hasBorder: true),
+                      name: "Phạm Tuấn Nghĩa"),
                   SizedBox(
                     width: 7,
                   ),
-                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  _getStoryWidget(
+                      child: ProfileAvatar(hasBorder: true),
+                      name: "Phạm Tuấn Nghĩa"),
                   SizedBox(
                     width: 7,
                   ),
-                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  _getStoryWidget(
+                      child: ProfileAvatar(hasBorder: true),
+                      name: "Phạm Tuấn Nghĩa"),
                 ],
               ),
             ),
@@ -310,7 +299,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _getStoryWidget({child}) {
+  _getStoryWidget({child, String name, String imageUrl}) {
     return Stack(
       children: <Widget>[
         ClipRRect(
@@ -336,6 +325,17 @@ class _HomePageState extends State<HomePage> {
               shape: BoxShape.circle,
             ),
             child: child,
+          ),
+        ),
+        Positioned(
+          bottom: 8,
+          left: 8,
+          right: 8,
+          child: Text(
+            name,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
           ),
         )
       ],
