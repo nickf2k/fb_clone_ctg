@@ -14,7 +14,6 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  SignInBloc bloc = new SignInBloc();
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
 

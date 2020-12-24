@@ -2,7 +2,9 @@ import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/module/add_friend/add_fr_view.dart';
 import 'package:fb_clone_ctg/module/home_page/add_post/add_post_view.dart';
 import 'package:fb_clone_ctg/module/home_page/home_view.dart';
-import 'package:fb_clone_ctg/module/home_page/profile/profile_view.dart';
+
+// import 'package:fb_clone_ctg/module/profile/profile_view.dart';
+import 'package:fb_clone_ctg/module/setting/settingg.dart';
 import 'package:fb_clone_ctg/module/sign_in/sign_in_view.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +17,8 @@ Map<String, WidgetBuilder> routeConfig() {
     RouteConstant.NOTIFICATIONS: (context) => NotificationPage(),
     RouteConstant.HOME: (context) => HomePage(),
     RouteConstant.ADD_POST: (context) => AddPostPage(),
-    RouteConstant.VIDEO: (context) => HomePage(),
+    RouteConstant.SETTING: (context) => SettingPage(),
     RouteConstant.ADD_FRIEND: (context) => AddFriendPage(),
-    RouteConstant.PROFILE: (context) => Profile()
+    // RouteConstant.PROFILE: (context) => Profile()
   };
 }
