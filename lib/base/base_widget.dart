@@ -73,8 +73,12 @@ class PageContainer extends StatelessWidget {
 
 class DetailContainer extends StatelessWidget {
   final Widget child;
+  final bool canPost;
+  final String title;
 
-  const DetailContainer({Key key, this.child}) : super(key: key);
+  const DetailContainer(
+      {Key key, this.child, this.canPost = true, this.title = "Tạo bài viết"})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +90,10 @@ class DetailContainer extends StatelessWidget {
         body: child,
         appBar: CustomAppBar(
           height: 50,
-          child: DetailAppBar(),
+          child: DetailAppBar(
+            canPost: canPost,
+            title: title,
+          ),
         ),
       ),
     );

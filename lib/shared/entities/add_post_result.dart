@@ -1,11 +1,11 @@
-class AddPost {
+class AddPostResult {
   String code;
   String message;
   Data data;
 
-  AddPost({this.code, this.message, this.data});
+  AddPostResult({this.code, this.message, this.data});
 
-  AddPost.fromJson(Map<String, dynamic> json) {
+  AddPostResult.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;

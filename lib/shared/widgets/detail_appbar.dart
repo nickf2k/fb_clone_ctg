@@ -2,6 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailAppBar extends StatefulWidget {
+  final bool canPost;
+  final String title;
+
+  const DetailAppBar({Key key, this.canPost, this.title}) : super(key: key);
+
   @override
   _DetailAppBarState createState() => _DetailAppBarState();
 }
@@ -21,21 +26,23 @@ class _DetailAppBarState extends State<DetailAppBar> {
             icon: Icon(Icons.arrow_back),
           ),
           Text(
-            "Tạo bài viết",
+            widget.title,
             style: TextStyle(fontSize: 17),
           ),
-          new RaisedButton(
-            onPressed: () {},
-            color: Colors.white,
-            child: Row(
-              children: <Widget>[
-                Text(
-                  "Post",
-                  style: TextStyle(fontSize: 17),
-                ),
-              ],
-            ),
-          ),
+          widget.canPost
+              ? RaisedButton(
+                  onPressed: () {},
+                  color: Colors.white,
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        "Post",
+                        style: TextStyle(fontSize: 17),
+                      ),
+                    ],
+                  ),
+                )
+              : Text("              "),
         ],
       ),
     );

@@ -4,6 +4,7 @@ import 'dart:wasm';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
+import 'package:fb_clone_ctg/shared/widgets/status_widget.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,64 +14,53 @@ import '../../base/base_widget.dart';
 import '../../shared/widgets/top_nav_bar.dart';
 
 class HomePage extends StatefulWidget {
-  final bool hasBoder;
-
-  const HomePage({Key key, this.hasBoder}) : super(key: key);
-
   @override
-  _HomePageState createState() => _HomePageState(this.hasBoder);
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final bool hasBoder;
-
-  _HomePageState(this.hasBoder);
-
   @override
   Widget build(BuildContext context) {
     return PageContainer(
       hasTopNavBar: true,
       child: Container(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: ListView(
-                children: <Widget>[
-                  Divider(height: 5, thickness: 5, color: Colors.grey[300]),
-                  _userAddPost(),
-                  Divider(
-                    height: 2,
-                    thickness: 10,
-                    color: Colors.grey[400],
-                  ),
-                  _createRoom(),
-                  Divider(
-                    height: 2,
-                    thickness: 1,
-                    color: Colors.grey[500],
-                  ),
-                  _livePhotoRoom(),
-                  Divider(
-                    height: 2,
-                    thickness: 1,
-                    color: Colors.grey[400],
-                  ),
-                  _allSizebox(h: 15),
-                  Divider(
-                    height: 2,
-                    thickness: 10,
-                    color: Colors.grey[500],
-                  ),
-                  _stories(),
-                  Divider(
-                    height: 2,
-                    thickness: 10,
-                    color: Colors.grey[500],
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Divider(height: 5, thickness: 5, color: Colors.grey[300]),
+              _userAddPost(),
+              Divider(
+                height: 2,
+                thickness: 8,
+                color: Color(0xffc9cbd1),
               ),
-            ),
-          ],
+              _createRoom(),
+              Divider(
+                height: 2,
+                thickness: 1,
+                color: Colors.grey[500],
+              ),
+              _livePhotoRoom(),
+              Divider(
+                height: 2,
+                thickness: 1,
+                color: Colors.grey[400],
+              ),
+              _allSizebox(h: 15),
+              Divider(
+                height: 2,
+                thickness: 8,
+                color: Color(0xffc9cbd1),
+              ),
+              _stories(),
+              Divider(
+                height: 2,
+                thickness: 8,
+                color: Color(0xffc9cbd1),
+              ),
+              _getListPost(),
+            ],
+          ),
         ),
       ),
     );
@@ -126,14 +116,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _circleAvatar({bool border = false}) {
+  _circleAvatar({bool hasBorder = false}) {
     return Stack(
       children: <Widget>[
         CircleAvatar(
           radius: 25.0,
           backgroundColor: Colors.blue,
           child: CircleAvatar(
-            radius: border ? 18.0 : 25.0,
+            radius: hasBorder ? 18.0 : 25.0,
             backgroundImage: AssetImage('assets/images/batman.jpg'),
             backgroundColor: Colors.grey[200],
           ),
@@ -157,57 +147,54 @@ class _HomePageState extends State<HomePage> {
   _createRoom() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Column(
-        children: <Widget>[
-          _allSizebox(h: 15),
-          Container(
-            height: 60,
-            color: Colors.white,
-            child: SingleChildScrollView(
-              child: Row(
-                children: <Widget>[
-                  _allSizebox(w: 7),
-                  OutlineButton(
-                    onPressed: () => print('Create Zoom'),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    color: Colors.white,
-                    borderSide:
-                        BorderSide(width: 3.0, color: Colors.blueAccent[100]),
-                    child: Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.video_call,
-                          size: 35,
-                          color: Colors.purpleAccent,
-                        ),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        Text('Create\nRoom')
-                      ],
-                    ),
+      child: Container(
+        height: 69,
+        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(9.0),
+            child: Row(
+              children: <Widget>[
+                OutlineButton(
+                  onPressed: () => print('Create Zoom'),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
                   ),
-                  _allSizebox(w: 8),
-                  _circleAvatar(),
-                  _allSizebox(w: 8),
-                  _circleAvatar(),
-                  _allSizebox(w: 8),
-                  _circleAvatar(),
-                  _allSizebox(w: 8),
-                  _circleAvatar(),
-                  _allSizebox(w: 8),
-                  _circleAvatar(),
-                  _allSizebox(w: 8),
-                  _circleAvatar(),
-                  _allSizebox(w: 8),
-                  _circleAvatar(),
-                ],
-              ),
+                  color: Colors.white,
+                  borderSide:
+                      BorderSide(width: 3.0, color: Colors.blueAccent[100]),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.video_call,
+                        size: 35,
+                        color: Colors.purpleAccent,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text('Create\nRoom')
+                    ],
+                  ),
+                ),
+                _allSizebox(w: 8),
+                _circleAvatar(),
+                _allSizebox(w: 8),
+                _circleAvatar(),
+                _allSizebox(w: 8),
+                _circleAvatar(),
+                _allSizebox(w: 8),
+                _circleAvatar(),
+                _allSizebox(w: 8),
+                _circleAvatar(),
+                _allSizebox(w: 8),
+                _circleAvatar(),
+                _allSizebox(w: 8),
+                _circleAvatar(),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -268,56 +255,55 @@ class _HomePageState extends State<HomePage> {
 
   _stories() {
     return Container(
-      height: 210,
+      height: 226,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Column(
           children: <Widget>[
             _allSizebox(h: 10),
-            Row(
-              children: <Widget>[
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(
-                    child: IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: Icon(Icons.add),
-                  iconSize: 30,
-                  color: Colors.blueAccent,
-                  onPressed: () => print('Add to Story'),
-                )),
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(child: _circleAvatar(border: true)),
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(child: _circleAvatar(border: true)),
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(child: _circleAvatar(border: true)),
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(child: _circleAvatar(border: true)),
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(child: _circleAvatar(border: true)),
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(child: _circleAvatar(border: true)),
-                SizedBox(
-                  width: 7,
-                ),
-                _getStoryWidget(child: _circleAvatar(border: true)),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: <Widget>[
+                  _getStoryWidget(
+                      child: IconButton(
+                    padding: EdgeInsets.zero,
+                    icon: Icon(Icons.add),
+                    iconSize: 30,
+                    color: Colors.blueAccent,
+                    onPressed: () => print('Add to Story'),
+                  )),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  _getStoryWidget(child: _circleAvatar(hasBorder: true)),
+                ],
+              ),
             ),
-            _allSizebox(h: 10)
           ],
         ),
       ),
@@ -352,6 +338,15 @@ class _HomePageState extends State<HomePage> {
             child: child,
           ),
         )
+      ],
+    );
+  }
+
+  _getListPost({data}) {
+    return Column(
+      children: <Widget>[
+        StatusWidget(),
+        StatusWidget(),
       ],
     );
   }
