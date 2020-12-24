@@ -41,15 +41,19 @@ class _StatusWidgetState extends State<StatusWidget> {
                 MediaConstant.TOAN,
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
-              Text(
-                '58m   ',
-                style: TextStyle(color: Colors.grey[600], fontSize: 12),
+              Row(
+                children: <Widget>[
+                  Text(
+                    '58m   ',
+                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                  ),
+                  Icon(
+                    Icons.public,
+                    color: Colors.grey[600],
+                    size: 12,
+                  )
+                ],
               ),
-              Icon(
-                Icons.public,
-                color: Colors.grey[600],
-                size: 12,
-              )
             ],
           ),
         ),

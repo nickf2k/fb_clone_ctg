@@ -1,5 +1,3 @@
-import 'package:fb_clone_ctg/module/home_page/add_post/add_post_bloc.dart';
-
 class RouteConstant {
   static const SIGN_IN = "/sign_in";
   static const SIGN_UP = "/sign_up";

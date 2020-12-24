@@ -1,4 +1,5 @@
 import 'package:fb_clone_ctg/constant/default_media.dart';
+import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -18,15 +19,20 @@ class ProfileAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        CircleAvatar(
-          radius: 25.0,
-          backgroundColor: Colors.blue,
+        GestureDetector(
+          onTap: () => hasBorder
+              ? {}
+              : Navigator.pushNamed(context, RouteConstant.PROFILE),
           child: CircleAvatar(
-            radius: hasBorder ? 18.0 : 25.0,
-            backgroundImage: urlAvatarNetWork != null
-                ? NetworkImage(urlAvatarNetWork)
-                : AssetImage(urlAvatarAsset),
-            backgroundColor: Colors.grey[200],
+            radius: 25.0,
+            backgroundColor: Colors.blue,
+            child: CircleAvatar(
+              radius: hasBorder ? 18.0 : 25.0,
+              backgroundImage: urlAvatarNetWork != null
+                  ? NetworkImage(urlAvatarNetWork)
+                  : AssetImage(urlAvatarAsset),
+              backgroundColor: Colors.grey[200],
+            ),
           ),
         ),
         Positioned(
