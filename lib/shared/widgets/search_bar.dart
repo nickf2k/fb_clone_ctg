@@ -37,7 +37,9 @@ class _SearchBarState extends State<SearchBar> {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    showSearch(context: context, delegate: DataSearch());
+                    showSearch(
+                        context: context,
+                        delegate: DataSearch(context: context));
                   },
                 ),
               ),
@@ -60,38 +62,44 @@ class _SearchBarState extends State<SearchBar> {
 }
 
 class DataSearch extends SearchDelegate<String> {
-  final listRes = ["1","2","3","4","5"];
-  final listSug= ["1", "2", "3"];
+  final context;
+  final listRes = ["1", "2", "3", "4", "5"];
+  final listSug = ["1", "2", "3"];
+
+  DataSearch({this.context});
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
-      IconButton(icon: Icon(Icons.clear), onPressed: (){},)
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () => Navigator.pop(context),
+      )
     ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.search_ellipsis,
-        progress: transitionAnimation,
-      ),
-      onPressed: (){},
+      icon: Icon(Icons.arrow_back),
+      // AnimatedIcon(
+      //   icon: AnimatedIcons.search_ellipsis,
+      //   progress: transitionAnimation,
+      // ),
+      onPressed: () => Navigator.pop(context),
     );
   }
 
   @override
-  Widget buildResults(BuildContext context) {
-  }
+  Widget buildResults(BuildContext context) {}
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestions = query.isEmpty?listSug:listRes;
+    final suggestions = query.isEmpty ? listSug : listRes;
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
         leading: Icon(Icons.search),
         title: Text(listRes[index]),
-
       ),
       itemCount: suggestions.length,
     );

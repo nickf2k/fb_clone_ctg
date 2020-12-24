@@ -1,23 +1,27 @@
-
+import 'package:fb_clone_ctg/base/base_widget.dart';
+import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 const double fontSize = 15.5;
+const double fontSize1 = 13.5;
 const double iconSize = 15;
 const double widthImage = 35;
 const double heightIamge = 35;
 
-class Settingg extends StatefulWidget {
+class SettingPage extends StatefulWidget {
   @override
-  _SettinggState createState() => _SettinggState();
+  _SettingPageState createState() => _SettingPageState();
 }
 
-class _SettinggState extends State<Settingg> {
+class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return MaterialApp(
-      home: Scaffold(
+    return PageContainer(
+      navBarIndex: NavBarIndex.SETTING,
+      child: Scaffold(
         body: Container(
           decoration: BoxDecoration(
 //            color: Color(0xe7e8ea),
@@ -55,7 +59,6 @@ class _SettinggState extends State<Settingg> {
                     ],
                   ),
                 ),
-
                 SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -66,33 +69,857 @@ class _SettinggState extends State<Settingg> {
                           CircleAvatar(
                             radius: 20,
                             backgroundImage: AssetImage(
-                              'nghia.jpg',
+                              'assets/icons/nghia.jpg',
                             ),
-
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
-                            child: RichText(
-                              textAlign: TextAlign.start,
-                              text: TextSpan(children: <TextSpan>[
-                                TextSpan(
-                                    text: "Phạm Tuấn Nghĩa",
-                                    style: TextStyle(
-                                        fontSize: 22,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold)),
-                                TextSpan(
-                                    text: "\nXem trang cá nhân của bạn ",
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.black54)),
-                              ]),
+                            child: MaterialButton(
+                              onPressed: () => Navigator.of(context)
+                                  .pushNamed(RouteConstant.PROFILE),
+                              child: RichText(
+                                textAlign: TextAlign.start,
+                                text: TextSpan(children: <TextSpan>[
+                                  TextSpan(
+                                      text: "Phạm Tuấn Nghĩa",
+                                      style: TextStyle(
+                                          fontSize: 22,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold)),
+                                  TextSpan(
+                                      text: "\nXem trang cá nhân của bạn ",
+                                      style: TextStyle(
+                                          fontSize: 20, color: Colors.black54)),
+                                ]),
+                              ),
                             ),
                           )
                         ],
                       ),
                       color: Color(0xffe7e8ea),
-
                     )),
+                Container(
+                  color: Color(0xfff2f3f5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          getItem("assets/icons/saved.png", "Đã lưu", null),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/findfriend.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Bạn bè",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/watchvideo.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Video trên Watch",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/page.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Trang",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/event.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Sự kiện",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/friends.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Bạn bè quanh đây",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/marketplace.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Marketplace",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/job.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Việc làm",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/gruop.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Nhóm",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/dating.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Hẹn hò",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
+                            child: SizedBox(
+                                width: 160,
+                                height: 70,
+                                child: RaisedButton(
+                                  onPressed: () {},
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 88, 0),
+                                        child: Image(
+                                          width: widthImage,
+                                          height: heightIamge,
+                                          image: AssetImage(
+                                            'assets/icons/playgame.png',
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 0, 0),
+                                        child: Text("Chơi game",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: fontSize1,
+                                                fontWeight: FontWeight.normal)),
+                                      )
+                                    ],
+                                  ),
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8))),
+                                )),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  color: Color(0xfff2f3f5),
+                  child: ExpansionTile(
+                    leading: Image(
+                      width: widthImage,
+                      height: heightIamge,
+                      image: AssetImage(
+                        'assets/icons/eye.png',
+                      ),
+                    ),
+                    title: Text(
+                      "Xem thêm",
+                      style: TextStyle(
+                        fontSize: fontSize,
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/avatar.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Avatar",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: fontSize,
+                                            fontWeight: FontWeight.normal)),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/fundraisingcampaign.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Chiến dịch gây quỹ",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/facebookpay.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Facebook Pay",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/themostnearhere.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Gần đây nhất",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/advertisement.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Hoạt động quảng cáo gần đây",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/smallmessenger.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Messenger nhí",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/findwifi.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Tìm Wi-Fi",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/emergencyresponsel.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Ứng phó khẩn cấp",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/interestrate.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Ưu đãi",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/livevideo.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Video trực tiếp",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Row(
+                                children: <Widget>[
+                                  Image(
+                                    width: widthImage,
+                                    height: heightIamge,
+                                    image: AssetImage(
+                                      'assets/icons/requetfromdevices.png',
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: Text("Yêu cầu từ thiết bị",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: fontSize,
+                                          fontWeight: FontWeight.normal,
+                                        )),
+                                  )
+                                ],
+                              ),
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                   color: Color(0xffe7e8ea),
                   child: ExpansionTile(
@@ -100,7 +927,7 @@ class _SettinggState extends State<Settingg> {
                       width: widthImage,
                       height: heightIamge,
                       image: AssetImage(
-                        'help&support.png',
+                        'assets/icons/help&support.png',
                       ),
                     ),
                     title: Text(
@@ -125,7 +952,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'helpcenter.png',
+                                      'assets/icons/helpcenter.png',
                                     ),
                                   ),
                                   Padding(
@@ -158,7 +985,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'boxsupport.png',
+                                      'assets/icons/boxsupport.png',
                                     ),
                                   ),
                                   Padding(
@@ -192,7 +1019,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'communityhelp.png',
+                                      'assets/icons/communityhelp.png',
                                     ),
                                   ),
                                   Padding(
@@ -226,7 +1053,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'reportproblem.png',
+                                      'assets/icons/reportproblem.png',
                                     ),
                                   ),
                                   Padding(
@@ -260,7 +1087,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'policy&rules.png',
+                                      'assets/icons/policy&rules.png',
                                     ),
                                   ),
                                   Padding(
@@ -291,7 +1118,7 @@ class _SettinggState extends State<Settingg> {
                       width: widthImage,
                       height: heightIamge,
                       image: AssetImage(
-                        'settings&private.png',
+                        'assets/icons/settings&private.png',
                       ),
                     ),
                     title: Text(
@@ -316,7 +1143,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'settings.png',
+                                      'assets/icons/settings.png',
                                     ),
                                   ),
                                   Padding(
@@ -350,7 +1177,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'privates.png',
+                                      'assets/icons/privates.png',
                                     ),
                                   ),
                                   Padding(
@@ -384,7 +1211,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'timeinfacebook.png',
+                                      'assets/icons/timeinfacebook.png',
                                     ),
                                   ),
                                   Padding(
@@ -418,7 +1245,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'darkmode.png',
+                                      'assets/icons/darkmode.png',
                                     ),
                                   ),
                                   Padding(
@@ -452,7 +1279,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'languages.png',
+                                      'assets/icons/languages.png',
                                     ),
                                   ),
                                   Padding(
@@ -486,7 +1313,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      '5g.png',
+                                      'assets/icons/5g.png',
                                     ),
                                   ),
                                   Padding(
@@ -520,7 +1347,7 @@ class _SettinggState extends State<Settingg> {
                                     width: widthImage,
                                     height: heightIamge,
                                     image: AssetImage(
-                                      'key.png',
+                                      'assets/icons/key.png',
                                     ),
                                   ),
                                   Padding(
@@ -555,7 +1382,7 @@ class _SettinggState extends State<Settingg> {
                             width: widthImage,
                             height: heightIamge,
                             image: AssetImage(
-                              'logout.png',
+                              'assets/icons/logout.png',
                             ),
                           ),
                           Padding(
@@ -578,6 +1405,46 @@ class _SettinggState extends State<Settingg> {
           ),
         ),
       ),
+    );
+  }
+
+  getItem(String icon, String title, String route) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+      child: SizedBox(
+          width: 160,
+          height: 70,
+          child: RaisedButton(
+            onPressed: () =>
+                Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 88, 0),
+                  child: Image(
+                    width: widthImage,
+                    height: heightIamge,
+                    image: AssetImage(
+                      icon,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Text(title,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: fontSize1,
+                          fontWeight: FontWeight.normal)),
+                )
+              ],
+            ),
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8))),
+          )),
     );
   }
 }
