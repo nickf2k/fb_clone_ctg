@@ -14,14 +14,115 @@ class _DetailAppBarState extends State<DetailAppBar> {
       height: 50,
       color: Colors.white,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          IconButton(
+          new IconButton(
             onPressed: () => Navigator.pop(context),
             icon: Icon(Icons.arrow_back),
           ),
-          Text("Tạo bài viết")
+          Text(
+            "Tạo bài viết",
+            style: TextStyle(fontSize: 17),
+          ),
+          new RaisedButton(
+            onPressed: () {},
+            color: Colors.white,
+            child: Row(
+              children: <Widget>[
+                Text(
+                  "Post",
+                  style: TextStyle(fontSize: 17),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
+    );
+  }
+
+  _showMoreOption(cx) {
+    showModalBottomSheet(
+      context: cx,
+      builder: (BuildContext buildContext) {
+        return new Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.feedback,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Text(
+                    'Give feedback or report this profile',
+                    style: TextStyle(fontSize: 18.0),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.block,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Text(
+                    'Block',
+                    style: TextStyle(fontSize: 18.0),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.link,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Text(
+                    'Copy link to profile',
+                    style: TextStyle(fontSize: 18.0),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.search,
+                    color: Colors.black,
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  Text(
+                    'Search Profile',
+                    style: TextStyle(fontSize: 18.0),
+                  )
+                ],
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }

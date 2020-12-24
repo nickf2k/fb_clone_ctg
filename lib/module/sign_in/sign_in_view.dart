@@ -17,15 +17,15 @@ class _SignInPageState extends State<SignInPage> {
   SignInBloc bloc = new SignInBloc();
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_){
-      if (!SpUtil.getString(SPrefCacheConstant.KEY_TOKEN).isEmpty){
-        Navigator.pushNamedAndRemoveUntil(context, RouteConstant.HOME, (Route<dynamic> route) => false);
-        bloc.setContext(context);
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!SpUtil.getString(SPrefCacheConstant.KEY_TOKEN).isEmpty) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, RouteConstant.HOME, (Route<dynamic> route) => false);
       }
     });
   }
@@ -33,6 +33,8 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     SignInBloc signInBloc = SignInBloc();
+    signInBloc.setContext(context);
+
     return PageContainer(
       bloc: [Provider.value(value: SignInBloc())],
       hasTopNavBar: false,

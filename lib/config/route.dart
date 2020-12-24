@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/module/add_friend/add_fr_view.dart';
 import 'package:fb_clone_ctg/module/home_page/add_post/add_post_view.dart';

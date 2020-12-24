@@ -1,4 +1,5 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:use_html_t/style.dart';
 
@@ -11,106 +12,95 @@ class _AddPostPageState extends State<AddPostPage> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return DetailContainer(
-      child: ListView(
-        children: <Widget>[
-          Container(
-            height: 50,
-            child: Row(
-              children: <Widget>[
-                Center(
-                  child: CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage("assets/images/women.jpg"),
-                  ),
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: DetailContainer(
+        child: Container(
+          child: Column(
+            children: <Widget>[_typingPostStatus(), _allCard()],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // _widget(){
+  //   re''
+  // }
+  _typingPostStatus() {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: 50,
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: 7,
+              ),
+              Center(
+                child: CircleAvatar(
+                  radius: 25,
+                  backgroundImage: AssetImage("assets/images/women.jpg"),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          Container(
-            height: 300,
-            child: TextFormField(
-                maxLines: 15,
-                decoration: InputDecoration(
-                  labelText: "What's on your mind?",
-                )),
+        ),
+        Container(
+          height: 300,
+          child: TextFormField(
+              maxLines: 15,
+              decoration: InputDecoration(
+                labelText: "What's on your mind?",
+              )),
+        ),
+      ],
+    );
+  }
+
+  _allCard() {
+    return Expanded(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            _card(
+                iconData: Icons.video_call,
+                nameIcon: "Create Room",
+                color: Colors.purpleAccent),
+            _card(
+                iconData: Icons.child_friendly,
+                nameIcon: "Friend",
+                color: Colors.blue),
+            _card(
+                iconData: Icons.face,
+                nameIcon: "Feeling",
+                color: Colors.yellow),
+            _card(
+                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
+            _card(
+                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
+            _card(
+                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
+            _card(
+                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _card({IconData iconData, String nameIcon, Color color}) {
+    return Card(
+      child: Container(
+        child: ListTile(
+          leading: Icon(
+            iconData,
+            size: 45,
+            color: color,
           ),
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(
-                    Icons.video_call,
-                    size: 45,
-                    color: Colors.purpleAccent,
-                  ),
-                  title: Text('Create Room'),
-                ),
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(
-                    Icons.child_friendly,
-                    size: 45,
-                    color: Colors.blue,
-                  ),
-                  title: Text('Friend'),
-                ),
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(
-                    Icons.face,
-                    size: 45,
-                    color: Colors.yellow,
-                  ),
-                  title: Text('Feeling'),
-                ),
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(
-                    Icons.check,
-                    size: 45,
-                    color: Colors.red,
-                  ),
-                  title: Text('Check in'),
-                ),
-              ],
-            ),
-          ),
-          Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                const ListTile(
-                  leading: Icon(
-                    Icons.camera_alt,
-                    size: 45,
-                    color: Colors.blue,
-                  ),
-                  title: Text('Camera'),
-                ),
-              ],
-            ),
-          ),
-        ],
+          title: Text(nameIcon),
+        ),
       ),
     );
   }

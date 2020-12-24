@@ -179,7 +179,7 @@ class NotiItem extends StatelessWidget {
                       flex: 2,
                       child: Center(
                           child: Icon(
-                        Icons.takeout_dining,
+                        Icons.event,
                         color: AppColor.darkGray,
                         size: 30,
                       ))),
