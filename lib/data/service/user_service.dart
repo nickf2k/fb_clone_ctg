@@ -18,5 +18,10 @@ class UserService {
     return FacebookAPIConnector.instance.dio
         .post(APIConstant.SIGN_UP, queryParameters: queryParameter);
   }
-
+  Future<Response> logout(String token){
+    var queryParameter = {
+      "token": token
+    };
+    return FacebookAPIConnector.instance.dio.post(APIConstant.LOGOUT, queryParameters: queryParameter);
+  }
 }
