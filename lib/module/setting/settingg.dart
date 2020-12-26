@@ -1,8 +1,11 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/module/setting/setting_bloc.dart';
+import 'package:fb_clone_ctg/module/setting/setting_event.dart';
 import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 const double fontSize = 15.5;
 const double fontSize1 = 13.5;
@@ -16,11 +19,15 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  SettingBloc _settingBloc;
   @override
   Widget build(BuildContext context) {
+    _settingBloc = SettingBloc();
+    _settingBloc.setContext(context);
     // TODO: implement build
     return PageContainer(
       navBarIndex: NavBarIndex.SETTING,
+      bloc: [Provider.value(value: _settingBloc)],
       child: Scaffold(
         body: Container(
           decoration: BoxDecoration(
@@ -1387,12 +1394,17 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
-                            child: Text("Đăng xuất",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: fontSize,
-                                  fontWeight: FontWeight.normal,
-                                )),
+                            child: MaterialButton(
+                              onPressed: (){
+                                _settingBloc.eventController.sink.add(LogoutEvent());
+                              },
+                              child: Text("Đăng xuất",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: fontSize,
+                                    fontWeight: FontWeight.normal,
+                                  )),
+                            ),
                           )
                         ],
                       ),
