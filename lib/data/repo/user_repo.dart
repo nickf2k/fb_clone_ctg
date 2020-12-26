@@ -13,6 +13,10 @@ abstract class ISignInListener {
   onSignInFailed(String resCode);
 }
 
+abstract class ILogoutListener {
+  onLogoutSuccess(bool checkLogout);
+}
+
 abstract class ISearchListener {
   onSearchPressed(SavedSearchList savedSearchList);
 }
@@ -72,5 +76,22 @@ class UserRepo {
     //   SpUtil.getInstance();
     //   savedSearchList = SavedSearchList.fromJson(response.data);
     // });
+  }
+
+  void logout(ILogoutListener listener) {
+    String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
+
+    var futures = _userService.logout(token).then((res) {
+      print("logouted!");
+      listener.onLogoutSuccess(true);
+    }).catchError((error) {
+      print("logout err");
+      listener.onLogoutSuccess(false);
+    });
+    SpUtil.remove(SPrefCacheConstant.KEY_TOKEN);
+    SpUtil.remove(SPrefCacheConstant.KEY_USER_ID);
+    SpUtil.remove(SPrefCacheConstant.KEY_USERNAME);
+    SpUtil.remove(SPrefCacheConstant.KEY_PASSWORD);
+    SpUtil.remove(SPrefCacheConstant.KEY_USER);
   }
 }
