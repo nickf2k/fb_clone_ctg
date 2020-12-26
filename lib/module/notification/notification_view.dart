@@ -27,6 +27,7 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     _bloc = NotificationBloc();
     _bloc.eventController.sink.add(InitEvent());
+    DateTime now = new DateTime.now();
 
     return PageContainer(
       bloc: [],

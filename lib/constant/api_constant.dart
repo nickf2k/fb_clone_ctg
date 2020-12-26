@@ -31,7 +31,7 @@ class APIConstant{
   static const SET_PUSH_SETTINGS  = "Set_push_settings";
   static const SET_BLOCK  = "Set_block";
   static const CHECK_NEW_VERSION  = "Check_new_version";
-  static const GET_NOTIFICATION  = "Get_notification";
+  static const GET_NOTIFICATION  = "get_notification";
   static const SET_READ_NOTIFICATION  = "Set_read_notification";
   static const SET_DEVTOKEN  = "Set_devtoken";
   static const GET_USER_INFO  = "Get_user_info";

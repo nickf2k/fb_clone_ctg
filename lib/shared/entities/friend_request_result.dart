@@ -1,11 +1,11 @@
-class FriendRequest {
+class FriendRequestResult {
   String code;
   String message;
   Data data;
 
-  FriendRequest({this.code, this.message, this.data});
+  FriendRequestResult({this.code, this.message, this.data});
 
-  FriendRequest.fromJson(Map<String, dynamic> json) {
+  FriendRequestResult.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
@@ -20,9 +20,9 @@ class FriendRequest {
     }
     return data;
   }
-  static List<FriendRequest> getListAddFriend() {
-    return <FriendRequest>[
-      FriendRequest(
+  static List<FriendRequestResult> getListAddFriend() {
+    return <FriendRequestResult>[
+      FriendRequestResult(
         code: "1000",
         message: "OK",
         data: Data(
@@ -37,7 +37,7 @@ class FriendRequest {
           total: 1,
         ),
       ),
-      FriendRequest(
+      FriendRequestResult(
         code: "1000",
         message: "OK",
         data: Data(
