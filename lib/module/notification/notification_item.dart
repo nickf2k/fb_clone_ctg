@@ -18,7 +18,6 @@ class NotiItem extends StatelessWidget {
         notification.isRead == NotifyConstant.READER ? Colors.white : Color(0xffe7f3ff);
     return Container(
       decoration: BoxDecoration(color: color),
-
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

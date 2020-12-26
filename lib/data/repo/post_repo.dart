@@ -36,7 +36,8 @@ class PostRepo {
       listener.onAddPostSuccess(addPostResult);
     }
   }
-  void getPostById(String id){
+
+  void getPostById(String id) {
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
   }
 }

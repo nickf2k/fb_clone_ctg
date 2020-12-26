@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'dart:wasm';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
@@ -85,7 +86,9 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 children: <Widget>[
                   _allSizebox(w: 7),
-                  ProfileAvatar(),
+                  ProfileAvatar(
+                    urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_1,
+                  ),
                   _allSizebox(w: 15),
                   ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(25)),
@@ -152,19 +155,21 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 _allSizebox(w: 8),
-                ProfileAvatar(),
+                ProfileAvatar(
+                  urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_2,
+                ),
                 _allSizebox(w: 8),
-                ProfileAvatar(),
+                ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_3),
                 _allSizebox(w: 8),
-                ProfileAvatar(),
+                ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_4),
                 _allSizebox(w: 8),
-                ProfileAvatar(),
+                ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_5),
                 _allSizebox(w: 8),
-                ProfileAvatar(),
+                ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_6),
                 _allSizebox(w: 8),
-                ProfileAvatar(),
+                ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_7),
                 _allSizebox(w: 8),
-                ProfileAvatar(),
+                ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_1),
               ],
             ),
           ),
@@ -247,49 +252,71 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.blueAccent,
                         onPressed: () => print('Add to Story'),
                       ),
-                      name: 'Add to Story'),
+                      name: 'Add to Story',
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_1),
                   SizedBox(
                     width: 7,
                   ),
                   _getStoryWidget(
-                      child: ProfileAvatar(hasBorder: true),
-                      name: "Nguyễn Minh Toàn"),
+                      child: ProfileAvatar(
+                          hasBorder: true,
+                          urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_1),
+                      name: MediaConstant.TOAN,
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_2),
                   SizedBox(
                     width: 7,
                   ),
                   _getStoryWidget(
-                      child: ProfileAvatar(hasBorder: true),
-                      name: "Phạm Tuấn Nghĩa"),
+                      child: ProfileAvatar(
+                          hasBorder: true,
+                          urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_2),
+                      name: MediaConstant.NGHIA,
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_3),
                   SizedBox(
                     width: 7,
                   ),
                   _getStoryWidget(
-                      child: ProfileAvatar(hasBorder: true),
-                      name: "Phạm Tuấn Nghĩa"),
+                      child: ProfileAvatar(
+                          hasBorder: true,
+                          urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_3),
+                      name: MediaConstant.VUONG,
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_4),
                   SizedBox(
                     width: 7,
                   ),
                   _getStoryWidget(
-                      child: ProfileAvatar(hasBorder: true),
-                      name: "Phạm Tuấn Nghĩa"),
+                      child: ProfileAvatar(
+                          hasBorder: true,
+                          urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_4),
+                      name: MediaConstant.MAI,
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_5),
                   SizedBox(
                     width: 7,
                   ),
                   _getStoryWidget(
-                      child: ProfileAvatar(hasBorder: true),
-                      name: "Phạm Tuấn Nghĩa"),
+                      child: ProfileAvatar(
+                          hasBorder: true,
+                          urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_5),
+                      name: MediaConstant.DUONG,
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_6),
                   SizedBox(
                     width: 7,
                   ),
                   _getStoryWidget(
-                      child: ProfileAvatar(hasBorder: true),
-                      name: "Phạm Tuấn Nghĩa"),
+                      child: ProfileAvatar(
+                          hasBorder: true,
+                          urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_6),
+                      name: MediaConstant.TOAN,
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_1),
                   SizedBox(
                     width: 7,
                   ),
                   _getStoryWidget(
-                      child: ProfileAvatar(hasBorder: true),
-                      name: "Phạm Tuấn Nghĩa"),
+                      child: ProfileAvatar(
+                          hasBorder: true,
+                          urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_7),
+                      name: MediaConstant.VUONG,
+                      imageUrl: MediaConstant.DEFAUT_IMAGE_2),
                 ],
               ),
             ),
@@ -307,8 +334,7 @@ class _HomePageState extends State<HomePage> {
             12.0,
           ),
           child: Image(
-            image: NetworkImage(
-                "https://scontent.fhan5-1.fna.fbcdn.net/v/t1.0-9/15781434_549397465256683_7544813911137178073_n.jpg?_nc_cat=109&ccb=2&_nc_sid=e3f864&_nc_ohc=RKa56DE9SdMAX-9J_6a&_nc_ht=scontent.fhan5-1.fna&oh=374871eeb838d42fb3e87bf378111a68&oe=60087581"),
+            image: AssetImage(imageUrl),
             height: 180,
             width: 110,
             fit: BoxFit.cover,

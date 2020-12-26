@@ -1,5 +1,6 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/config/app_color.dart';
+import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -139,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage('assets/images/women.jpg'))),
+                              image: AssetImage(MediaConstant.DEFAUT_IMAGE_2))),
                     ),
                   )
                 ],
@@ -153,7 +154,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage('assets/images/men.jpg')),
+                          image: AssetImage(MediaConstant.DEFAUT_AVATAR_1)),
                       border: Border.all(color: Colors.white, width: 6.0)),
                 ),
               ),
@@ -167,7 +168,7 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Nguyễn Minh Toàn',
+                MediaConstant.TOAN,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0),
               ),
               SizedBox(
@@ -268,11 +269,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 Row(
                   children: <Widget>[
                     Expanded(
-                        child:
-                            Card(child: Image.asset('assets/images/men.jpg'))),
+                        child: Card(
+                            child: Image.asset(MediaConstant.DEFAUT_IMAGE_2))),
                     Expanded(
                         child: Card(
-                      child: Image.asset('assets/images/women.jpg'),
+                      child: Image.asset(MediaConstant.DEFAUT_IMAGE_3),
                     ))
                   ],
                 ),
@@ -280,15 +281,15 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: <Widget>[
                     Expanded(
                         child: Card(
-                      child: Image.asset('assets/images/women.jpg'),
+                      child: Image.asset(MediaConstant.DEFAUT_IMAGE_4),
                     )),
                     Expanded(
                         child: Card(
-                      child: Image.asset('assets/images/batman.jpg'),
+                      child: Image.asset(MediaConstant.DEFAUT_IMAGE_5),
                     )),
                     Expanded(
                         child: Card(
-                      child: Image.asset('assets/images/batman.jpg'),
+                      child: Image.asset(MediaConstant.DEFAUT_IMAGE_6),
                     ))
                   ],
                 )

@@ -1,3 +1,4 @@
+import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class _StatusWidgetState extends State<StatusWidget> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           _getOwner(),
-          _getDescripbe("something"),
+          _getDescripbe(MediaConstant.STATUS_1),
           _getMedia(),
           _getInteration(),
         ],
@@ -37,18 +38,22 @@ class _StatusWidgetState extends State<StatusWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "Nguyễn Minh Toàn",
+                MediaConstant.TOAN,
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
-              Text(
-                '58m   ',
-                style: TextStyle(color: Colors.grey[600], fontSize: 12),
+              Row(
+                children: <Widget>[
+                  Text(
+                    '58m   ',
+                    style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                  ),
+                  Icon(
+                    Icons.public,
+                    color: Colors.grey[600],
+                    size: 12,
+                  )
+                ],
               ),
-              Icon(
-                Icons.public,
-                color: Colors.grey[600],
-                size: 12,
-              )
             ],
           ),
         ),
@@ -76,7 +81,12 @@ class _StatusWidgetState extends State<StatusWidget> {
   }
 
   Widget _getMedia() {
-    return Container();
+    return Container(
+      height: 300,
+      child: Image(
+        image: AssetImage(MediaConstant.DEFAUT_IMAGE_1),
+      ),
+    );
   }
 
   Widget _getInteration() {
