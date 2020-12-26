@@ -1,15 +1,42 @@
+import 'dart:async';
+
 import 'package:fb_clone_ctg/base/base_bloc.dart';
 import 'package:fb_clone_ctg/base/base_event.dart';
+import 'package:fb_clone_ctg/data/repo/notification_repo.dart';
+import 'package:fb_clone_ctg/data/service/notification_service.dart';
+import 'package:fb_clone_ctg/module/notification/notification_event.dart';
+import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
 
-class notificationBloc extends BaseBloc{
+class NotificationBloc extends BaseBloc implements INotificationListener{
+
+  NotificationRepo _notificationRepo = NotificationRepo(notificationService: NotificationService());
+  StreamController _notificationControler = new StreamController<NotificationResult>();
+
+  Stream get notificationStream => _notificationControler.stream;
+
   @override
   void dispose() {
+    _notificationControler.close();
     // TODO: implement dispose
   }
 
   @override
   void eventHandle(BaseEvent event) {
-    // TODO: implement eventHandle
+    if (event is InitEvent) {
+      _notificationRepo.getNotification(0, 15, this);
+    }
+    }
+
+  @override
+  onGetNotificationFailed(String resCode) {
+    // TODO: implement onGetNotificationFailed
+    return null;
+  }
+
+  @override
+  onGetNotificationSuccess(NotificationResult notificationResult) {
+    _notificationControler.sink.add(notificationResult);
+    return null;
   }
 
 }

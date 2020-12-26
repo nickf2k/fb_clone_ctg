@@ -1,31 +1,38 @@
+import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/data/service/notification_service.dart';
 import 'package:fb_clone_ctg/shared/entities/login_result.dart';
 import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 
-abstract class NotificationListener{
-  onGetNotificationSuccess (NotificationResult notificationResult);
-  onGetNotificationFailed (String resCode);
+abstract class INotificationListener {
+  onGetNotificationSuccess(NotificationResult notificationResult);
+
+  onGetNotificationFailed(String resCode);
 }
-class NotificationRepo{
+
+class NotificationRepo {
   NotificationService _notificationService;
+
   NotificationRepo({@required NotificationService notificationService})
       : this._notificationService = notificationService;
-  void getNotification(String token, int index, int count, NotificationListener listener){
 
+  void getNotification(int index, int count, INotificationListener listener) {
     NotificationResult notificationResult;
+    String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
 
-    SpUtil.getInstance();
-    var futureRes = _notificationService.getNotification(token, index, count).then((
-        res) async {
+    // SpUtil.getInstance();
+    var futureRes = _notificationService
+        .getNotification(token, index, count)
+        .then((res) async {
       notificationResult = NotificationResult.fromJson(res.data);
       if (notificationResult.code != "1000") {
         listener.onGetNotificationFailed(notificationResult.code);
         return;
       }
-      print("User actived!");
-    }).catchError((error) => print("login err: " + error.toString()));
+      print("get notify success!");
+      listener.onGetNotificationSuccess(notificationResult);
+    }).catchError((error) => print("notify err: " + error.toString()));
   }
 }
 
