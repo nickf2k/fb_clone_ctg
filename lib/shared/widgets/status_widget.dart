@@ -1,5 +1,6 @@
 import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/shared/widgets/interact.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -20,7 +21,7 @@ class _StatusWidgetState extends State<StatusWidget> {
           _getOwner(),
           _getDescripbe(MediaConstant.STATUS_1),
           _getMedia(),
-          _getInteration(),
+          GetInteration(),
         ],
       ),
     );
@@ -87,9 +88,5 @@ class _StatusWidgetState extends State<StatusWidget> {
         image: AssetImage(MediaConstant.DEFAUT_IMAGE_1),
       ),
     );
-  }
-
-  Widget _getInteration() {
-    return Container();
   }
 }

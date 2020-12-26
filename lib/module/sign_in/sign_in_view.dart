@@ -72,7 +72,7 @@ class _SignInPageState extends State<SignInPage> {
                       controller: _userController,
                       decoration: InputDecoration(
                           labelText: "USESERNAME",
-                          errorText: "err",
+                          errorText: "error",
                           // snapshot.hasError ? snapshot.error : null,
                           labelStyle:
                               TextStyle(color: Colors.black54, fontSize: 15)),

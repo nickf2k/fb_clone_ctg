@@ -1,4 +1,5 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
+import 'package:fb_clone_ctg/shared/widgets/buttonPost.dart';
 import 'package:flutter/material.dart';
 
 class PostDetailPage extends StatefulWidget {
@@ -27,7 +28,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
 
     return DetailContainer(
       title: 'Status',
-      canPost: false,
+      actionWidget: null,
       child: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(color: Colors.cyan),
