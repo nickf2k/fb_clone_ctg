@@ -12,7 +12,8 @@ abstract class ISignInListener {
 
   onSignInFailed(String resCode);
 }
-abstract class ILogoutListener{
+
+abstract class ILogoutListener {
   onLogoutSuccess(bool checkLogout);
 }
 
@@ -76,10 +77,14 @@ class UserRepo {
     //   savedSearchList = SavedSearchList.fromJson(response.data);
     // });
   }
-  void logout(ILogoutListener listener){
+
+  void logout(ILogoutListener listener) {
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
 
-    var futures = _userService.logout(token).then((res) => listener.onLogoutSuccess(true)).catchError((error){
+    var futures = _userService.logout(token).then((res) {
+      print("logouted!");
+      listener.onLogoutSuccess(true);
+    }).catchError((error) {
       print("logout err");
       listener.onLogoutSuccess(false);
     });
