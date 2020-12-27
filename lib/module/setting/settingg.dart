@@ -20,6 +20,7 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPageState extends State<SettingPage> {
   SettingBloc _settingBloc;
+
   @override
   Widget build(BuildContext context) {
     _settingBloc = SettingBloc();
@@ -1395,8 +1396,9 @@ class _SettingPageState extends State<SettingPage> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
                             child: MaterialButton(
-                              onPressed: (){
-                                _settingBloc.eventController.sink.add(LogoutEvent());
+                              onPressed: () {
+                                _settingBloc.eventController.sink
+                                    .add(LogoutEvent());
                               },
                               child: Text("Đăng xuất",
                                   style: TextStyle(

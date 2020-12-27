@@ -157,9 +157,12 @@ class _HomePageState extends State<HomePage> {
                 _allSizebox(w: 8),
                 ProfileAvatar(
                   urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_2,
+                  hasBorder: false,
                 ),
                 _allSizebox(w: 8),
-                ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_3),
+                ProfileAvatar(
+                  urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_3,
+                ),
                 _allSizebox(w: 8),
                 ProfileAvatar(urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_4),
                 _allSizebox(w: 8),

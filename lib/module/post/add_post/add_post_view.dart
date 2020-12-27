@@ -108,6 +108,7 @@ class _AddPostPageState extends State<AddPostPage> {
           Container(
             height: 150,
             child: TextField(
+                textAlign: TextAlign.start,
                 controller: _describedController,
                 maxLines: 10,
                 decoration: InputDecoration(
