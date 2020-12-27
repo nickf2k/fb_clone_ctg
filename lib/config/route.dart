@@ -18,6 +18,8 @@ Map<String, WidgetBuilder> routeConfig() {
     RouteConstant.HOME: (context) => HomePage(),
     RouteConstant.ADD_POST: (context) => AddPostPage(),
     RouteConstant.SETTING: (context) => SettingPage(),
+    //  RouteConstant.VIDEO: (context) => DemoVideoStream1(),
+    // RouteConstant.SETTING_INFO: (context) => SettingInfoPage(),
     RouteConstant.PROFILE: (context) => ProfilePage(),
     RouteConstant.POST_DETAIL: (context) => PostDetailPage(),
     RouteConstant.REQUESTED_FRIEND: (context) => RequestedPage(),

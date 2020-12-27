@@ -14,7 +14,10 @@ class RouteConstant {
   static const REQUESTED_FRIEND = "/add_friend";
   static const VIDEO = "/video";
   static const NOTIFICATIONS = "/notifications";
+  static const SETTING_INFO = "/setting_info";
+
   static const SETTING = "/setting";
+
   static const MANAGER_ACCOUNT = "/manager_account";
   static const POST_DETAIL = "/post_detail";
 

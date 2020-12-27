@@ -38,6 +38,7 @@ dependencies:
   expandable: ^4.0.2
   image_cropper: ^1.2.1
   image_picker: ^0.6.7+4
+  multi_image_picker: ^4.7.14
   webview_flutter:
   datetime_picker_formfield:
   wakelock:
@@ -46,10 +47,10 @@ dependencies:
   simple_html_css:
   use_html_t: 1.0.0-pre.2
   url_launcher:
+  video_player: ^0.10.12+2
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  multi_image_picker: ^4.7.14
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
