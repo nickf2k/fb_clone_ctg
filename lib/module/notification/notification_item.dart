@@ -3,6 +3,7 @@ import 'package:fb_clone_ctg/config/app_color.dart';
 import 'package:fb_clone_ctg/constant/notify_constant.dart';
 import 'package:fb_clone_ctg/data/repo/notification_repo.dart';
 import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
+import 'package:fb_clone_ctg/untils/common_utils.dart';
 
 import 'package:flutter/material.dart';
 
@@ -13,8 +14,7 @@ class NotiItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime now = DateTime.now();
-    DateTime createdAt = DateTime.parse(notification.createdAt);
+
     //data [7] = read;
     var color = notification.isRead == NotifyConstant.READER
         ? Colors.white
@@ -51,6 +51,7 @@ class NotiItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 5),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 10),
@@ -62,7 +63,7 @@ class NotiItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    now.toString(),
+                    CommonUtils.timeFromNow(notification.createdAt),
                     maxLines: 1,
                     style: TextStyle(color: AppColor.textGrey),
                   ),
