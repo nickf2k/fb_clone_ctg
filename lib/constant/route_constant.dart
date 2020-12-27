@@ -11,7 +11,7 @@ class RouteConstant {
   static const PRE_ORDER_BOOK = "/pre_order";
   static const PERSON_BOOK = "/person_book";
   static const REGISTER = "/register";
-  static const ADD_FRIEND = "/add_friend";
+  static const REQUESTED_FRIEND = "/add_friend";
   static const VIDEO = "/video";
   static const NOTIFICATIONS = "/notifications";
   static const SETTING_INFO = "/setting_info";
@@ -22,5 +22,5 @@ class RouteConstant {
   static const POST_DETAIL = "/post_detail";
 
   static const POLICY = "/policy";
-  static const TAB_ROUTE = [HOME, ADD_FRIEND, VIDEO, NOTIFICATIONS, SETTING];
+  static const TAB_ROUTE = [HOME, REQUESTED_FRIEND, VIDEO, NOTIFICATIONS, SETTING];
 }

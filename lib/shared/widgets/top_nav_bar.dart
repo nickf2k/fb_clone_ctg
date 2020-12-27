@@ -44,7 +44,7 @@ class TopNavBar extends StatelessWidget {
 Map<IconData, String> dataForNavBar() {
   return {
     Icons.home: RouteConstant.HOME,
-    Icons.group: RouteConstant.ADD_FRIEND,
+    Icons.group: RouteConstant.REQUESTED_FRIEND,
     Icons.ondemand_video: RouteConstant.VIDEO,
     Icons.notifications_none: RouteConstant.NOTIFICATIONS,
     Icons.menu: RouteConstant.SETTING,

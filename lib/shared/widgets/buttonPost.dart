@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 class ButtonPost extends StatefulWidget {
   final String described;
   final List<String> listPath;
+  final bool isEnable;
 
-  const ButtonPost({Key key, this.described, this.listPath}) : super(key: key);
+  const ButtonPost(
+      {Key key, this.described, this.listPath, this.isEnable = false})
+      : super(key: key);
 
   @override
   _ButtonPostState createState() => _ButtonPostState();
@@ -19,13 +22,25 @@ class _ButtonPostState extends State<ButtonPost> {
   Widget build(BuildContext context) {
     _addPostBloc = AddPostBloc();
     return RaisedButton(
-      onPressed: () => onPost(_addPostBloc),
+      onPressed: () {
+        setState(() {
+          if (widget.described == null) {
+            return null;
+          } else
+            () {
+              return onPost(_addPostBloc);
+            };
+        });
+      },
       color: Colors.white,
       child: Row(
         children: <Widget>[
           Text(
             "Post",
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+            style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: widget.isEnable ? Colors.grey : Colors.black),
           ),
         ],
       ),
@@ -34,7 +49,6 @@ class _ButtonPostState extends State<ButtonPost> {
 
   onPost(AddPostBloc bloc) {
     print("posting status");
-    bloc.setContext(context);
     bloc.eventController.sink.add(AddPostEvent(
         described: widget.described, listPath: widget.listPath, status: ""));
   }

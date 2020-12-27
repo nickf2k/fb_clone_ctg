@@ -8,11 +8,11 @@ class GetPostResult {
 
   GetPostResult(
       {this.code,
-        this.message,
-        this.data,
-        this.image,
-        this.video,
-        this.author});
+      this.message,
+      this.data,
+      this.image,
+      this.video,
+      this.author});
 
   GetPostResult.fromJson(Map<String, dynamic> json) {
     code = json['code'];
@@ -21,7 +21,7 @@ class GetPostResult {
     image = json['image'].cast<String>();
     video = json['video'].cast<String>();
     author =
-    json['author'] != null ? new Author.fromJson(json['author']) : null;
+        json['author'] != null ? new Author.fromJson(json['author']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -92,25 +92,25 @@ class Author {
 
   Author(
       {this.id,
-        this.name,
-        this.email,
-        this.phoneNumber,
-        this.isBlocked,
-        this.avatar,
-        this.description,
-        this.address,
-        this.city,
-        this.country,
-        this.coverImage,
-        this.link,
-        this.isOnline,
-        this.deviceId,
-        this.verifiedEmailAt,
-        this.timeRequestVerifyCode,
-        this.verifyCode,
-        this.uuid,
-        this.createdAt,
-        this.updatedAt});
+      this.name,
+      this.email,
+      this.phoneNumber,
+      this.isBlocked,
+      this.avatar,
+      this.description,
+      this.address,
+      this.city,
+      this.country,
+      this.coverImage,
+      this.link,
+      this.isOnline,
+      this.deviceId,
+      this.verifiedEmailAt,
+      this.timeRequestVerifyCode,
+      this.verifyCode,
+      this.uuid,
+      this.createdAt,
+      this.updatedAt});
 
   Author.fromJson(Map<String, dynamic> json) {
     id = json['id'];

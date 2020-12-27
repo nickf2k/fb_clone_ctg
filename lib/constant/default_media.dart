@@ -33,4 +33,6 @@ class MediaConstant {
   static const MAI = ("Vũ Thị Ngọc Mai");
   static const STATUS_1 =
       ('Nhà em còn đúng 10 hộp sấu giòn mỗi hộp 5 lạng. Bảo quản tủ lạnh xả lỗ  65k 1 hộp ạ. ');
+  static const NETWORK_IMAGE =
+      ('https://scontent.fhan1-1.fna.fbcdn.net/v/t1.0-9/64604236_1045909282272163_7284294530067595264_o.jpg?_nc_cat=107&ccb=2&_nc_sid=a4a2d7&_nc_ohc=8EGDtI1WaSkAX_2kyLR&_nc_ht=scontent.fhan1-1.fna&oh=1deeb978e49e634b5654483e9113a108&oe=600EB6C9');
 }
