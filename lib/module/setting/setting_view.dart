@@ -261,7 +261,7 @@ class _SettingPageState extends State<SettingPage> {
 
   _getItem(String icon, String title, String route) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: SizedBox(
           width: 160,
           height: 80,
