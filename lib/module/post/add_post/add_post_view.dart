@@ -71,13 +71,106 @@ class _AddPostPageState extends State<AddPostPage> {
           listAsset: images,
           described: _describedController.text,
         ),
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              _typingPostStatus(), //ShowImage(),
-              _allCard()
-            ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            _getOwner(),
+            _typingPostStatus(), //ShowImage(),
+            _allCard()
+          ],
+        ),
+      ),
+    );
+  }
+
+  _getOwner() {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 8.0),
+          child: CircleAvatar(
+            radius: 25,
+            backgroundImage: AssetImage(
+              MediaConstant.DEFAUT_AVATAR_1,
+            ),
           ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8.0, 95, 0),
+                  child: Text(
+                    'Nguyễn Minh Toàn',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 15),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                _buttonTheme(
+                    name: '  Public  ',
+                    iconData1: Icons.public,
+                    iconData2: Icons.arrow_drop_down_circle_outlined),
+                SizedBox(
+                  width: 4,
+                ),
+                _buttonTheme(
+                    name: '  Album  ',
+                    iconData1: Icons.add,
+                    iconData2: Icons.arrow_drop_down_circle_outlined)
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  _buttonTheme({String name, IconData iconData1, IconData iconData2}) {
+    return ButtonTheme(
+      height: 25,
+      minWidth: 20,
+      child: OutlineButton(
+        onPressed: () => print(name),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(9),
+        ),
+        color: Colors.white,
+        borderSide: BorderSide(width: 1.0, color: Colors.grey),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Icon(
+                iconData1,
+                size: 10,
+                color: Colors.grey[800],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Text(
+                name,
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Icon(
+                iconData2,
+                size: 10,
+                color: Colors.grey[800],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -89,18 +182,20 @@ class _AddPostPageState extends State<AddPostPage> {
   _typingPostStatus() {
     return Expanded(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Expanded(
             child: Row(
               children: <Widget>[
-                SizedBox(
-                  width: 7,
-                ),
-                Center(
-                  child: CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage(MediaConstant.DEFAUT_AVATAR_1),
-                  ),
+                Row(
+                  children: [
+                    // CircleAvatar(
+                    //   radius: 25,
+                    //   backgroundImage:
+                    //       AssetImage(MediaConstant.DEFAUT_AVATAR_1),
+                    // ),
+                    //   Text(" ")
+                  ],
                 ),
               ],
             ),
@@ -108,6 +203,7 @@ class _AddPostPageState extends State<AddPostPage> {
           Container(
             height: 150,
             child: TextField(
+                textAlign: TextAlign.start,
                 controller: _describedController,
                 maxLines: 10,
                 decoration: InputDecoration(
@@ -131,45 +227,55 @@ class _AddPostPageState extends State<AddPostPage> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             _card(
-              iconData: Icons.image,
-              nameIcon: "Thêm ảnh",
-              color: Colors.green,
-            ),
+                iconData: Icons.photo_library,
+                nameIcon: "Photo/Video",
+                color: Colors.green,
+                onClick: true),
             _card(
-                iconData: Icons.child_friendly,
-                nameIcon: "Friend",
+                iconData: Icons.camera_alt_rounded,
+                nameIcon: "Camera",
                 color: Colors.blue),
             _card(
-                iconData: Icons.face,
-                nameIcon: "Feeling",
+              iconData: Icons.video_call,
+              nameIcon: "Create Room",
+              color: Colors.purpleAccent,
+            ),
+            _card(
+                iconData: Icons.face_unlock_sharp,
+                nameIcon: "Feeling/Activity",
                 color: Colors.yellow),
             _card(
-                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
+                iconData: Icons.video_call_outlined,
+                nameIcon: "Live Video",
+                color: Colors.red),
             _card(
-                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
+                iconData: Icons.gif_sharp, nameIcon: "GIF", color: Colors.red),
             _card(
-                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
-            _card(
-                iconData: Icons.check, nameIcon: "Check in", color: Colors.red),
+                iconData: Icons.check, nameIcon: "Check In", color: Colors.red),
           ],
         ),
       ),
     );
   }
 
-  _card({IconData iconData, String nameIcon, Color color, child}) {
+  _card(
+      {IconData iconData, String nameIcon, Color color, bool onClick = false}) {
     return Card(
       child: GestureDetector(
-        onTap: () => loadAssets(),
+        onTap: () => onClick == false ? null : loadAssets(),
         child: Container(
-          color: Colors.grey,
+          height: 50,
+          color: Colors.white,
           child: ListTile(
             leading: Icon(
               iconData,
-              size: 45,
+              size: 22,
               color: color,
             ),
-            title: Text(nameIcon),
+            title: Text(
+              nameIcon,
+              style: TextStyle(fontWeight: FontWeight.w600),
+            ),
           ),
         ),
       ),

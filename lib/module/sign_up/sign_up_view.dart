@@ -128,7 +128,7 @@ class _SignUpPageState extends State<SignUpPage> {
     ;
   }
 
-  getEditorItem(
+  static Widget getEditorItem(
       {@required controller,
       filter,
       @required label,

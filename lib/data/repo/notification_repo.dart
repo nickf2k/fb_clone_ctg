@@ -13,14 +13,13 @@ abstract class INotificationListener {
 
 class NotificationRepo {
   NotificationService _notificationService;
+  NotificationResult notificationResult;
 
   NotificationRepo({@required NotificationService notificationService})
       : this._notificationService = notificationService;
 
   void getNotification(int index, int count, INotificationListener listener) {
-    NotificationResult notificationResult;
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
-
     // SpUtil.getInstance();
     var futureRes = _notificationService
         .getNotification(token, index, count)

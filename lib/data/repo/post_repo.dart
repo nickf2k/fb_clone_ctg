@@ -2,8 +2,11 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
+import 'package:fb_clone_ctg/data/service/get_post_service.dart';
 import 'package:fb_clone_ctg/data/service/post_service.dart';
 import 'package:fb_clone_ctg/shared/entities/add_post_result.dart';
+import 'package:fb_clone_ctg/shared/entities/get_list_post_result.dart';
+import 'package:fb_clone_ctg/shared/entities/get_post_result.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +16,12 @@ abstract class IAddPostListener {
   void onAddPostSuccess(AddPostResult addPostResult);
 
   void onAddPostFaild(String code);
+}
+
+abstract class IGetPostListener {
+  void onGetPostSuccess(GetListPostResult getListPostResult);
+
+  void onGetPostFaild(String code);
 }
 
 class PostRepo {
@@ -49,33 +58,13 @@ class PostRepo {
     });
   }
 
-  Future<void> loadAssets(List<Asset> images, List<Asset> resultList) async {
-    images = List<Asset>();
-    List<Asset> resultList = List<Asset>();
-    String error = 'No Error Dectected';
-    try {
-      resultList = await MultiImagePicker.pickImages(
-        maxImages: 300,
-        enableCamera: true,
-        selectedAssets: images,
-        cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
-        materialOptions: MaterialOptions(
-          actionBarColor: "#abcdef",
-          actionBarTitle: "Example App",
-          allViewTitle: "All Photos",
-          useDetailsView: false,
-          selectCircleStrokeColor: "#000000",
-        ),
-      );
-    } on Exception catch (e) {
-      error = e.toString();
-    }
-    images = resultList;
-  }
-
   void getPostById(String id) {
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
   }
+
+  void getListPosts() {}
+}
+
 
   Future<MultipartFile> convertAssetToFile(Asset asset) async {
     ByteData byteData = await asset.getByteData();
@@ -86,4 +75,4 @@ class PostRepo {
     );
     return multipartFile;
   }
-}
+

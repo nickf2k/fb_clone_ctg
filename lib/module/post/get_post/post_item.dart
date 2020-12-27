@@ -1,16 +1,21 @@
 import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/shared/entities/get_post_result.dart';
 import 'package:fb_clone_ctg/shared/widgets/interact.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class StatusWidget extends StatefulWidget {
-  @override
-  _StatusWidgetState createState() => _StatusWidgetState();
+class PostItem extends StatefulWidget {
+  final PostData postData;
+  final Author author;
+
+  const PostItem({Key key, this.postData, this.author}) : super(key: key);
+
+  _PostItemState createState() => _PostItemState();
 }
 
-class _StatusWidgetState extends State<StatusWidget> {
+class _PostItemState extends State<PostItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +24,10 @@ class _StatusWidgetState extends State<StatusWidget> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           _getOwner(),
-          _getDescripbe(MediaConstant.STATUS_1),
+          _getDescripbe(
+              descripbe: widget.postData != null
+                  ? widget.postData.described
+                  : MediaConstant.STATUS_1),
           _getMedia(),
           GetInteration(),
         ],
@@ -39,7 +47,7 @@ class _StatusWidgetState extends State<StatusWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                MediaConstant.TOAN,
+                widget.author != null ? widget.author.name : MediaConstant.TOAN,
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               Row(
@@ -66,7 +74,7 @@ class _StatusWidgetState extends State<StatusWidget> {
     );
   }
 
-  Widget _getDescripbe(String descripbe) {
+  Widget _getDescripbe({String descripbe}) {
     return MaterialButton(
       onPressed: () => Navigator.pushNamed(context, RouteConstant.POST_DETAIL,
           arguments: "id status"),
