@@ -3,10 +3,12 @@ import 'package:fb_clone_ctg/module/home_page/home_view.dart';
 import 'package:fb_clone_ctg/module/post/add_post/add_post_view.dart';
 import 'package:fb_clone_ctg/module/post/post_view.dart';
 import 'package:fb_clone_ctg/module/profile/profile_view.dart';
+import 'package:fb_clone_ctg/module/setting/setting_view.dart';
 
 // import 'package:fb_clone_ctg/module/profile/profile_view.dart';
-import 'package:fb_clone_ctg/module/setting/settingg.dart';
+
 import 'package:fb_clone_ctg/module/sign_in/sign_in_view.dart';
+import 'package:fb_clone_ctg/module/videos/videos_view.dart';
 import 'package:flutter/material.dart';
 import '../constant/route_constant.dart';
 import '../module/notification/notification_view.dart';
@@ -18,7 +20,7 @@ Map<String, WidgetBuilder> routeConfig() {
     RouteConstant.HOME: (context) => HomePage(),
     RouteConstant.ADD_POST: (context) => AddPostPage(),
     RouteConstant.SETTING: (context) => SettingPage(),
-    //  RouteConstant.VIDEO: (context) => DemoVideoStream1(),
+      RouteConstant.VIDEO: (context) => VideosPage(),
     // RouteConstant.SETTING_INFO: (context) => SettingInfoPage(),
     RouteConstant.PROFILE: (context) => ProfilePage(),
     RouteConstant.POST_DETAIL: (context) => PostDetailPage(),

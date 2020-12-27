@@ -47,7 +47,7 @@ dependencies:
   simple_html_css:
   use_html_t: 1.0.0-pre.2
   url_launcher:
-  video_player: ^0.10.12+2
+  video_player: 0.10.11+2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -69,6 +69,8 @@ flutter:
     - assets/images/
     - assets/images/default_avatar/
     - assets/images/default_Image/
+    - assets/videos/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
