@@ -6,6 +6,7 @@ import 'package:fb_clone_ctg/module/sign_in/sign_in_event.dart';
 import 'package:fb_clone_ctg/shared/entities/login_result.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class SignInPage extends StatefulWidget {
@@ -14,7 +15,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  TextEditingController _userController = new TextEditingController();
+  TextEditingController _userController = new TextEditingController(
+  );
   TextEditingController _passController = new TextEditingController();
 
   @override
@@ -69,10 +71,14 @@ class _SignInPageState extends State<SignInPage> {
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                     child: TextField(
                       style: TextStyle(fontSize: 18, color: Colors.black),
+                      keyboardType: TextInputType.number,
                       controller: _userController,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       decoration: InputDecoration(
+
                           labelText: "USESERNAME",
-                          errorText: "err",
                           // snapshot.hasError ? snapshot.error : null,
                           labelStyle:
                               TextStyle(color: Colors.black54, fontSize: 15)),
@@ -88,7 +94,6 @@ class _SignInPageState extends State<SignInPage> {
                         obscureText: true,
                         decoration: InputDecoration(
                             labelText: "PASSWORD",
-                            errorText: "error",
                             // snapshot.hasError ? snapshot.error : null,
                             labelStyle:
                                 TextStyle(color: Colors.black54, fontSize: 15)),
