@@ -1,14 +1,11 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
-import 'package:fb_clone_ctg/module/setting/setting_bloc.dart';
-import 'package:fb_clone_ctg/module/setting/setting_event.dart';
 import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
-const double fontSize = 15.5;
-const double fontSize1 = 13.5;
+const double fontSize = 14;
+const double fontSize1 = 13;
 const double iconSize = 15;
 const double widthImage = 35;
 const double heightIamge = 35;
@@ -19,21 +16,15 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  SettingBloc _settingBloc;
-
   @override
   Widget build(BuildContext context) {
-    _settingBloc = SettingBloc();
-    _settingBloc.setContext(context);
     // TODO: implement build
     return PageContainer(
       navBarIndex: NavBarIndex.SETTING,
-      bloc: [Provider.value(value: _settingBloc)],
       child: Scaffold(
         body: Container(
           decoration: BoxDecoration(
-//            color: Color(0xe7e8ea),
-//          color: Colors.greenAccent
+
               ),
           child: SingleChildScrollView(
             child: Column(
@@ -49,7 +40,7 @@ class _SettingPageState extends State<SettingPage> {
                         "Menu",
                         textAlign: TextAlign.end,
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -59,7 +50,7 @@ class _SettingPageState extends State<SettingPage> {
                         fillColor: Colors.white,
                         child: Icon(
                           Icons.search,
-                          size: 25.0,
+                          size: 20.0,
                         ),
                         padding: EdgeInsets.all(10.0),
                         shape: CircleBorder(),
@@ -81,7 +72,7 @@ class _SettingPageState extends State<SettingPage> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                             child: MaterialButton(
                               onPressed: () => Navigator.of(context)
                                   .pushNamed(RouteConstant.PROFILE),
@@ -91,7 +82,7 @@ class _SettingPageState extends State<SettingPage> {
                                   TextSpan(
                                       text: "Phạm Tuấn Nghĩa",
                                       style: TextStyle(
-                                          fontSize: 22,
+                                          fontSize: 15,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold)),
                                   TextSpan(
@@ -106,431 +97,37 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                       color: Color(0xffe7e8ea),
                     )),
-                Container(
-                  color: Color(0xfff2f3f5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          getItem("assets/icons/saved.png", "Đã lưu", null),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/findfriend.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Bạn bè",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/watchvideo.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Video trên Watch",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/page.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Trang",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/event.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Sự kiện",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 0, 0, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/friends.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Bạn bè quanh đây",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/marketplace.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Marketplace",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/job.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Việc làm",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/gruop.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Nhóm",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/dating.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Hẹn hò",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 15, 10),
-                            child: SizedBox(
-                                width: 160,
-                                height: 70,
-                                child: RaisedButton(
-                                  onPressed: () {},
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 88, 0),
-                                        child: Image(
-                                          width: widthImage,
-                                          height: heightIamge,
-                                          image: AssetImage(
-                                            'assets/icons/playgame.png',
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 0, 0),
-                                        child: Text("Chơi game",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: fontSize1,
-                                                fontWeight: FontWeight.normal)),
-                                      )
-                                    ],
-                                  ),
-                                  color: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8))),
-                                )),
-                          ),
-                        ],
-                      ),
-                    ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Container(
+                    color: Color(0xfff2f3f5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            _getItem("assets/icons/saved.png", "Đã lưu", null),
+                            _getItem("assets/icons/findfriend.png", "Bạn bè", null),
+                            _getItem("assets/icons/watchvideo.png", "Video trên Watch", null),
+                            _getItem("assets/icons/page.png", "Trang", null),
+                            _getItem("assets/icons/event.png", "Sự kiện", null),
+                            _getItem("assets/icons/friends.png", "Bạn bè quanh đây", null),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            _getItem("assets/icons/marketplace.png", "Marketplace", null),
+                            _getItem("assets/icons/job.png", "Việc làm", null),
+                            _getItem("assets/icons/gruop.png", "Nhóm", null),
+                            _getItem("assets/icons/dating.png", "Hẹn hò", null),
+                            _getItem("assets/icons/playgame.png", "Chơi game", null),
+
+
+
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Container(
@@ -552,379 +149,18 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                     ),
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/avatar.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Avatar",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: fontSize,
-                                            fontWeight: FontWeight.normal)),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/fundraisingcampaign.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Chiến dịch gây quỹ",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/facebookpay.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Facebook Pay",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/themostnearhere.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Gần đây nhất",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/advertisement.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Hoạt động quảng cáo gần đây",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/smallmessenger.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Messenger nhí",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/findwifi.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Tìm Wi-Fi",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/emergencyresponsel.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Ứng phó khẩn cấp",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/interestrate.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Ưu đãi",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/livevideo.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Video trực tiếp",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/requetfromdevices.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Yêu cầu từ thiết bị",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
+                      _getItemSetting("assets/icons/avatar.png", "Avatar", null),
+                      _getItemSetting("assets/icons/fundraisingcampaign.png", "Chiến dịch gây quỹ", null),
+                      _getItemSetting("assets/icons/facebookpay.png", "Facebook Pay", null),
+                      _getItemSetting("assets/icons/themostnearhere.png", "Gần đây nhất", null),
+                      _getItemSetting("assets/icons/advertisement.png", "Hoạt động quảng cáo gần đây", null),
+                      _getItemSetting("assets/icons/smallmessenger.png", "Messenger nhí", null),
+                      _getItemSetting("assets/icons/findwifi.png", "Tìm Wi-Fi", null),
+                      _getItemSetting("assets/icons/emergencyresponsel.png", "Ứng phó khẩn cấp", null),
+                      _getItemSetting("assets/icons/interestrate.png", "Ưu đãi", null),
+                      _getItemSetting("assets/icons/livevideo.png", "Video trực tiếp", null),
+                      _getItemSetting("assets/icons/requetfromdevices.png", "Yêu cầu từ thiết bị", null),
+
                     ],
                   ),
                 ),
@@ -947,175 +183,12 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                     ),
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/helpcenter.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Trung tâm trợ giúp",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: fontSize,
-                                            fontWeight: FontWeight.normal)),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/boxsupport.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Hộp thư hỗ trợ",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/communityhelp.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Cộng đồng trợ giúp",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/reportproblem.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Báo cáo sự cố",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/policy&rules.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Điều khoản chính sách",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
+                      _getItemSetting("assets/icons/helpcenter.png", "Trung tâm trợ giúp", 'RouteConstant.SETTING_INFO'),
+                      _getItemSetting("assets/icons/boxsupport.png", "Hộp thư hỗ trợ", 'RouteConstant.SETTING_INFO'),
+                      _getItemSetting("assets/icons/communityhelp.png", "Cộng đồng trợ giúp", 'RouteConstant.SETTING_INFO'),
+                      _getItemSetting("assets/icons/reportproblem.png", "Báo cáo sự cố", 'RouteConstant.SETTING_INFO'),
+                      _getItemSetting("assets/icons/policy&rules.png", "Điều khoản chính sách", 'RouteConstant.SETTING_INFO'),
+
                     ],
                   ),
                 ),
@@ -1138,244 +211,14 @@ class _SettingPageState extends State<SettingPage> {
                       ),
                     ),
                     children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/settings.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Cài đặt",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/privates.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Lối tắt quyền riêng tư",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/timeinfacebook.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Thời gian bạn ở trên Facebook",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/darkmode.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Chế độ tối",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/languages.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Ngôn ngữ",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/5g.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Trình tiết kiệm dữ liệu",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: SizedBox(
-                            width: double.infinity,
-                            height: 50,
-                            child: RaisedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: <Widget>[
-                                  Image(
-                                    width: widthImage,
-                                    height: heightIamge,
-                                    image: AssetImage(
-                                      'assets/icons/key.png',
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                    child: Text("Trình tạo mã",
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: fontSize,
-                                          fontWeight: FontWeight.normal,
-                                        )),
-                                  )
-                                ],
-                              ),
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                            )),
-                      ),
+                      _getItemSetting("assets/icons/settings.png", "Cài đặt", 'RouteConstant.PROFILE'),
+                      _getItemSetting("assets/icons/privates.png", "Lối tắt quyền riêng tư", 'RouteConstant.PROFILE'),
+                      _getItemSetting("assets/icons/timeinfacebook.png", "Thời gian bạn ở trên Facebook", 'RouteConstant.PROFILE'),
+                      _getItemSetting("assets/icons/darkmode.png", "Chế độ tối", 'RouteConstant.PROFILE'),
+                      _getItemSetting("assets/icons/languages.png", "Ngôn ngữ", 'RouteConstant.PROFILE'),
+                      _getItemSetting("assets/icons/5g.png", "Trình tiết kiệm dữ liệu", 'RouteConstant.PROFILE'),
+                      _getItemSetting("assets/icons/key.png", "Trình tạo mã", 'RouteConstant.PROFILE'),
+
                     ],
                   ),
                 ),
@@ -1395,18 +238,12 @@ class _SettingPageState extends State<SettingPage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(22, 0, 0, 0),
-                            child: MaterialButton(
-                              onPressed: () {
-                                _settingBloc.eventController.sink
-                                    .add(LogoutEvent());
-                              },
-                              child: Text("Đăng xuất",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: fontSize,
-                                    fontWeight: FontWeight.normal,
-                                  )),
-                            ),
+                            child: Text("Đăng xuất",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: fontSize,
+                                  fontWeight: FontWeight.normal,
+                                )),
                           )
                         ],
                       ),
@@ -1422,13 +259,14 @@ class _SettingPageState extends State<SettingPage> {
     );
   }
 
-  getItem(String icon, String title, String route) {
+  _getItem(String icon, String title, String route) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
+      padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
       child: SizedBox(
           width: 160,
-          height: 70,
+          height: 80,
           child: RaisedButton(
+//            onPressed: (){},
             onPressed: () =>
                 Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
             child: Column(
@@ -1458,6 +296,42 @@ class _SettingPageState extends State<SettingPage> {
             color: Colors.white,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8))),
+          )),
+    );
+  }
+  _getItemSetting(String icon, String title, String route){
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 0, 20, 5),
+      child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: RaisedButton(
+            onPressed: () =>
+                Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
+            child: Row(
+              children: <Widget>[
+                Image(
+                  width: widthImage,
+                  height: heightIamge,
+                  image: AssetImage(
+                    icon,
+                  ),
+                ),
+                Padding(
+                  padding:
+                  const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: Text(title,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: fontSize,
+                          fontWeight: FontWeight.normal)),
+                )
+              ],
+            ),
+            color: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.all(Radius.circular(8))),
           )),
     );
   }

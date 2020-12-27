@@ -9,7 +9,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../module/setting/settingg.dart';
 import '../shared/widgets/top_nav_bar.dart';
 
 class PageContainer extends StatelessWidget {

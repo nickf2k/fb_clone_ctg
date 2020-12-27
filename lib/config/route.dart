@@ -3,7 +3,8 @@ import 'package:fb_clone_ctg/module/home_page/home_view.dart';
 import 'package:fb_clone_ctg/module/post/add_post/add_post_view.dart';
 import 'package:fb_clone_ctg/module/post/post_view.dart';
 import 'package:fb_clone_ctg/module/profile/profile_view.dart';
-import 'package:fb_clone_ctg/module/setting/settingg.dart';
+import 'package:fb_clone_ctg/module/setting/setting_view.dart';
+import 'package:fb_clone_ctg/module/videos/videos_view.dart';
 
 // import 'package:fb_clone_ctg/module/profile/profile_view.dart';
 
