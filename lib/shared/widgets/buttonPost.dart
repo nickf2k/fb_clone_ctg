@@ -22,16 +22,7 @@ class _ButtonPostState extends State<ButtonPost> {
   Widget build(BuildContext context) {
     _addPostBloc = AddPostBloc();
     return RaisedButton(
-      onPressed: () {
-        setState(() {
-          if (widget.described == null) {
-            return null;
-          } else
-            () {
-              return onPost(_addPostBloc);
-            };
-        });
-      },
+      onPressed: () => onPost(_addPostBloc),
       color: Colors.white,
       child: Row(
         children: <Widget>[

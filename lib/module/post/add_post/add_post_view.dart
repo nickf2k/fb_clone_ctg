@@ -70,7 +70,6 @@ class _AddPostPageState extends State<AddPostPage> {
         actionWidget: ButtonPost(
           listPath: paths,
           described: _describedController.text,
-          isEnable: _describedController.text == null ? false : true,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
