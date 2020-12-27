@@ -30,7 +30,7 @@ class _VideosPageState extends State<VideosPage> {
           children: <Widget>[
             Container(
               child: Row(
-//        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Watch",
@@ -46,7 +46,7 @@ class _VideosPageState extends State<VideosPage> {
                             AssetImage(
                               'assets/icons/user.png',
                             ),
-                            color: Colors.blue,
+                            color: Colors.black,
                           ),
                           onPressed: () {},
                           iconSize: 35,
@@ -56,7 +56,7 @@ class _VideosPageState extends State<VideosPage> {
                             AssetImage(
                               'assets/icons/search.png',
                             ),
-                            color: Colors.blue,
+                            color: Colors.black,
                           ),
                           onPressed: () {},
                           iconSize: 35,
