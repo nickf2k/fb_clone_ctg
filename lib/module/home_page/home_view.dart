@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               FlatButton.icon(
-                  onPressed: () => print('Live'),
+                  onPressed: () {},
                   icon: Icon(
                     Icons.videocam,
                     color: Colors.red,

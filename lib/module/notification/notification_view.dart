@@ -4,6 +4,7 @@ import 'package:fb_clone_ctg/module/notification/notification_bloc.dart';
 import 'package:fb_clone_ctg/module/notification/notification_event.dart';
 import 'package:fb_clone_ctg/module/notification/notification_item.dart';
 import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
+import 'package:fb_clone_ctg/shared/widgets/loading_indicator.dart';
 import 'package:fb_clone_ctg/shared/widgets/search_icon.dart';
 import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -15,50 +16,56 @@ class NotificationPage extends StatefulWidget {
 }
 
 class _NotificationPageState extends State<NotificationPage> {
-  NotificationBloc _bloc = NotificationBloc();
+  NotificationBloc _bloc;
 
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-    _bloc.eventController.sink.add(InitEvent());
   }
 
   @override
   Widget build(BuildContext context) {
+    _bloc = NotificationBloc();
+    _bloc.eventController.sink.add(InitEvent());
+    DateTime now = new DateTime.now();
+
     return PageContainer(
       bloc: [],
       navBarIndex: NavBarIndex.NOTIFICATION,
-      child: Container(
-        // height: 100,
-        child: StreamBuilder<NotificationResult>(
-          stream: _bloc.notificationStream,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) return Container();
-            NotificationResult notiRes = snapshot.data;
-            return ListView.builder(
-              itemBuilder: (context, index) {
-                if (index == 0) return getNotificationLabel();
-                if (index == 1)
-                  return Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                    child: Text(
-                      "Mới",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+      child: MultiProvider(
+        providers: [Provider.value(value: NotificationBloc())],
+        child: Container(
+          // height: 100,
+          child: StreamBuilder<NotificationResult>(
+            stream: _bloc.notificationStream,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) return LoadingIndicatorWidget();
+              NotificationResult notiRes = snapshot.data;
+              return ListView.builder(
+                itemBuilder: (context, index) {
+                  if (index == 0) return getNotificationLabel();
+                  if (index == 1)
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 8),
+                      child: Text(
+                        "Mới",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
-                    ),
+                    );
+                  return NotiItem(
+                    notification: notiRes.data[index - 2],
                   );
-                return NotiItem(
-                  notification: notiRes.data[index - 2],
-                );
-              },
-              itemCount: notiRes.data.length + 2,
-              semanticChildCount: 0,
-            );
-          },
+                },
+                itemCount: notiRes.data.length + 2,
+                semanticChildCount: 0,
+              );
+            },
+          ),
         ),
       ),
     );

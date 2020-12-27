@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class DialogUtils {
   ///Show alert
   // static void alert(BuildContext context, String message) {
@@ -21,8 +20,6 @@ class DialogUtils {
   //       });
   // }
 
-
-
   //Show indicator
   static void indicator(BuildContext context, String message) {
     var simDialog = new SimpleDialog(
@@ -37,27 +34,35 @@ class DialogUtils {
           return simDialog;
         });
   }
-  static Widget showError(String title, String message, BuildContext context){
+
+  static Widget showError( String message, BuildContext context) {
     showDialog(
-      context:  context,
-      builder: (context) => AlertDialog(
-        title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
-        content: Text(message),
-      )
-
-    );
-
+        context: context,
+        builder: (context) => AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12.0)),
+              ),
+              title: Center(
+                child: Text(
+                  "Có lỗi xảy ra",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              content: Container(
+                  height: 40,
+                  child: Center(child: Text(message ?? "Có lỗi xảy ra ở đây"))),
+            ));
   }
 
   static Widget basicIndicator(bool show) {
     return show
         ? new Container(
-      width: 70.0,
-      height: 70.0,
-      child: new Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: new Center(child: new CircularProgressIndicator())),
-    )
+            width: 70.0,
+            height: 70.0,
+            child: new Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: new Center(child: new CircularProgressIndicator())),
+          )
         : new Container();
   }
 
@@ -69,5 +74,4 @@ class DialogUtils {
   static void hideSnackBar(BuildContext context) {
     Scaffold.of(context).hideCurrentSnackBar();
   }
-
 }

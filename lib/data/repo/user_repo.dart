@@ -4,6 +4,7 @@ import 'package:fb_clone_ctg/shared/entities/login_result.dart';
 import 'package:fb_clone_ctg/shared/entities/saved_search.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
 abstract class ISignInListener {
   onSignInSuccess(LoginResult loginResult);
@@ -21,6 +22,12 @@ abstract class ISearchListener {
   onSearchPressed(SavedSearchList savedSearchList);
 }
 
+abstract class ISignUpListener {
+  onSignUpSuccess(String code, String phone, String pass);
+
+  onSignUpFailed(String code);
+}
+
 class UserRepo {
   UserService _userService;
 
@@ -35,31 +42,25 @@ class UserRepo {
     SpUtil.getInstance();
     var futureRes =
         await _userService.signIn(phoneNumber, password).then((res) async {
-      loginResult = LoginResult.fromJson(res.data);
-      if (loginResult.code != "1000") {
-        listener.onSignInFailed(loginResult.code);
+      String code = res.data["code"];
+      print("login code: " + code);
+      if (code != "1000") {
+        listener.onSignInFailed(code);
         return;
       }
+      loginResult = LoginResult.fromJson(res.data);
       print("User actived!");
-    }).catchError((error) => print("login err: " + error.toString()));
-    // futureRes.then((res) async {
-    //   LoginResult userData = LoginResult.fromJson(res.data);
-    //   print("IsActive: ${userData.isActive}");
-    //   if (!userData.success) {
-    //     signInListener.onSignInFailed(RestError(message: userData.message));
-    //     return;
-    //   }
-    //   if (userData.userType == UserTypeEnum.ADMIN) {
-    //     signInListener
-    //         .onSignInFailed(RestError(message: "Tài khoản không khả dụng."));
-    //     return;
-    //   }
-    DataForLogin userData = loginResult.data;
-    SpUtil.putString(SPrefCacheConstant.KEY_TOKEN, userData.token);
-    SpUtil.putInt(SPrefCacheConstant.KEY_USER_ID, userData.id);
-    SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, userData.username);
-    SpUtil.putString(SPrefCacheConstant.KEY_PASSWORD, password);
-    listener.onSignInSuccess(loginResult);
+      DataForLogin userData = loginResult.data;
+      SpUtil.putString(SPrefCacheConstant.KEY_TOKEN, userData.token);
+      SpUtil.putInt(SPrefCacheConstant.KEY_USER_ID, userData.id);
+      SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, userData.username);
+      SpUtil.putString(SPrefCacheConstant.KEY_PASSWORD, password);
+      listener.onSignInSuccess(loginResult);
+    });
+    // .catchError((error) {
+    //   print("login err: " + error.toString());
+    //   return;
+    // });
 
     // set cache user
     // var resUser = _userService.getUserInfo(userData.userId);
@@ -93,5 +94,22 @@ class UserRepo {
     SpUtil.remove(SPrefCacheConstant.KEY_USERNAME);
     SpUtil.remove(SPrefCacheConstant.KEY_PASSWORD);
     SpUtil.remove(SPrefCacheConstant.KEY_USER);
+
+  }
+
+  void signUp(String phoneNumber, String password, ISignUpListener listener) {
+    String uuid = Uuid().v1();
+    var futureRes =
+        _userService.signUp(phoneNumber, password, uuid).then((res) async {
+      String code = res.data["code"];
+      print('code: ' + code);
+      if (code != "1000") {
+        listener.onSignUpFailed(code);
+        return;
+      }
+      print("Signuped");
+      listener.onSignUpSuccess(code, phoneNumber, password);
+      return;
+    }).catchError((error) => print("signup err: " + error.toString()));
   }
 }

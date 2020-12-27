@@ -1,22 +1,24 @@
+import 'package:fb_clone_ctg/config/reponse.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
-class CommonUtils {
-  static String formatPriceText(value, {bool hasSymbol = true}) {
-    FlutterMoneyFormatter formatter = FlutterMoneyFormatter(
-        amount: double.tryParse(value.toString()),
-        settings: MoneyFormatterSettings(
-          symbol: hasSymbol ? ('đ') : '',
-          thousandSeparator: '.',
-          decimalSeparator: ',',
-          fractionDigits: 0,
-          symbolAndNumberSeparator: '',
-        ));
 
-    return formatter.output.symbolOnRight;
-  }
+class CommonUtils {
+  // static String formatPriceText(value, {bool hasSymbol = true}) {
+  //   FlutterMoneyFormatter formatter = FlutterMoneyFormatter(
+  //       amount: double.tryParse(value.toString()),
+  //       settings: MoneyFormatterSettings(
+  //         symbol: hasSymbol ? ('đ') : '',
+  //         thousandSeparator: '.',
+  //         decimalSeparator: ',',
+  //         fractionDigits: 0,
+  //         symbolAndNumberSeparator: '',
+  //       ));
+  //
+  //   return formatter.output.symbolOnRight;
+  // }
 
   static String formatDateTime(value, {formatType = "h:mm a - dd-MM-yyyy"}) {
     try {
@@ -36,11 +38,14 @@ class CommonUtils {
       return '';
     }
   }
-  static String timeFromNow(String timeData){
-    DateTime firstTime = DateTime.parse(timeData);
-    return timeago.format(firstTime).toString();
 
+  static String timeFromNow(String timeData) {
+    DateTime time = DateTime.tryParse(timeData);
+    if (time == null)
+      time = DateTime.fromMillisecondsSinceEpoch(int.parse(timeData));
+    return timeago.format(time).toString();
   }
+
   static String convertStatus(int value) {
     String statusOrder = '';
     switch (value) {
@@ -78,5 +83,11 @@ class CommonUtils {
 
   static bool isGuestUser() {
     return SpUtil.getBool(SPrefCacheConstant.KEY_IS_GUEST_USER);
+  }
+
+  static String getErrorMessage(String code) {
+    Map<String, String> errors = responseConfig();
+    print("message: " + errors[code]??"");
+    return errors[code];
   }
 }

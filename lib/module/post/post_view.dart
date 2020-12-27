@@ -27,7 +27,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
 
     return DetailContainer(
       title: 'Status',
-      canPost: false,
+      actionWidget: null,
       child: Container(
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(color: Colors.cyan),

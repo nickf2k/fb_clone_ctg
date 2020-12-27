@@ -15,9 +15,10 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  TextEditingController _userController = new TextEditingController(
-  );
+  final GlobalKey<FormState> _form = GlobalKey<FormState>();
+  TextEditingController _userController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
+  bool showPass = false;
 
   @override
   void initState() {
@@ -45,104 +46,130 @@ class _SignInPageState extends State<SignInPage> {
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.fromLTRB(30, 30, 30, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                  child: Center(
-                    child: Container(
-                      width: 70,
-                      height: 70,
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
+            child: Form(
+              key: _form,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                    child: Center(
+                      child: Container(
+                        width: 70,
+                        height: 70,
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png"),
+                            radius: 28),
                       ),
-                      child: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png"),
-                          radius: 28),
                     ),
                   ),
-                ),
-                Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                    child: TextField(
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                      keyboardType: TextInputType.number,
-                      controller: _userController,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.digitsOnly
-                      ],
-                      decoration: InputDecoration(
-
-                          labelText: "USESERNAME",
-                          // snapshot.hasError ? snapshot.error : null,
-                          labelStyle:
-                              TextStyle(color: Colors.black54, fontSize: 15)),
-                    )),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                  child: Stack(
-                    alignment: AlignmentDirectional.centerEnd,
-                    children: <Widget>[
-                      TextField(
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                      child: TextFormField(
                         style: TextStyle(fontSize: 18, color: Colors.black),
-                        controller: _passController,
-                        obscureText: true,
+                        keyboardType: TextInputType.number,
+                        controller: _userController,
+                        validator: (String validate) {
+                          if (validate.isEmpty) {
+                            return "Must input";
+                          }
+                          return null;
+                        },
                         decoration: InputDecoration(
-                            labelText: "PASSWORD",
+                            labelText: "USESERNAME",
+
                             // snapshot.hasError ? snapshot.error : null,
                             labelStyle:
                                 TextStyle(color: Colors.black54, fontSize: 15)),
-                      ),
-                      // StreamBuilder(
-                      //     stream: bloc.passStream,
-                      //     builder: (context, snapshot) => ),
-                      Text("SHOW",
-                          style: TextStyle(
-                              color: Colors.blueAccent,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12))
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                  child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: RaisedButton(
-                        onPressed: () => onSignInClick(signInBloc),
-                        child: Text("Sign In",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold)),
-                        color: Colors.blue,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8))),
                       )),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Text(
-                        "NEW USER? SIGN UP",
-                        style: TextStyle(fontSize: 10, color: Colors.black54),
-                      ),
-                      Text(
-                        "FORGOT PASSWORD?",
-                        style: TextStyle(fontSize: 10, color: Colors.blue),
-                      ),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                    child: Stack(
+                      alignment: AlignmentDirectional.centerEnd,
+                      children: <Widget>[
+                        TextFormField(
+                          style: TextStyle(fontSize: 18, color: Colors.black),
+                          controller: _passController,
+                          obscureText: showPass,
+                          validator: (String validate) {
+                            if (validate.isEmpty) {
+                              return "Must input";
+                            }
+                            if (validate.length < 6) {
+                              return "Password must have > 6 charactors";
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              labelText: "PASSWORD",
+
+                              // snapshot.hasError ? snapshot.error : null,
+                              labelStyle: TextStyle(
+                                  color: Colors.black54, fontSize: 15)),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              showPass = !showPass;
+                            });
+                          },
+                          child: Text("SHOW",
+                              style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12)),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                    child: SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: RaisedButton(
+                          onPressed: () => onSignInClick(signInBloc),
+                          child: Text("Sign In",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold)),
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8))),
+                        )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () => Navigator.of(context)
+                              .pushNamed(RouteConstant.SIGN_UP),
+                          child: Text(
+                            "NEW USER? SIGN UP",
+                            style:
+                                TextStyle(fontSize: 10, color: Colors.black54),
+                          ),
+                        ),
+                        Text(
+                          "FORGOT PASSWORD?",
+                          style: TextStyle(fontSize: 10, color: Colors.blue),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -155,8 +182,10 @@ class _SignInPageState extends State<SignInPage> {
     //   print("dang nhap dung");
     //   //chuyen huong
     // }
-    bloc.eventController.sink.add(SignInEvent(
-        phoneNumber: _userController.text, password: _passController.text));
+    if (_form.currentState.validate()) {
+      bloc.eventController.sink.add(SignInEvent(
+          phoneNumber: _userController.text, password: _passController.text));
+    }
     // Navigator.pushReplacementNamed(context, RouteConstant.HOME);
   }
 }

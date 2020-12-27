@@ -8,6 +8,8 @@ import 'package:fb_clone_ctg/data/service/user_service.dart';
 import 'package:fb_clone_ctg/module/sign_in/sign_in_event.dart';
 import 'package:fb_clone_ctg/shared/entities/login_result.dart';
 import 'package:fb_clone_ctg/shared/entities/sigin_data.dart';
+import 'package:fb_clone_ctg/untils/common_utils.dart';
+import 'package:fb_clone_ctg/untils/dialog.dart';
 import 'package:flutter/material.dart';
 
 class SignInBloc extends BaseBloc implements ISignInListener {
@@ -53,9 +55,7 @@ class SignInBloc extends BaseBloc implements ISignInListener {
 
   @override
   onSignInFailed(String resCode) {
-    // TODO: implement onSignInFailed
-    // throw UnimplementedError();
-    return null;
+    DialogUtils.showError(CommonUtils.getErrorMessage(resCode), context);
   }
 
   @override

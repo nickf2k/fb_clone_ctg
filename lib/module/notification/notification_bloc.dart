@@ -6,6 +6,8 @@ import 'package:fb_clone_ctg/data/repo/notification_repo.dart';
 import 'package:fb_clone_ctg/data/service/notification_service.dart';
 import 'package:fb_clone_ctg/module/notification/notification_event.dart';
 import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
+import 'package:fb_clone_ctg/untils/common_utils.dart';
+import 'package:fb_clone_ctg/untils/dialog.dart';
 
 class NotificationBloc extends BaseBloc implements INotificationListener{
 
@@ -29,8 +31,7 @@ class NotificationBloc extends BaseBloc implements INotificationListener{
 
   @override
   onGetNotificationFailed(String resCode) {
-    // TODO: implement onGetNotificationFailed
-    return null;
+    DialogUtils.showError(CommonUtils.getErrorMessage(resCode), context);
   }
 
   @override
