@@ -34,6 +34,7 @@ class _ButtonPostState extends State<ButtonPost> {
 
   onPost(AddPostBloc bloc) {
     print("posting status");
+    bloc.setContext(context);
     bloc.eventController.sink.add(AddPostEvent(
         described: widget.described, listPath: widget.listPath, status: ""));
   }

@@ -47,6 +47,7 @@ dependencies:
   simple_html_css:
   use_html_t: 1.0.0-pre.2
   url_launcher:
+  video_player: ^0.10.12+2
 dev_dependencies:
   flutter_test:
     sdk: flutter

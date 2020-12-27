@@ -22,24 +22,26 @@ class PostRepo {
     AddPostResult addPostResult;
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
     var formData = FormData();
-    // for (var file in listFile) {
-    //   formData.files.addAll([
-    //     MapEntry("assignment", await MultipartFile.fromFile(file)),
-    //   ]);
-    // }
-    var futures =
-        await _service.addPost(token, described, formData).then((res) {
+    for (var file in listFile) {
+      formData.files.addAll([
+        MapEntry("assignment", await MultipartFile.fromFile(file)),
+      ]);
+    }
+    var futures = _service.addPost(token, described, formData).then((res) {
+      print(res.data);
       addPostResult = AddPostResult.fromJson(res.data);
       if (addPostResult.code != "1000") {
         listener.onAddPostFaild(addPostResult.code);
         print("loi api, ma loi: " + addPostResult.code);
         return;
       }
+      listener.onAddPostSuccess(addPostResult);
+      return;
     }).catchError((error) {
       print("add post err: " + error.toString());
       listener.onAddPostFaild(error.toString());
+      return;
     });
-    listener.onAddPostSuccess(addPostResult);
   }
 
   Future<void> loadAssets(List<Asset> images, List<Asset> resultList) async {
