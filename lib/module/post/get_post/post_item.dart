@@ -1,5 +1,6 @@
 import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/shared/entities/get_list_post_result.dart';
 import 'package:fb_clone_ctg/shared/entities/get_post_result.dart';
 import 'package:fb_clone_ctg/shared/widgets/interact.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class PostItem extends StatefulWidget {
-  final PostData postData;
+  final Post postData;
   final Author author;
 
   const PostItem({Key key, this.postData, this.author}) : super(key: key);

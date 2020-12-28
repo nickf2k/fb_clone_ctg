@@ -17,8 +17,8 @@ abstract class IAddPostListener {
   void onAddPostFaild(String code);
 }
 
-abstract class IGetPostListener {
-  void onGetPostSuccess(GetListPostResult getListPostResult);
+abstract class IGetPostsListener {
+  void onGetPostSuccess(ListPostResult listPostResult);
 
   void onGetPostFaild(String code);
 }
@@ -61,7 +61,27 @@ class PostRepo {
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
   }
 
-  void getListPosts() {}
+  void getListPosts(int index, int count, IGetPostsListener listener) {
+    String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
+    String userId = SpUtil.getString(SPrefCacheConstant.KEY_USER_ID);
+
+    ListPostResult listPostResult;
+    var futures = _service.getListPost(token, userId, index, count).then((res) {
+      String code = res.data["code"];
+      print("list post code: " + code);
+      if (code!="1000"){
+        listener.onGetPostFaild(code);
+        return;
+      }
+      listPostResult = ListPostResult.fromJson(res.data);
+      listener.onGetPostSuccess(listPostResult);
+      return;
+    }).catchError((error){
+      print("get list post err: " + error.toString());
+      listener.onGetPostFaild(error.toString());
+    });
+
+  }
 }
 
 

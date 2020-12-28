@@ -18,7 +18,7 @@ class _SignInPageState extends State<SignInPage> {
   final GlobalKey<FormState> _form = GlobalKey<FormState>();
   TextEditingController _userController = new TextEditingController();
   TextEditingController _passController = new TextEditingController();
-  bool showPass = false;
+  bool obscure = true;
 
   @override
   void initState() {
@@ -97,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
                         TextFormField(
                           style: TextStyle(fontSize: 18, color: Colors.black),
                           controller: _passController,
-                          obscureText: showPass,
+                          obscureText: obscure,
                           validator: (String validate) {
                             if (validate.isEmpty) {
                               return "Must input";
@@ -117,7 +117,7 @@ class _SignInPageState extends State<SignInPage> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              showPass = !showPass;
+                              obscure = !obscure;
                             });
                           },
                           child: Text("SHOW",
