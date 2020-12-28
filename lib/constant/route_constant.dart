@@ -15,6 +15,7 @@ class RouteConstant {
   static const VIDEO = "/video";
   static const NOTIFICATIONS = "/notifications";
   static const SETTING_INFO = "/setting_info";
+  static const CHANGE_INFO = "/change_info";
 
   static const SETTING = "/setting";
 
@@ -22,5 +23,11 @@ class RouteConstant {
   static const POST_DETAIL = "/post_detail";
 
   static const POLICY = "/policy";
-  static const TAB_ROUTE = [HOME, REQUESTED_FRIEND, VIDEO, NOTIFICATIONS, SETTING];
+  static const TAB_ROUTE = [
+    HOME,
+    REQUESTED_FRIEND,
+    VIDEO,
+    NOTIFICATIONS,
+    SETTING
+  ];
 }

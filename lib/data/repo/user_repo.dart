@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/data/service/user_service.dart';
 import 'package:fb_clone_ctg/shared/entities/login_result.dart';
@@ -12,6 +15,12 @@ abstract class ISignInListener {
   onCheckSignInSuccess(DataForLogin dataForLogin);
 
   onSignInFailed(String resCode);
+}
+
+abstract class IChangeInfoListener {
+  onChangeInfoSuccess(String code);
+
+  onChangeInfoFail(String code);
 }
 
 abstract class ILogoutListener {
@@ -53,7 +62,7 @@ class UserRepo {
       DataForLogin userData = loginResult.data;
       SpUtil.putString(SPrefCacheConstant.KEY_TOKEN, userData.token);
       SpUtil.putInt(SPrefCacheConstant.KEY_USER_ID, userData.id);
-      SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, userData.username);
+      SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, phoneNumber);
       SpUtil.putString(SPrefCacheConstant.KEY_PASSWORD, password);
       listener.onSignInSuccess(loginResult);
     });
@@ -94,7 +103,6 @@ class UserRepo {
     SpUtil.remove(SPrefCacheConstant.KEY_USERNAME);
     SpUtil.remove(SPrefCacheConstant.KEY_PASSWORD);
     SpUtil.remove(SPrefCacheConstant.KEY_USER);
-
   }
 
   void signUp(String phoneNumber, String password, ISignUpListener listener) {
@@ -112,4 +120,42 @@ class UserRepo {
       return;
     }).catchError((error) => print("signup err: " + error.toString()));
   }
+
+  Future<void> changeUserInfo(
+      String name, File avatarFile, IChangeInfoListener listener) async {
+    String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
+
+    FormData formData = FormData();
+    formData.files.addAll([
+      MapEntry("avatar", await MultipartFile.fromFile(avatarFile.path)),
+    ]);
+    var futureRes =
+        _userService.changeInfo(token, name, formData).then((res) async {
+      String code = res.data["code"];
+      print('code change info: ' + code);
+      if (code != "1000") {
+        listener.onChangeInfoFail(code);
+        return;
+      }
+      print("changed info!");
+      listener.onChangeInfoSuccess(code);
+      return;
+    }).catchError((error) => print("change info err: " + error.toString()));
+  }
+
+// void changeInfo(String username, IChangeInfoListener listener) {
+//   String uuid = Uuid().v1();
+//   var futureRes =
+//       _userService.changeInfo(username, password, uuid).then((res) async {
+//     String code = res.data["code"];
+//     print('code: ' + code);
+//     if (code != "1000") {
+//       listener.onChangeInfoFail(code);
+//       return;
+//     }
+//     print("Signuped");
+//     listener.onChangeInfoFail(code, username, password);
+//     return;
+//   }).catchError((error) => print("signup err: " + error.toString()));
+// }
 }

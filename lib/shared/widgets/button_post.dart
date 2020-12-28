@@ -8,7 +8,8 @@ class ButtonPost extends StatefulWidget {
   final List<Asset> listAsset;
   final bool isEnable;
 
-  const ButtonPost({Key key, this.described, this.listAsset, this.isEnable}) : super(key: key);
+  const ButtonPost({Key key, this.described, this.listAsset, this.isEnable})
+      : super(key: key);
 
   @override
   _ButtonPostState createState() => _ButtonPostState();
@@ -28,9 +29,7 @@ class _ButtonPostState extends State<ButtonPost> {
           Text(
             "Post",
             style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w600,
-                color: widget.isEnable ? Colors.grey : Colors.black),
+                fontSize: 17, fontWeight: FontWeight.w600, color: Colors.black),
           ),
         ],
       ),
