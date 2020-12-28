@@ -63,7 +63,6 @@ class UserRepo {
       SpUtil.putString(SPrefCacheConstant.KEY_TOKEN, userData.token);
       SpUtil.putInt(SPrefCacheConstant.KEY_USER_ID, userData.id);
       SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, phoneNumber);
-
       SpUtil.putString(SPrefCacheConstant.KEY_PASSWORD, password);
       listener.onSignInSuccess(loginResult);
     });

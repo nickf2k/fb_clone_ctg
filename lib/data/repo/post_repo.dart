@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
-import 'package:fb_clone_ctg/data/service/get_post_service.dart';
 import 'package:fb_clone_ctg/data/service/post_service.dart';
 import 'package:fb_clone_ctg/shared/entities/add_post_result.dart';
 import 'package:fb_clone_ctg/shared/entities/get_list_post_result.dart';

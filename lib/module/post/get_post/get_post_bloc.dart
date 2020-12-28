@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:fb_clone_ctg/base/base_bloc.dart';
 import 'package:fb_clone_ctg/base/base_event.dart';
 import 'package:fb_clone_ctg/data/repo/post_repo.dart';
-import 'package:fb_clone_ctg/data/service/get_post_service.dart';
 import 'package:fb_clone_ctg/data/service/post_service.dart';
 import 'package:fb_clone_ctg/module/notification/notification_event.dart';
 import 'package:fb_clone_ctg/shared/entities/get_list_post_result.dart';
