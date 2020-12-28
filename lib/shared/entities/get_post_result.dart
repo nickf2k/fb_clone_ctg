@@ -120,7 +120,7 @@ class Author {
     isBlocked = json['is_blocked'];
     avatar = json['avatar'];
     description = json['description'];
-    address = json['address'];
+//    address = json['address'];
     city = json['city'];
     country = json['country'];
     coverImage = json['cover_image'];
