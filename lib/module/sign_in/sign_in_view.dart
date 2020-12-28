@@ -64,8 +64,7 @@ class _SignInPageState extends State<SignInPage> {
                           color: Colors.white,
                         ),
                         child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png"),
+                            backgroundImage: AssetImage("assets/icons/icon_facebook.png"),
                             radius: 28),
                       ),
                     ),

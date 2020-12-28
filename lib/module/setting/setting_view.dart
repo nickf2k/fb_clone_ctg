@@ -12,6 +12,7 @@ const double iconSize = 15;
 const double widthImage = 35;
 const double heightIamge = 35;
 
+//The last fix view
 class SettingPage extends StatefulWidget {
   @override
   _SettingPageState createState() => _SettingPageState();
@@ -108,29 +109,33 @@ class _SettingPageState extends State<SettingPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Column(
-                          children: <Widget>[
-                            _getItem("assets/icons/saved.png", "Đã lưu", null),
-                            _getItem(
-                                "assets/icons/findfriend.png", "Bạn bè", null),
-                            _getItem("assets/icons/watchvideo.png",
-                                "Video trên Watch", null),
-                            _getItem("assets/icons/page.png", "Trang", null),
-                            _getItem("assets/icons/event.png", "Sự kiện", null),
-                            _getItem("assets/icons/friends.png",
-                                "Bạn bè quanh đây", null),
-                          ],
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: <Widget>[
+                              _getItem("assets/icons/saved.png", "Đã lưu", null),
+                              _getItem("assets/icons/findfriend.png", "Bạn bè", null),
+                              _getItem("assets/icons/watchvideo.png", "Video trên Watch", null),
+                              _getItem("assets/icons/page.png", "Trang", null),
+                              _getItem("assets/icons/event.png", "Sự kiện", null),
+                              _getItem("assets/icons/friends.png", "Bạn bè quanh đây", null),
+                            ],
+                          ),
                         ),
-                        Column(
-                          children: <Widget>[
-                            _getItem("assets/icons/marketplace.png",
-                                "Marketplace", null),
-                            _getItem("assets/icons/job.png", "Việc làm", null),
-                            _getItem("assets/icons/gruop.png", "Nhóm", null),
-                            _getItem("assets/icons/dating.png", "Hẹn hò", null),
-                            _getItem(
-                                "assets/icons/playgame.png", "Chơi game", null),
-                          ],
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: <Widget>[
+                              _getItem("assets/icons/marketplace.png", "Marketplace", null),
+                              _getItem("assets/icons/job.png", "Việc làm", null),
+                              _getItem("assets/icons/gruop.png", "Nhóm", null),
+                              _getItem("assets/icons/dating.png", "Hẹn hò", null),
+                              _getItem("assets/icons/playgame.png", "Chơi game", null),
+
+
+
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -295,42 +300,39 @@ class _SettingPageState extends State<SettingPage> {
 
   _getItem(String icon, String title, String route) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-      child: SizedBox(
-          width: 160,
-          height: 80,
-          child: RaisedButton(
+      padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+      child: RaisedButton(
 //            onPressed: (){},
-            onPressed: () =>
-                Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 88, 0),
-                  child: Image(
-                    width: widthImage,
-                    height: heightIamge,
-                    image: AssetImage(
-                      icon,
-                    ),
-                  ),
+        onPressed: () =>
+            Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 88, 0),
+              child: Image(
+                width: widthImage,
+                height: heightIamge,
+                image: AssetImage(
+                  icon,
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: Text(title,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: fontSize1,
-                          fontWeight: FontWeight.normal)),
-                )
-              ],
+              ),
             ),
-            color: Colors.white,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8))),
-          )),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+              child: Text(title,
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: fontSize1,
+                      fontWeight: FontWeight.normal)),
+            )
+          ],
+        ),
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8))),
+      ),
     );
   }
 
@@ -368,4 +370,5 @@ class _SettingPageState extends State<SettingPage> {
           )),
     );
   }
+
 }
