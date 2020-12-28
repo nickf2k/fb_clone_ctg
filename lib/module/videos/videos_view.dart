@@ -30,7 +30,7 @@ class _VideosPageState extends State<VideosPage> {
           children: <Widget>[
             Container(
               child: Row(
-//        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "Watch",
@@ -46,7 +46,7 @@ class _VideosPageState extends State<VideosPage> {
                             AssetImage(
                               'assets/icons/user.png',
                             ),
-                            color: Colors.blue,
+                            color: Colors.black,
                           ),
                           onPressed: () {},
                           iconSize: 35,
@@ -56,7 +56,7 @@ class _VideosPageState extends State<VideosPage> {
                             AssetImage(
                               'assets/icons/search.png',
                             ),
-                            color: Colors.blue,
+                            color: Colors.black,
                           ),
                           onPressed: () {},
                           iconSize: 35,
@@ -71,23 +71,23 @@ class _VideosPageState extends State<VideosPage> {
                 "https://www.radiantmediaplayer.com/media/big-buck-bunny-360p.mp4",
                 "My hobby",
                 "21 Th12",
-                61612,
-                21215,
-                2000),
+                120,
+                12,
+                2),
             _getContainerVideo(
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
                 "Hip Hop never die",
                 "10 Th10",
-                89545,
-                620,
-                1296),
+                12,
+                1,
+                1),
             _getContainerVideo(
                 "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
                 "Step 1",
                 "22 Th8",
-                98366,
-                365,
-                1330),
+                356,
+                12,
+                13),
           ],
         ),
       ),
@@ -106,7 +106,7 @@ class _VideosPageState extends State<VideosPage> {
           children: <Widget>[
             Divider(
               height: 10,
-              thickness: 20,
+              thickness: 10,
               color: Colors.black12,
             ),
             Row(
@@ -130,17 +130,17 @@ class _VideosPageState extends State<VideosPage> {
 //                      crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           Text("Phạm Tuấn Nghĩa",
-                          style: TextStyle(
-                            fontSize: fontSize,
-                            fontWeight: FontWeight.bold,
-                          ),
+                            style: TextStyle(
+                              fontSize: fontSize,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Padding(
                               padding: const EdgeInsets.fromLTRB(0, 0, 65, 0),
                               child: Text(time,
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),)),
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),)),
                         ],
                       ),
                     )
@@ -173,57 +173,8 @@ class _VideosPageState extends State<VideosPage> {
               ),
 //              looping: true,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 10, 0, 0),
-              child: Row(
-                children: <Widget>[
-                  Image(
-                    width: widthIcon,
-                    height: heightIcon,
-                    image: AssetImage(
-                      'assets/icons/like.png',
-                    ),
-                  ),
-                  Image(
-                    width: widthIcon,
-                    height: heightIcon,
-                    image: AssetImage(
-                      'assets/icons/laughing.png',
-                    ),
-                  ),
-                  Image(
-                    width: widthIcon,
-                    height: heightIcon,
-                    image: AssetImage(
-                      'assets/icons/sad.png',
-                    ),
-                  ),
-                  Text(interactive.toString(),
-                  style: TextStyle(
-                      fontSize: fontLCS
-                  ),),
-                  Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                      child: Text(comment.toString() + " . ",
-                        style: TextStyle(
-                        fontSize: fontLCS
-                      ),
-                      )
-                  ),
-                  Text(share.toString() + " lượt chia sẻ",
-                  style: TextStyle(
-                      fontSize: fontLCS
-                  ),),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-              child: Divider(
-                color: Colors.black12,
-              ),
-            ),
-            Interact(),
+
+            Interact(interactive: interactive,comment: comment,share: share,),
 
           ],
         ),
