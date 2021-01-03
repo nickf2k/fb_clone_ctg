@@ -308,6 +308,14 @@ class _ProfilePageState extends State<ProfilePage> {
             iconData: Icons.work,
             normalText: "Work at",
             boldText: "Sea-Solution Software"),
+        getItemBackground(
+            iconData: Icons.work,
+            normalText: "Work at",
+            boldText: "Sea-Solution Software"),
+        getItemBackground(
+            iconData: Icons.work,
+            normalText: "Work at",
+            boldText: "Sea-Solution Software"),
       ],
     );
   }
@@ -319,7 +327,8 @@ class _ProfilePageState extends State<ProfilePage> {
         children: [
           Icon(
             iconData,
-            size: 15,
+            color: Colors.grey,
+            size: 20,
           ),
           SizedBox(
             width: 10,
