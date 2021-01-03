@@ -56,16 +56,15 @@ class _SignInPageState extends State<SignInPage> {
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                     child: Center(
                       child: Container(
-                        width: 70,
-                        height: 70,
+                        width: 100,
+                        height: 100,
                         padding: EdgeInsets.all(15),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.white,
                         ),
-                        child: CircleAvatar(
-                            backgroundImage: AssetImage("assets/icons/icon_facebook.png"),
-                            radius: 28),
+                        child: Image.asset(
+                          "assets/icons/facebook.png",
+                        ),
                       ),
                     ),
                   ),

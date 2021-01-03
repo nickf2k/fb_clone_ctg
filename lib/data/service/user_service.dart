@@ -33,4 +33,10 @@ class UserService {
     return FacebookAPIConnector.instance.dio
         .post(APIConstant.LOGOUT, queryParameters: queryParameter);
   }
+
+  Future<Response> getUserInfoById(String token, int userId) {
+    var queryParameter = {"token": token, "user_id":userId};
+    return FacebookAPIConnector.instance.dio
+        .get(APIConstant.GET_USER_INFO, queryParameters: queryParameter);
+  }
 }

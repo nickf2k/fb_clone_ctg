@@ -43,7 +43,7 @@ class SignUpBloc extends BaseBloc implements ISignUpListener, ISignInListener {
   onSignUpSuccess(String code, String phone, String pass) {
     if (code == "1000") {
       _userRepo.signIn(phone, pass, this);
-      SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, phone);
+      SpUtil.putString(SPrefCacheConstant.KEY_USER, phone);
       SpUtil.putString(SPrefCacheConstant.KEY_PASSWORD, pass);
       Navigator.pushNamed(context, RouteConstant.CHANGE_INFO);
     }
