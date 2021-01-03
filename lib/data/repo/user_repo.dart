@@ -5,6 +5,7 @@ import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/data/service/user_service.dart';
 import 'package:fb_clone_ctg/shared/entities/login_result.dart';
 import 'package:fb_clone_ctg/shared/entities/saved_search.dart';
+import 'package:fb_clone_ctg/shared/entities/user_result.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
@@ -15,6 +16,12 @@ abstract class ISignInListener {
   onCheckSignInSuccess(DataForLogin dataForLogin);
 
   onSignInFailed(String resCode);
+}
+
+abstract class IGetUserInfoListener {
+  onGetInfoSuccess(User user);
+
+  onGetInfoFailed(String code);
 }
 
 abstract class IChangeInfoListener {
@@ -35,6 +42,12 @@ abstract class ISignUpListener {
   onSignUpSuccess(String code, String phone, String pass);
 
   onSignUpFailed(String code);
+}
+
+abstract class IGetUsersListener {
+  onGetUsersSuccess(List<User> users);
+
+  onGetUserFailed(String code);
 }
 
 class UserRepo {
@@ -61,15 +74,17 @@ class UserRepo {
       print("User actived!");
       DataForLogin userData = loginResult.data;
       SpUtil.putString(SPrefCacheConstant.KEY_TOKEN, userData.token);
+      SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, userData.username);
+
       SpUtil.putInt(SPrefCacheConstant.KEY_USER_ID, userData.id);
-      SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, phoneNumber);
+      SpUtil.putString(SPrefCacheConstant.KEY_USER, phoneNumber);
+      SpUtil.putString(SPrefCacheConstant.KEY_AVATAR_URL, userData.avatar);
       SpUtil.putString(SPrefCacheConstant.KEY_PASSWORD, password);
       listener.onSignInSuccess(loginResult);
+    }).catchError((error) {
+      print("login err: " + error.toString());
+      return;
     });
-    // .catchError((error) {
-    //   print("login err: " + error.toString());
-    //   return;
-    // });
 
     // set cache user
     // var resUser = _userService.getUserInfo(userData.userId);
@@ -102,6 +117,8 @@ class UserRepo {
     SpUtil.remove(SPrefCacheConstant.KEY_USER_ID);
     SpUtil.remove(SPrefCacheConstant.KEY_USERNAME);
     SpUtil.remove(SPrefCacheConstant.KEY_PASSWORD);
+    SpUtil.remove(SPrefCacheConstant.KEY_AVATAR_URL);
+
     SpUtil.remove(SPrefCacheConstant.KEY_USER);
   }
 
@@ -143,19 +160,48 @@ class UserRepo {
     }).catchError((error) => print("change info err: " + error.toString()));
   }
 
-// void changeInfo(String username, IChangeInfoListener listener) {
-//   String uuid = Uuid().v1();
-//   var futureRes =
-//       _userService.changeInfo(username, password, uuid).then((res) async {
-//     String code = res.data["code"];
-//     print('code: ' + code);
-//     if (code != "1000") {
-//       listener.onChangeInfoFail(code);
-//       return;
-//     }
-//     print("Signuped");
-//     listener.onChangeInfoFail(code, username, password);
-//     return;
-//   }).catchError((error) => print("signup err: " + error.toString()));
-// }
+  void getUserById(int userId, IGetUserInfoListener listener) {
+    UserResult userResult;
+    String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
+
+    var futures = _userService.getUserInfoById(token, userId).then((res) {
+      String code = res.data["code"];
+      print("code get user by id " + code);
+      if (code != "1000") {
+        listener.onGetInfoFailed(code);
+        return;
+      }
+      userResult = UserResult.fromJson(res.data);
+      listener.onGetInfoSuccess(userResult.user);
+      return;
+    }).catchError((err) {
+      print("err get user by id: " + err.toString());
+      return;
+    });
+  }
+
+  void getListUserByListId(List<int> listId, IGetUsersListener listener) {
+    String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
+
+    List<User> listUser = [];
+    String code;
+    for (int id in listId){
+      var futures = _userService
+          .getUserInfoById(token, id)
+          .then((res)  {
+        code = res.data["code"];
+        if (code != "1000") {
+          listUser.add(User.getDefault());
+          print("user default was added");
+          return;
+        }
+        listUser.add(UserResult.fromJson(res.data).user);
+        return;
+
+      }).catchError((err) {
+        print("err get list user");
+      });
+    }
+  }
+
 }

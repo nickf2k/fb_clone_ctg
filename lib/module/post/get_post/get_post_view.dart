@@ -13,6 +13,7 @@ class GetPostView extends StatefulWidget {
 
 class _GetPostViewState extends State<GetPostView> {
   GetPostsBloc _getPostBloc;
+
   @override
   Widget build(BuildContext context) {
     _getPostBloc = GetPostsBloc();
@@ -22,16 +23,17 @@ class _GetPostViewState extends State<GetPostView> {
     return StreamBuilder<ListPostResult>(
       stream: _getPostBloc.postsStream,
       builder: (context, snapshot) {
-        if(!snapshot.hasData) return LoadingIndicatorWidget();
+        if (!snapshot.hasData) return LoadingIndicatorWidget();
         List<Post> listPost = snapshot.data.data.posts;
         return ListView.builder(
           itemCount: listPost.length,
-          itemBuilder: (context, index){
-            return PostItem(postData: listPost[index],);
+          itemBuilder: (context, index) {
+            return PostItem(
+              postData: listPost[index],
+            );
           },
         );
       },
-
     );
   }
 }

@@ -37,7 +37,7 @@ class ChangeInfoBloc extends BaseBloc implements IChangeInfoListener {
     if (code == "1000") {
       SignInBloc signInBloc = SignInBloc();
       signInBloc.setContext(this.context);
-      String phone = SpUtil.getString(SPrefCacheConstant.KEY_USERNAME);
+      String phone = SpUtil.getString(SPrefCacheConstant.KEY_USER);
       String pass = SpUtil.getString(SPrefCacheConstant.KEY_PASSWORD);
 
       signInBloc.eventController.sink
