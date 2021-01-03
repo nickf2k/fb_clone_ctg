@@ -1,10 +1,10 @@
+import 'dart:ffi';
+
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
-import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/module/setting/setting_bloc.dart';
 import 'package:fb_clone_ctg/module/setting/setting_event.dart';
 import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
-import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -22,8 +22,6 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPageState extends State<SettingPage> {
   SettingBloc _settingBloc;
-  String userName = SpUtil.getString(SPrefCacheConstant.KEY_USERNAME);
-  String avatarUrl = SpUtil.getString(SPrefCacheConstant.KEY_AVATAR_URL);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +74,9 @@ class _SettingPageState extends State<SettingPage> {
                         children: <Widget>[
                           CircleAvatar(
                             radius: 20,
-                            backgroundImage: NetworkImage(avatarUrl),
+                            backgroundImage: AssetImage(
+                              'assets/icons/nghia.jpg',
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -87,7 +87,7 @@ class _SettingPageState extends State<SettingPage> {
                                 textAlign: TextAlign.start,
                                 text: TextSpan(children: <TextSpan>[
                                   TextSpan(
-                                      text: userName,
+                                      text: "Phạm Tuấn Nghĩa",
                                       style: TextStyle(
                                           fontSize: 15,
                                           color: Colors.black,
@@ -115,17 +115,12 @@ class _SettingPageState extends State<SettingPage> {
                           flex: 1,
                           child: Column(
                             children: <Widget>[
-                              _getItem(
-                                  "assets/icons/saved.png", "Đã lưu", null),
-                              _getItem("assets/icons/findfriend.png", "Bạn bè",
-                                  null),
-                              _getItem("assets/icons/watchvideo.png",
-                                  "Video trên Watch", null),
+                              _getItem("assets/icons/saved.png", "Đã lưu", null),
+                              _getItem("assets/icons/findfriend.png", "Bạn bè", null),
+                              _getItem("assets/icons/watchvideo.png", "Video trên Watch", null),
                               _getItem("assets/icons/page.png", "Trang", null),
-                              _getItem(
-                                  "assets/icons/event.png", "Sự kiện", null),
-                              _getItem("assets/icons/friends.png",
-                                  "Bạn bè quanh đây", null),
+                              _getItem("assets/icons/event.png", "Sự kiện", null),
+                              _getItem("assets/icons/friends.png", "Bạn bè quanh đây", null),
                             ],
                           ),
                         ),
@@ -133,15 +128,14 @@ class _SettingPageState extends State<SettingPage> {
                           flex: 1,
                           child: Column(
                             children: <Widget>[
-                              _getItem("assets/icons/marketplace.png",
-                                  "Marketplace", null),
-                              _getItem(
-                                  "assets/icons/job.png", "Việc làm", null),
+                              _getItem("assets/icons/marketplace.png", "Marketplace", null),
+                              _getItem("assets/icons/job.png", "Việc làm", null),
                               _getItem("assets/icons/gruop.png", "Nhóm", null),
-                              _getItem(
-                                  "assets/icons/dating.png", "Hẹn hò", null),
-                              _getItem("assets/icons/playgame.png", "Chơi game",
-                                  null),
+                              _getItem("assets/icons/dating.png", "Hẹn hò", null),
+                              _getItem("assets/icons/playgame.png", "Chơi game", null),
+
+
+
                             ],
                           ),
                         ),
@@ -213,17 +207,17 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     children: <Widget>[
                       _getItemSetting("assets/icons/helpcenter.png",
-                          "Trung tâm trợ giúp", 'RouteConstant.SETTING_INFO'),
+                          "Trung tâm trợ giúp", null),
                       _getItemSetting("assets/icons/boxsupport.png",
-                          "Hộp thư hỗ trợ", 'RouteConstant.SETTING_INFO'),
+                          "Hộp thư hỗ trợ", null),
                       _getItemSetting("assets/icons/communityhelp.png",
-                          "Cộng đồng trợ giúp", 'RouteConstant.SETTING_INFO'),
+                          "Cộng đồng trợ giúp", null),
                       _getItemSetting("assets/icons/reportproblem.png",
-                          "Báo cáo sự cố", 'RouteConstant.SETTING_INFO'),
+                          "Báo cáo sự cố",null),
                       _getItemSetting(
                           "assets/icons/policy&rules.png",
                           "Điều khoản chính sách",
-                          'RouteConstant.SETTING_INFO'),
+                          null),
                     ],
                   ),
                 ),
@@ -247,21 +241,21 @@ class _SettingPageState extends State<SettingPage> {
                     ),
                     children: <Widget>[
                       _getItemSetting("assets/icons/settings.png", "Cài đặt",
-                          'RouteConstant.PROFILE'),
+                          RouteConstant.SETTING_INFO),
                       _getItemSetting("assets/icons/privates.png",
-                          "Lối tắt quyền riêng tư", 'RouteConstant.PROFILE'),
+                          "Lối tắt quyền riêng tư", null),
                       _getItemSetting(
                           "assets/icons/timeinfacebook.png",
                           "Thời gian bạn ở trên Facebook",
-                          'RouteConstant.PROFILE'),
+                          null),
                       _getItemSetting("assets/icons/darkmode.png", "Chế độ tối",
-                          'RouteConstant.PROFILE'),
+                          null),
                       _getItemSetting("assets/icons/languages.png", "Ngôn ngữ",
-                          'RouteConstant.PROFILE'),
+                          null),
                       _getItemSetting("assets/icons/5g.png",
-                          "Trình tiết kiệm dữ liệu", 'RouteConstant.PROFILE'),
+                          "Trình tiết kiệm dữ liệu", null),
                       _getItemSetting("assets/icons/key.png", "Trình tạo mã",
-                          'RouteConstant.PROFILE'),
+                          null),
                     ],
                   ),
                 ),
@@ -378,4 +372,5 @@ class _SettingPageState extends State<SettingPage> {
           )),
     );
   }
+
 }
