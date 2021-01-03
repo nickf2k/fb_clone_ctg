@@ -1,5 +1,6 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/config/app_color.dart';
+import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/module/sign_in/sign_in_bloc.dart';
 import 'package:fb_clone_ctg/shared/entities/friend_request_result.dart';
 import 'package:fb_clone_ctg/shared/widgets/loading_indicator.dart';
@@ -71,11 +72,11 @@ class _RequestedPageState extends State<RequestedPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          getBadge("Gợi ý"),
+                          getBadge(content:"Gợi ý", width: 70,height: 30),
                           VerticalDivider(
                             width: 10,
                           ),
-                          getBadge("Tất cả bạn bè"),
+                          getBadge(content:"Tất cả bạn bè",width: 120, height: 30,route: RouteConstant.GET_USER_FRIENDS),
                         ],
                       ),
                     ),
@@ -118,16 +119,27 @@ class _RequestedPageState extends State<RequestedPage> {
     );
   }
 
-  Widget getBadge(String content) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.grey,
-      ),
-      child: Text(
-        " " + content + " ",
-        style: _friendStyle,
-      ),
+  Widget getBadge({String content, double width, double  height, String route}) {
+    return           SizedBox(
+        width: width,
+        height: height,
+        child: RaisedButton(
+          onPressed: () => Navigator.pushNamed(context, route),
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: Text(
+                content,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                )),
+          ),
+          shape: RoundedRectangleBorder(
+              borderRadius:
+              BorderRadius.all(Radius.circular(10))),
+        )
+
     );
   }
 

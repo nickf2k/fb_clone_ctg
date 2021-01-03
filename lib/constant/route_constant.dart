@@ -18,7 +18,7 @@ class RouteConstant {
   static const CHANGE_INFO = "/change_info";
   static const CHANGE_PASSWORD ="/change_password";
   static const SETTING = "/setting";
-
+  static const GET_USER_FRIENDS = "/get_user_friends";
   static const MANAGER_ACCOUNT = "/manager_account";
   static const POST_DETAIL = "/post_detail";
 

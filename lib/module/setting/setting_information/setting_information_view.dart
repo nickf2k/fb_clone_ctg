@@ -73,7 +73,7 @@ class _SettingInformationPageState extends State<SettingInformationPage> {
           padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
           child: MaterialButton(
             onPressed: () =>
-                Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
+                Navigator.of(context).pushNamed(route ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

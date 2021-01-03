@@ -1,5 +1,6 @@
 import 'package:fb_clone_ctg/config/app_color.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/module/friend/all_fr_view.dart';
 import 'package:fb_clone_ctg/module/home_page/home_view.dart';
 import 'package:fb_clone_ctg/module/post/add_post/add_post_view.dart';
 import 'package:fb_clone_ctg/module/post/post_view.dart';
@@ -33,6 +34,7 @@ Map<String, WidgetBuilder> routeConfig() {
     RouteConstant.SIGN_UP: (context) => SignUpPage(),
     RouteConstant.CHANGE_INFO: (context) => ChangeInfoPage(),
     RouteConstant.POST_DETAIL: (context) => PostDetailPage(),
+    RouteConstant.GET_USER_FRIENDS: (context) => AllFriendPage(),
     RouteConstant.REQUESTED_FRIEND: (context) => RequestedPage(),
   };
 }
