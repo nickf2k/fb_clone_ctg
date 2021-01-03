@@ -115,12 +115,17 @@ class _SettingPageState extends State<SettingPage> {
                           flex: 1,
                           child: Column(
                             children: <Widget>[
-                              _getItem("assets/icons/saved.png", "Đã lưu", null),
-                              _getItem("assets/icons/findfriend.png", "Bạn bè", null),
-                              _getItem("assets/icons/watchvideo.png", "Video trên Watch", null),
+                              _getItem(
+                                  "assets/icons/saved.png", "Đã lưu", null),
+                              _getItem("assets/icons/findfriend.png", "Bạn bè",
+                                  null),
+                              _getItem("assets/icons/watchvideo.png",
+                                  "Video trên Watch", null),
                               _getItem("assets/icons/page.png", "Trang", null),
-                              _getItem("assets/icons/event.png", "Sự kiện", null),
-                              _getItem("assets/icons/friends.png", "Bạn bè quanh đây", null),
+                              _getItem(
+                                  "assets/icons/event.png", "Sự kiện", null),
+                              _getItem("assets/icons/friends.png",
+                                  "Bạn bè quanh đây", null),
                             ],
                           ),
                         ),
@@ -128,14 +133,15 @@ class _SettingPageState extends State<SettingPage> {
                           flex: 1,
                           child: Column(
                             children: <Widget>[
-                              _getItem("assets/icons/marketplace.png", "Marketplace", null),
-                              _getItem("assets/icons/job.png", "Việc làm", null),
+                              _getItem("assets/icons/marketplace.png",
+                                  "Marketplace", null),
+                              _getItem(
+                                  "assets/icons/job.png", "Việc làm", null),
                               _getItem("assets/icons/gruop.png", "Nhóm", null),
-                              _getItem("assets/icons/dating.png", "Hẹn hò", null),
-                              _getItem("assets/icons/playgame.png", "Chơi game", null),
-
-
-
+                              _getItem(
+                                  "assets/icons/dating.png", "Hẹn hò", null),
+                              _getItem("assets/icons/playgame.png", "Chơi game",
+                                  null),
                             ],
                           ),
                         ),
@@ -213,11 +219,9 @@ class _SettingPageState extends State<SettingPage> {
                       _getItemSetting("assets/icons/communityhelp.png",
                           "Cộng đồng trợ giúp", null),
                       _getItemSetting("assets/icons/reportproblem.png",
-                          "Báo cáo sự cố",null),
-                      _getItemSetting(
-                          "assets/icons/policy&rules.png",
-                          "Điều khoản chính sách",
-                          null),
+                          "Báo cáo sự cố", null),
+                      _getItemSetting("assets/icons/policy&rules.png",
+                          "Điều khoản chính sách", null),
                     ],
                   ),
                 ),
@@ -244,18 +248,16 @@ class _SettingPageState extends State<SettingPage> {
                           RouteConstant.SETTING_INFO),
                       _getItemSetting("assets/icons/privates.png",
                           "Lối tắt quyền riêng tư", null),
+                      _getItemSetting("assets/icons/timeinfacebook.png",
+                          "Thời gian bạn ở trên Facebook", null),
                       _getItemSetting(
-                          "assets/icons/timeinfacebook.png",
-                          "Thời gian bạn ở trên Facebook",
-                          null),
-                      _getItemSetting("assets/icons/darkmode.png", "Chế độ tối",
-                          null),
-                      _getItemSetting("assets/icons/languages.png", "Ngôn ngữ",
-                          null),
+                          "assets/icons/darkmode.png", "Chế độ tối", null),
+                      _getItemSetting(
+                          "assets/icons/languages.png", "Ngôn ngữ", null),
                       _getItemSetting("assets/icons/5g.png",
                           "Trình tiết kiệm dữ liệu", null),
-                      _getItemSetting("assets/icons/key.png", "Trình tạo mã",
-                          null),
+                      _getItemSetting(
+                          "assets/icons/key.png", "Trình tạo mã", null),
                     ],
                   ),
                 ),
@@ -305,8 +307,7 @@ class _SettingPageState extends State<SettingPage> {
       padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
       child: RaisedButton(
 //            onPressed: (){},
-        onPressed: () =>
-            Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
+        onPressed: () => Navigator.of(context).pushNamed(route),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -345,8 +346,7 @@ class _SettingPageState extends State<SettingPage> {
           width: double.infinity,
           height: 50,
           child: RaisedButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(route ?? RouteConstant.SETTING),
+            onPressed: () => Navigator.of(context).pushNamed(route),
             child: Row(
               children: <Widget>[
                 Image(
@@ -372,5 +372,4 @@ class _SettingPageState extends State<SettingPage> {
           )),
     );
   }
-
 }
