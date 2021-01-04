@@ -5,8 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
-import 'package:fb_clone_ctg/module/post/get_post/get_post_view.dart';
-import 'package:fb_clone_ctg/module/post/get_post/post_item.dart';
+
 import 'package:fb_clone_ctg/shared/entities/create_room_widget.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
@@ -63,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                 thickness: 8,
                 color: Color(0xffc9cbd1),
               ),
-              GetPostView(),
+              // GetPostView(),
             ],
           ),
         ),

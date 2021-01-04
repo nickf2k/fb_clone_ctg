@@ -1,23 +1,23 @@
-class GetPostResult {
+class PostResult {
   String code;
   String message;
-  PostData data;
+  PostData postData;
   List<String> image;
   List<String> video;
   Author author;
 
-  GetPostResult(
+  PostResult(
       {this.code,
       this.message,
-      this.data,
+      this.postData,
       this.image,
       this.video,
       this.author});
 
-  GetPostResult.fromJson(Map<String, dynamic> json) {
+  PostResult.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? new PostData.fromJson(json['data']) : null;
+    postData = json['data'] != null ? new PostData.fromJson(json['data']) : null;
     image = json['image'].cast<String>();
     video = json['video'].cast<String>();
     author =
@@ -28,8 +28,8 @@ class GetPostResult {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['code'] = this.code;
     data['message'] = this.message;
-    if (this.data != null) {
-      data['data'] = this.data.toJson();
+    if (this.postData != null) {
+      data['data'] = this.postData.toJson();
     }
     data['image'] = this.image;
     data['video'] = this.video;

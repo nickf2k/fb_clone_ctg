@@ -1,11 +1,10 @@
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/data/service/post_service.dart';
 import 'package:fb_clone_ctg/shared/entities/add_post_result.dart';
 import 'package:fb_clone_ctg/shared/entities/get_list_post_result.dart';
-import 'package:fb_clone_ctg/shared/entities/get_post_result.dart';
+import 'package:fb_clone_ctg/shared/entities/post_result.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,7 +17,12 @@ abstract class IAddPostListener {
 }
 
 abstract class IGetPostsListener {
-  void onGetPostSuccess(ListPostResult listPostResult);
+  void onGetPostsSuccess(ListPostResult listPostResult);
+
+  void onGetPostsFaild(String code);
+}
+abstract class IGetPostListener{
+  void onGetPostSuccess(PostResult postResult);
 
   void onGetPostFaild(String code);
 }
@@ -57,8 +61,25 @@ class PostRepo {
     });
   }
 
-  void getPostById(String id) {
+  void getPostById(int postId, IGetPostListener listener) {
+    PostResult postResult;
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
+    var futures = _service.getPostById(token, postId).then((res) {
+      String code = res.data["code"];
+      print("get post code: " + code);
+      if (code!= "1000"){
+        listener.onGetPostFaild(code);
+        return;
+      }
+      postResult = PostResult.fromJson(res.data);
+      listener.onGetPostSuccess(postResult);
+      return;
+
+    }).catchError((err){
+      print("err get post: " + err.toString());
+      listener.onGetPostFaild(err.toString());
+      return;
+    });
   }
 
   void getListPosts(int index, int count, IGetPostsListener listener) {
@@ -70,15 +91,15 @@ class PostRepo {
       String code = res.data["code"];
       print("list post code: " + code);
       if (code!="1000"){
-        listener.onGetPostFaild(code);
+        listener.onGetPostsFaild(code);
         return;
       }
       listPostResult = ListPostResult.fromJson(res.data);
-      listener.onGetPostSuccess(listPostResult);
+      listener.onGetPostsSuccess(listPostResult);
       return;
     }).catchError((error){
       print("get list post err: " + error.toString());
-      listener.onGetPostFaild(error.toString());
+      listener.onGetPostsFaild(error.toString());
     });
 
   }

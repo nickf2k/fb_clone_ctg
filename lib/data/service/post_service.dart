@@ -9,13 +9,13 @@ class PostService {
         queryParameters: queryParam, data: formData);
   }
 
-  Future<Response> getPostById(String token, String id) {
+  Future<Response> getPostById(String token, int postId) {
     var queryParam = {
       "token": token,
-      "id": id,
+      "id": postId,
     };
     return FacebookAPIConnector.instance.dio
-        .get(APIConstant.ADD_POST, queryParameters: queryParam);
+        .get(APIConstant.GET_POST, queryParameters: queryParam);
   }
   Future<Response> getListPost(String token, String userId, int index, int count){
     var queryParameter = {
