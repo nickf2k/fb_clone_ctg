@@ -9,10 +9,11 @@ import 'package:fb_clone_ctg/shared/entities/notification_result.dart';
 import 'package:fb_clone_ctg/untils/common_utils.dart';
 import 'package:fb_clone_ctg/untils/dialog.dart';
 
-class NotificationBloc extends BaseBloc implements INotificationListener{
-
-  NotificationRepo _notificationRepo = NotificationRepo(notificationService: NotificationService());
-  StreamController _notificationControler = new StreamController<NotificationResult>();
+class NotificationBloc extends BaseBloc implements INotificationListener {
+  NotificationRepo _notificationRepo =
+      NotificationRepo(notificationService: NotificationService());
+  StreamController _notificationControler =
+      new StreamController<NotificationResult>();
 
   Stream get notificationStream => _notificationControler.stream;
 
@@ -27,7 +28,7 @@ class NotificationBloc extends BaseBloc implements INotificationListener{
     if (event is InitEvent) {
       _notificationRepo.getNotification(0, 15, this);
     }
-    }
+  }
 
   @override
   onGetNotificationFailed(String resCode) {
@@ -39,5 +40,4 @@ class NotificationBloc extends BaseBloc implements INotificationListener{
     _notificationControler.sink.add(notificationResult);
     return null;
   }
-
 }

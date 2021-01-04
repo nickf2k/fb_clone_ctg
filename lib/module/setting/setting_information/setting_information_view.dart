@@ -51,7 +51,8 @@ class _SettingInformationPageState extends State<SettingInformationPage> {
             ),
           ),
           _get_buttonSettingInFo("Tên", "Phạm Tuấn Nghĩa", null),
-          _get_buttonSettingInFo("Bảo mật", "Đổi mật khẩu", RouteConstant.CHANGE_PASSWORD),
+          _get_buttonSettingInFo(
+              "Bảo mật", "Đổi mật khẩu", RouteConstant.CHANGE_PASSWORD),
           _get_buttonSettingInFo("Thông tin liên hệ",
               "Quản lý số điện thoại và email của bạn", null),
           _get_buttonSettingInFo("Xác nhận danh tính",
@@ -72,8 +73,7 @@ class _SettingInformationPageState extends State<SettingInformationPage> {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
           child: MaterialButton(
-            onPressed: () =>
-                Navigator.of(context).pushNamed(route ),
+            onPressed: () => Navigator.of(context).pushNamed(route),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

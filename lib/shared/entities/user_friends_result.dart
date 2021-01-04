@@ -1,11 +1,11 @@
-class RequestedFriend {
+class UserFriendResult {
   String code;
   String message;
   Data data;
 
-  RequestedFriend({this.code, this.message, this.data});
+  UserFriendResult({this.code, this.message, this.data});
 
-  RequestedFriend.fromJson(Map<String, dynamic> json) {
+  UserFriendResult.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
@@ -20,40 +20,19 @@ class RequestedFriend {
     }
     return data;
   }
-
-  getListAddFriend() {}
-}
-
-class AcceptFriend {
-  String code;
-  String message;
-
-  AcceptFriend({this.code, this.message});
-
-  AcceptFriend.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    message = json['message'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    data['message'] = this.message;
-    return data;
-  }
 }
 
 class Data {
-  List<Requested> requested;
+  List<Friend> friends;
   int total;
 
-  Data({this.requested, this.total});
+  Data({this.friends, this.total});
 
   Data.fromJson(Map<String, dynamic> json) {
-    if (json['requested'] != null) {
-      requested = new List<Requested>();
-      json['requested'].forEach((v) {
-        requested.add(new Requested.fromJson(v));
+    if (json['friends'] != null) {
+      friends = new List<Friend>();
+      json['friends'].forEach((v) {
+        friends.add(new Friend.fromJson(v));
       });
     }
     total = json['total'];
@@ -61,25 +40,24 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.requested != null) {
-      data['requested'] = this.requested.map((v) => v.toJson()).toList();
+    if (this.friends != null) {
+      data['friends'] = this.friends.map((v) => v.toJson()).toList();
     }
     data['total'] = this.total;
     return data;
   }
 }
 
-class Requested {
+class Friend {
   int id;
   String username;
   String avatar;
   int sameFriends;
   String created;
 
-  Requested(
-      {this.id, this.username, this.avatar, this.sameFriends, this.created});
+  Friend({this.id, this.username, this.avatar, this.sameFriends, this.created});
 
-  Requested.fromJson(Map<String, dynamic> json) {
+  Friend.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     username = json['username'];
     avatar = json['avatar'];

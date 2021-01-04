@@ -17,18 +17,19 @@ class PostService {
     return FacebookAPIConnector.instance.dio
         .get(APIConstant.ADD_POST, queryParameters: queryParam);
   }
-  Future<Response> getListPost(String token, String userId, int index, int count){
+
+  Future<Response> getListPost(
+      String token, String userId, int index, int count) {
     var queryParameter = {
-      "token":token,
-      "user_id":userId,
+      "token": token,
+      "user_id": userId,
       "in_campaign": 1,
-      "index":index,
+      "index": index,
       "count": count,
       "campaign_id": 1,
       "latitude": 1,
       "longtitude": 1,
       "last_id": 1
-
     };
     return FacebookAPIConnector.instance.dio
         .get(APIConstant.GET_LIST_POSTS, queryParameters: queryParameter);

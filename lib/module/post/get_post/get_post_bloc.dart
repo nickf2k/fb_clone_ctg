@@ -11,12 +11,15 @@ import 'package:fb_clone_ctg/shared/entities/get_list_post_result.dart';
 import 'package:fb_clone_ctg/shared/entities/get_post_result.dart';
 import 'package:fb_clone_ctg/shared/entities/user_result.dart';
 
-class GetPostsBloc extends BaseBloc implements IGetPostsListener, IGetUserInfoListener {
+class GetPostsBloc extends BaseBloc
+    implements IGetPostsListener, IGetUserInfoListener {
   UserRepo _userRepo = UserRepo(userService: UserService());
   StreamController _listPostCtrl = new StreamController<ListPostResult>();
   StreamController _listAuthorsCtrl = StreamController<List<User>>();
   PostRepo _postRepo = PostRepo(postService: PostService());
+
   Stream get postsStream => _listPostCtrl.stream;
+
   Stream get authorsStream => _listAuthorsCtrl.stream;
 
   @override
@@ -27,7 +30,7 @@ class GetPostsBloc extends BaseBloc implements IGetPostsListener, IGetUserInfoLi
   @override
   void eventHandle(BaseEvent event) {
     if (event is InitEvent) {
-      _postRepo.getListPosts(0, 10, this);
+      // _postRepo.getListPosts(0, 10, this);
     }
   }
 

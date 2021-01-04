@@ -28,7 +28,7 @@ Map<String, WidgetBuilder> routeConfig() {
     RouteConstant.ADD_POST: (context) => AddPostPage(),
     RouteConstant.SETTING: (context) => SettingPage(),
     RouteConstant.VIDEO: (context) => VideosPage(),
-    RouteConstant.SETTING_INFO: (context) =>  SettingInformationPage(),
+    RouteConstant.SETTING_INFO: (context) => SettingInformationPage(),
     RouteConstant.CHANGE_PASSWORD: (context) => ChangingPasswordPage(),
     RouteConstant.PROFILE: (context) => ProfilePage(),
     RouteConstant.SIGN_UP: (context) => SignUpPage(),

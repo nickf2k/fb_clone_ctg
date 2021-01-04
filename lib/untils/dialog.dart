@@ -35,7 +35,7 @@ class DialogUtils {
         });
   }
 
-  static Widget showError( String message, BuildContext context) {
+  static Widget showError(String message, BuildContext context) {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(

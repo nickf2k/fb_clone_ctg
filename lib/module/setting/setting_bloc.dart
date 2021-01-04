@@ -6,8 +6,9 @@ import 'package:fb_clone_ctg/data/service/user_service.dart';
 import 'package:fb_clone_ctg/module/setting/setting_event.dart';
 import 'package:flutter/cupertino.dart';
 
-class SettingBloc extends BaseBloc implements ILogoutListener{
+class SettingBloc extends BaseBloc implements ILogoutListener {
   UserRepo _userRepo = UserRepo(userService: UserService());
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -15,7 +16,7 @@ class SettingBloc extends BaseBloc implements ILogoutListener{
 
   @override
   void eventHandle(BaseEvent event) {
-    if (event is LogoutEvent){
+    if (event is LogoutEvent) {
       _userRepo.logout(this);
     }
     // TODO: implement eventHandle
@@ -24,8 +25,8 @@ class SettingBloc extends BaseBloc implements ILogoutListener{
   @override
   onLogoutSuccess(bool checkLogout) {
     // TODO: implement onLogoutSuccess
-    if(checkLogout) Navigator.of(context).pushReplacementNamed(RouteConstant.SIGN_IN);
+    if (checkLogout)
+      Navigator.of(context).pushReplacementNamed(RouteConstant.SIGN_IN);
     return null;
   }
-
 }

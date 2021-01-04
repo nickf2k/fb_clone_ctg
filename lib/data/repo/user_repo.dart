@@ -185,10 +185,8 @@ class UserRepo {
 
     List<User> listUser = [];
     String code;
-    for (int id in listId){
-      var futures = _userService
-          .getUserInfoById(token, id)
-          .then((res)  {
+    for (int id in listId) {
+      var futures = _userService.getUserInfoById(token, id).then((res) {
         code = res.data["code"];
         if (code != "1000") {
           listUser.add(User.getDefault());
@@ -197,11 +195,9 @@ class UserRepo {
         }
         listUser.add(UserResult.fromJson(res.data).user);
         return;
-
       }).catchError((err) {
         print("err get list user");
       });
     }
   }
-
 }

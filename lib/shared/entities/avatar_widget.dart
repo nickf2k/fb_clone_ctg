@@ -6,16 +6,19 @@ class FacebookAvatar extends StatelessWidget {
   final double size;
 
   const FacebookAvatar({Key key, this.urlAvatar, this.size}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      height: size??150,
-      width: size??150,
+    return Container(
+      height: size ?? 150,
+      width: size ?? 150,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
               fit: BoxFit.cover,
-              image: urlAvatar!=null?NetworkImage(urlAvatar):AssetImage(MediaConstant.DEFAUT_AVATAR_1)),
+              image: urlAvatar != null
+                  ? NetworkImage(urlAvatar)
+                  : AssetImage(MediaConstant.DEFAUT_AVATAR_1)),
           border: Border.all(color: Colors.white, width: 6.0)),
     );
   }

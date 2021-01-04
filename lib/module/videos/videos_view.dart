@@ -9,7 +9,6 @@ import '../../shared/widgets/get_items_video.dart';
 import '../../shared/widgets/get_interaction.dart';
 
 class VideosPage extends StatefulWidget {
-
   @override
   _VideosPageState createState() => _VideosPageState();
 }
@@ -18,11 +17,11 @@ class _VideosPageState extends State<VideosPage> {
   double fontSize = 14;
   double fontLCS = 12;
   double heightIcon = 17;
-  double widthIcon =17;
+  double widthIcon = 17;
   double fontSizeCap = 15;
+
   @override
   Widget build(BuildContext context) {
-
     return PageContainer(
       navBarIndex: NavBarIndex.VIDEO,
       child: SingleChildScrollView(
@@ -129,7 +128,8 @@ class _VideosPageState extends State<VideosPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
 //                      crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          Text("Phạm Tuấn Nghĩa",
+                          Text(
+                            "Phạm Tuấn Nghĩa",
                             style: TextStyle(
                               fontSize: fontSize,
                               fontWeight: FontWeight.bold,
@@ -137,10 +137,12 @@ class _VideosPageState extends State<VideosPage> {
                           ),
                           Padding(
                               padding: const EdgeInsets.fromLTRB(0, 0, 65, 0),
-                              child: Text(time,
+                              child: Text(
+                                time,
                                 style: TextStyle(
                                   fontSize: 12,
-                                ),)),
+                                ),
+                              )),
                         ],
                       ),
                     )
@@ -173,9 +175,11 @@ class _VideosPageState extends State<VideosPage> {
               ),
 //              looping: true,
             ),
-
-            Interact(interactive: interactive,comment: comment,share: share,),
-
+            Interact(
+              interactive: interactive,
+              comment: comment,
+              share: share,
+            ),
           ],
         ),
       ),

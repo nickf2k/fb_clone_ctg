@@ -6,9 +6,11 @@ class Interact extends StatefulWidget {
   final int interactive;
   final int comment;
   final int share;
+
 //  final bool alreadyTap ;
 
-  const Interact({Key key, this.interactive=10, this.comment=12, this.share=3})
+  const Interact(
+      {Key key, this.interactive = 10, this.comment = 12, this.share = 3})
       : super(key: key);
 
   @override
@@ -29,7 +31,6 @@ class _InteractState extends State<Interact> {
             _countIteract(widget.interactive, "likes"),
             _countIteract(widget.comment, "comments"),
             _countIteract(widget.share, "shares")
-
           ],
         ),
         Padding(
@@ -41,17 +42,24 @@ class _InteractState extends State<Interact> {
         Row(
           children: [
             _getActionButton(
-                 title:"Thích",urlImage:  "assets/icons/button_like.png", alreadyTap: false),
+                title: "Thích",
+                urlImage: "assets/icons/button_like.png",
+                alreadyTap: false),
             _getActionButton(
-                 title:"Bình luận", urlImage: "assets/icons/button_comment.png", alreadyTap: false),
-            _getActionButton( title: "Chia sẻ",urlImage:  "assets/icons/share.png",alreadyTap: false),
+                title: "Bình luận",
+                urlImage: "assets/icons/button_comment.png",
+                alreadyTap: false),
+            _getActionButton(
+                title: "Chia sẻ",
+                urlImage: "assets/icons/share.png",
+                alreadyTap: false),
           ],
         )
       ],
     );
   }
 
-  _getActionButton({String title, String urlImage,bool alreadyTap}) {
+  _getActionButton({String title, String urlImage, bool alreadyTap}) {
     return Expanded(
       flex: 1,
       child: SizedBox(
@@ -88,17 +96,14 @@ class _InteractState extends State<Interact> {
                 )
               ],
             ),
-
           ),
         ),
       ),
     );
   }
 
-  void onTap(){
-    setState(() {
-
-    });
+  void onTap() {
+    setState(() {});
   }
 
   _countIteract(int count, String type) {
@@ -109,11 +114,9 @@ class _InteractState extends State<Interact> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-
             Text(
-              count.toString()+" ",
+              count.toString() + " ",
               overflow: TextOverflow.ellipsis,
-
               style: TextStyle(fontSize: fontLCS, color: AppColor.textGrey),
             ),
             Text(

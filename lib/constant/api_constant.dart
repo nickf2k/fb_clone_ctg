@@ -21,7 +21,7 @@ class APIConstant {
   static const DEL_SAVED_SEARCH = "Del_saved_search";
   static const GET_REQUESTED_FRIENDS = "get_requested_friends";
   static const GET_LIST_VIDEO = "Get_list_video";
-  static const GET_USER_FRIENDS = "Get_user_friends";
+  static const GET_USER_FRIENDS = "get_user_friends";
   static const SET_ACCEPT_FRIEND = "Set_accept_friend";
   static const SET_REQUEST_FRIEND = "Set_request_friend";
   static const GET_LIST_SUGGESTED_FRIENDS = "Get_list_suggested_friends";
@@ -33,7 +33,7 @@ class APIConstant {
   static const GET_NOTIFICATION = "get_notification";
   static const SET_READ_NOTIFICATION = "Set_read_notification";
   static const SET_DEVTOKEN = "Set_devtoken";
-  static const GET_USER_INFO = "Get_user_info";
+  static const GET_USER_INFO = "get_user_info";
   static const SET_USER_INFO = "Set_user_info";
   static const GET_LIST_CONVERSATION = "Get_list_conversation";
   static const GET_CONVERSATION = "Get_conversation";

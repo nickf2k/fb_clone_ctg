@@ -8,7 +8,8 @@ class LoginResult {
   LoginResult.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? new DataForLogin.fromJson(json['data']) : null;
+    data =
+        json['data'] != null ? new DataForLogin.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {

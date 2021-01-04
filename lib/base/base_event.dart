@@ -1,3 +1,1 @@
-class BaseEvent {
-
-}
+class BaseEvent {}

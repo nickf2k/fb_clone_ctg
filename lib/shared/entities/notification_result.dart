@@ -37,7 +37,8 @@ class MyNotification {
   String createdAt;
   String avatar;
 
-  MyNotification({this.id, this.description, this.isRead, this.createdAt, this.avatar});
+  MyNotification(
+      {this.id, this.description, this.isRead, this.createdAt, this.avatar});
 
   MyNotification.fromJson(Map<String, dynamic> json) {
     id = json['id'];

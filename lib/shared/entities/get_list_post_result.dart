@@ -59,12 +59,12 @@ class Post {
 
   Post(
       {this.id,
-        this.userId,
-        this.described,
-        this.like,
-        this.status,
-        this.createdAt,
-        this.updatedAt});
+      this.userId,
+      this.described,
+      this.like,
+      this.status,
+      this.createdAt,
+      this.updatedAt});
 
   Post.fromJson(Map<String, dynamic> json) {
     id = json['id'];

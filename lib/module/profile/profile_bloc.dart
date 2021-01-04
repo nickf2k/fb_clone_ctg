@@ -9,10 +9,12 @@ import 'package:fb_clone_ctg/shared/entities/user_result.dart';
 import 'package:fb_clone_ctg/untils/common_utils.dart';
 import 'package:fb_clone_ctg/untils/dialog.dart';
 
-class ProfileBloc extends BaseBloc implements IGetUserInfoListener{
+class ProfileBloc extends BaseBloc implements IGetUserInfoListener {
   UserRepo _userRepo = UserRepo(userService: UserService());
   StreamController userCtrl = StreamController<User>();
+
   Stream get userStream => userCtrl.stream;
+
   @override
   void dispose() {
     userCtrl.close();
@@ -20,7 +22,7 @@ class ProfileBloc extends BaseBloc implements IGetUserInfoListener{
 
   @override
   void eventHandle(BaseEvent event) {
-    if (event is InitEvent){
+    if (event is InitEvent) {
       _userRepo.getUserById(event.userId, this);
     }
   }
@@ -35,5 +37,4 @@ class ProfileBloc extends BaseBloc implements IGetUserInfoListener{
   onGetInfoSuccess(User user) {
     userCtrl.sink.add(user);
   }
-
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ImageUtil {
-  static getLocalImage(String name, double width, double height, BoxFit boxFit) {
+  static getLocalImage(
+      String name, double width, double height, BoxFit boxFit) {
     if (width == null) {
       width = 36.0;
     }
@@ -21,8 +22,8 @@ class ImageUtil {
     );
   }
 
-  static getNetWorkImage(
-      String url, double width, double height, BoxFit boxFit, BuildContext context) {
+  static getNetWorkImage(String url, double width, double height, BoxFit boxFit,
+      BuildContext context) {
     if (width == null) {
       width = 36.0;
     }

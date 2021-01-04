@@ -1,3 +1,1 @@
-class SignInData{
-
-}
+class SignInData {}

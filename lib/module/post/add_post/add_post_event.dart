@@ -5,10 +5,11 @@ class AddPostEvent extends BaseEvent {
   final String described;
   final List<Asset> listAsset;
   final String status;
+
   // List<Asset> images = List<Asset>();
   // List<Asset> resultList = List<Asset>();
 
-  AddPostEvent( {this.described,this.listAsset, this.status});
+  AddPostEvent({this.described, this.listAsset, this.status});
 }
 
 class PickImagesEvent extends BaseEvent {

@@ -14,7 +14,6 @@ class NotiItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //data [7] = read;
     var color = notification.isRead == NotifyConstant.READER
         ? Colors.white

@@ -29,7 +29,7 @@ class TopNavBar extends StatelessWidget {
         child: TopNavBarItem(
           iconData: listIconDatas[i],
           route: listRoutes[i],
-          isCurrentTab: i==currentTabIndex,
+          isCurrentTab: i == currentTabIndex,
         ),
       ));
     }

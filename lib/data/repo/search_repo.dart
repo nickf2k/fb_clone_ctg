@@ -1,3 +1,1 @@
-class SearchRepo{
-
-}
+class SearchRepo {}

@@ -166,7 +166,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
   onSignUp() {
     if (_form.currentState.validate()) {
-      _signUpBloc.eventController.sink.add(SignUpEvent(_phoneCtrl.text, _passCtrl.text));
+      _signUpBloc.eventController.sink
+          .add(SignUpEvent(_phoneCtrl.text, _passCtrl.text));
     }
   }
 }
