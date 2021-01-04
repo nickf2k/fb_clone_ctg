@@ -27,7 +27,7 @@ class GetPostsBloc extends BaseBloc implements IGetPostsListener, IGetUserInfoLi
   @override
   void eventHandle(BaseEvent event) {
     if (event is InitEvent) {
-      _postRepo.getListPosts(0, 10, this);
+      // _postRepo.getListPosts(0, 10, this);
     }
   }
 

@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'package:fb_clone_ctg/shared/entities/user_friends_result.dart';
+import 'package:fb_clone_ctg/untils/common_utils.dart';
+import 'package:fb_clone_ctg/untils/dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:fb_clone_ctg/base/base_bloc.dart';
 import 'package:fb_clone_ctg/base/base_event.dart';
@@ -10,16 +13,20 @@ import '../friend/friend_event.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 
 class FriendBloc extends BaseBloc
-    implements IGetRequestedListener, IGetAcceptListener {
+    implements IGetRequestedListener, IGetAcceptListener, IGetUserFriendListener {
   FriendRepo _friendRepo = FriendRepo(frinedService: FriendService());
   StreamController _requestedController =
       new StreamController<RequestedFriend>();
+
+  StreamController allFriendCtrl =
+  new StreamController<UserFriendResult>();
 
   Stream get requestedStream => _requestedController.stream;
 
   @override
   void dispose() {
     _requestedController.close();
+    allFriendCtrl.close();
     // TODO: implement dispose
   }
 
@@ -30,6 +37,9 @@ class FriendBloc extends BaseBloc
     }
     if (event is AcceptEvent) {
       _friendRepo.setAcceptFriend(event.userId, event.isActive, this);
+    }
+    if (event is GetAllFriendEvent){
+      _friendRepo.getAllFriends(event.userId, this);
     }
     // TODO: implement eventHandle
   }
@@ -62,5 +72,17 @@ class FriendBloc extends BaseBloc
       Navigator.of(context).pushNamed(RouteConstant.REQUESTED_FRIEND);
     }
     return null;
+  }
+
+  @override
+  onGetUserFriendsFailed(String resCode) {
+    // TODO: implement onGetUserFriendsFailed
+    DialogUtils.showError(CommonUtils.getErrorMessage(resCode), context);
+  }
+
+  @override
+  onGetUserFriendsSuccess(UserFriendResult result) {
+    allFriendCtrl.sink.add(result);
+
   }
 }

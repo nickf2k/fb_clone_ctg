@@ -21,7 +21,7 @@ class APIConstant {
   static const DEL_SAVED_SEARCH = "Del_saved_search";
   static const GET_REQUESTED_FRIENDS = "get_requested_friends";
   static const GET_LIST_VIDEO = "Get_list_video";
-  static const GET_USER_FRIENDS = "Get_user_friends";
+  static const GET_USER_FRIENDS = "get_user_friends";
   static const SET_ACCEPT_FRIEND = "Set_accept_friend";
   static const SET_REQUEST_FRIEND = "Set_request_friend";
   static const GET_LIST_SUGGESTED_FRIENDS = "Get_list_suggested_friends";
