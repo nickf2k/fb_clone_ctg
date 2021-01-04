@@ -72,11 +72,15 @@ class _RequestedPageState extends State<RequestedPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                          getBadge(content:"Gợi ý", width: 70,height: 30),
+                          getBadge(content: "Gợi ý", width: 90, height: 30),
                           VerticalDivider(
                             width: 10,
                           ),
-                          getBadge(content:"Tất cả bạn bè",width: 120, height: 30,route: RouteConstant.GET_USER_FRIENDS),
+                          getBadge(
+                              content: "Tất cả bạn bè",
+                              width: 140,
+                              height: 30,
+                              route: RouteConstant.GET_USER_FRIENDS),
                         ],
                       ),
                     ),
@@ -119,16 +123,15 @@ class _RequestedPageState extends State<RequestedPage> {
     );
   }
 
-  Widget getBadge({String content, double width, double  height, String route}) {
-    return           SizedBox(
+  Widget getBadge({String content, double width, double height, String route}) {
+    return SizedBox(
         width: width,
         height: height,
         child: RaisedButton(
           onPressed: () => Navigator.pushNamed(context, route),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-            child: Text(
-                content,
+            child: Text(content,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 15,
@@ -136,11 +139,8 @@ class _RequestedPageState extends State<RequestedPage> {
                 )),
           ),
           shape: RoundedRectangleBorder(
-              borderRadius:
-              BorderRadius.all(Radius.circular(10))),
-        )
-
-    );
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+        ));
   }
 
   Widget getListRequest(List<Requested> listRequests) {
