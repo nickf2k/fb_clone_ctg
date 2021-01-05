@@ -32,7 +32,7 @@ class AddPostBloc extends BaseBloc implements IAddPostListener {
 
   @override
   void onAddPostFaild(String code) {
-    DialogUtils.showError(CommonUtils.getErrorMessage(code), context);
+    // DialogUtils.showError(CommonUtils.getErrorMessage(code), context);
   }
 
   @override

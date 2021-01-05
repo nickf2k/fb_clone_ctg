@@ -3,12 +3,12 @@ import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/shared/widgets/button_post.dart';
+import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
-import 'package:use_html_t/style.dart';
-
+import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'add_post_bloc.dart';
 
 class AddPostPage extends StatefulWidget {
@@ -17,8 +17,7 @@ class AddPostPage extends StatefulWidget {
 }
 
 class _AddPostPageState extends State<AddPostPage> {
-  AddPostBloc addPostBloc = AddPostBloc();
-
+  AddPostBloc addPostBloc;
   TextEditingController _describedController = new TextEditingController();
   List<Asset> images = List<Asset>();
   List<File> listFile = [];
@@ -63,6 +62,8 @@ class _AddPostPageState extends State<AddPostPage> {
 
   @override
   Widget build(BuildContext context) {
+    addPostBloc = AddPostBloc();
+    addPostBloc.setContext(context);
     // TODO: implement build
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -103,7 +104,7 @@ class _AddPostPageState extends State<AddPostPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 8.0, 95, 0),
                   child: Text(
-                    'Nguyễn Minh Toàn',
+                    "${SpUtil.getString(SPrefCacheConstant.KEY_USERNAME)}",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.w600,

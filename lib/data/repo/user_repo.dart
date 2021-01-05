@@ -73,6 +73,7 @@ class UserRepo {
       loginResult = LoginResult.fromJson(res.data);
       print("User actived!");
       DataForLogin userData = loginResult.data;
+      print("token: " + userData.token);
       SpUtil.putString(SPrefCacheConstant.KEY_TOKEN, userData.token);
       SpUtil.putString(SPrefCacheConstant.KEY_USERNAME, userData.username);
 
@@ -118,7 +119,6 @@ class UserRepo {
     SpUtil.remove(SPrefCacheConstant.KEY_USERNAME);
     SpUtil.remove(SPrefCacheConstant.KEY_PASSWORD);
     SpUtil.remove(SPrefCacheConstant.KEY_AVATAR_URL);
-
     SpUtil.remove(SPrefCacheConstant.KEY_USER);
   }
 
@@ -185,10 +185,8 @@ class UserRepo {
 
     List<User> listUser = [];
     String code;
-    for (int id in listId){
-      var futures = _userService
-          .getUserInfoById(token, id)
-          .then((res)  {
+    for (int id in listId) {
+      var futures = _userService.getUserInfoById(token, id).then((res) {
         code = res.data["code"];
         if (code != "1000") {
           listUser.add(User.getDefault());
@@ -197,11 +195,9 @@ class UserRepo {
         }
         listUser.add(UserResult.fromJson(res.data).user);
         return;
-
       }).catchError((err) {
         print("err get list user");
       });
     }
   }
-
 }

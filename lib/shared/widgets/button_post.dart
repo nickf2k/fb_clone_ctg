@@ -21,6 +21,7 @@ class _ButtonPostState extends State<ButtonPost> {
   @override
   Widget build(BuildContext context) {
     _addPostBloc = AddPostBloc();
+    _addPostBloc.setContext(context);
     return RaisedButton(
       onPressed: () => onPost(_addPostBloc),
       color: Colors.white,

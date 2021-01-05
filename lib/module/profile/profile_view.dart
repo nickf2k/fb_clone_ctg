@@ -1,7 +1,14 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/config/app_color.dart';
 import 'package:fb_clone_ctg/constant/default_media.dart';
+import 'package:fb_clone_ctg/constant/spref_constant.dart';
+import 'package:fb_clone_ctg/module/profile/profile_bloc.dart';
+import 'package:fb_clone_ctg/shared/entities/user_result.dart';
+import 'package:fb_clone_ctg/shared/widgets/loading_indicator.dart';
+import 'package:fb_clone_ctg/untils/spref_util.dart';
+import 'profile_event.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -9,6 +16,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  ProfileBloc _bloc;
   final TextStyle normalStyle =
       TextStyle(fontSize: 15, color: AppColor.textBlack);
   final TextStyle boldStyle = TextStyle(
@@ -16,25 +24,60 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext cx) {
+    _bloc = ProfileBloc();
+    _bloc.setContext(cx);
+    int userId = SpUtil.getInt(SPrefCacheConstant.KEY_USER_ID);
+
+    _bloc.eventController.sink.add(InitEvent(userId: userId));
+
     return PageContainer(
+      bloc: [Provider.value(value: ProfileBloc())],
       hasTopNavBar: false,
-      child: ListView(
-        children: <Widget>[
-          new Column(
-            children: <Widget>[
-              getQuickInfo(),
-              SizedBox(
-                height: 10.0,
-              ),
-              getProfileNavBar(),
-              SizedBox(
-                height: 10.0,
-              ),
-              getBackgroundInfo(),
-              getPhotos(),
-            ],
-          )
-        ],
+      child: MultiProvider(
+        providers: [Provider.value(value: ProfileBloc())],
+        child: StreamBuilder<User>(
+            stream: _bloc.userStream,
+            builder: (cx, snapshot) {
+              if (!snapshot.hasData) return LoadingIndicatorWidget();
+              User user = snapshot.data;
+
+              return ListView(
+                children: <Widget>[
+                  new Column(
+                    children: <Widget>[
+                      getQuickInfo(
+                          name: user.username ?? "Nguyễn Minh Toàn",
+                          avatarUser: user.avatar,
+                          imgCover: user.coverImage),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      getProfileNavBar(),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Column(
+                        children: [
+                          getItemBackground(
+                              iconData: Icons.work,
+                              normalText: "Work at",
+                              boldText: user.city ?? "Sea-Solution Software"),
+                          getItemBackground(
+                              iconData: Icons.delivery_dining,
+                              normalText: "Studied at",
+                              boldText: "Đại học Bách khoa Hà Nội"),
+                          getItemBackground(
+                              iconData: Icons.home,
+                              normalText: "From ",
+                              boldText: user.country ?? "Thanh Hoá"),
+                        ],
+                      ),
+                      getPhotos(),
+                    ],
+                  )
+                ],
+              );
+            }),
       ),
     );
   }
@@ -124,7 +167,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  getQuickInfo() {
+  getQuickInfo({String imgCover, String avatarUser, String name}) {
     return Column(
       children: [
         Container(
@@ -140,7 +183,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       decoration: BoxDecoration(
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage(MediaConstant.DEFAUT_IMAGE_2))),
+                              image: imgCover == null
+                                  ? AssetImage(MediaConstant.DEFAUT_IMAGE_2)
+                                  : NetworkImage(imgCover))),
                     ),
                   )
                 ],
@@ -154,7 +199,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage(MediaConstant.DEFAUT_AVATAR_1)),
+                          image: avatarUser == null
+                              ? AssetImage(MediaConstant.DEFAUT_AVATAR_1)
+                              : NetworkImage(avatarUser)),
                       border: Border.all(color: Colors.white, width: 6.0)),
                 ),
               ),
@@ -168,7 +215,7 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                MediaConstant.TOAN,
+                name == null ? MediaConstant.TOAN : name,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0),
               ),
               SizedBox(
@@ -301,25 +348,6 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
-  getBackgroundInfo() {
-    return Column(
-      children: [
-        getItemBackground(
-            iconData: Icons.work,
-            normalText: "Work at",
-            boldText: "Sea-Solution Software"),
-        getItemBackground(
-            iconData: Icons.work,
-            normalText: "Work at",
-            boldText: "Sea-Solution Software"),
-        getItemBackground(
-            iconData: Icons.work,
-            normalText: "Work at",
-            boldText: "Sea-Solution Software"),
-      ],
-    );
-  }
-
   getItemBackground({IconData iconData, String normalText, String boldText}) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
@@ -338,7 +366,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 // style: DefaultTextStyle.of(context).style,
                 children: <TextSpan>[
                   TextSpan(text: normalText + " ", style: normalStyle),
-
                   TextSpan(text: boldText, style: boldStyle),
                   // TextSpan(text: 'bold', style: boldStyle),
                 ]),

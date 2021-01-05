@@ -1,4 +1,5 @@
 import 'package:fb_clone_ctg/base/base_widget.dart';
+import 'package:fb_clone_ctg/module/post/post/post_item.dart';
 import 'package:flutter/material.dart';
 
 class PostDetailPage extends StatefulWidget {
@@ -7,7 +8,7 @@ class PostDetailPage extends StatefulWidget {
 }
 
 class _PostDetailPageState extends State<PostDetailPage> {
-  String idStatus;
+  int idStatus;
 
   @override
   void initState() {
@@ -28,13 +29,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
     return DetailContainer(
       title: 'Status',
       actionWidget: null,
-      child: Container(
-        height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(color: Colors.cyan),
-        child: Center(
-          child: Text("post " + idStatus),
-        ),
-      ),
+      child: PostItem(postId: idStatus,)
     );
   }
 }

@@ -87,7 +87,11 @@ class CommonUtils {
 
   static String getErrorMessage(String code) {
     Map<String, String> errors = responseConfig();
-    print("message: " + errors[code]??"");
-    return errors[code];
+    if (errors.containsKey(code)) {
+      print("message: " + errors[code] ?? "");
+      return errors[code];
+    } else {
+      return code;
+    }
   }
 }

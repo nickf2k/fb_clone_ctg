@@ -2,6 +2,7 @@ import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/data/repo/notification_repo.dart';
 import 'package:fb_clone_ctg/data/service/friend_service.dart';
 import 'package:fb_clone_ctg/shared/entities/friend_request_result.dart';
+import 'package:fb_clone_ctg/shared/entities/user_friends_result.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,12 @@ abstract class IGetRequestedListener {
   onGetRequestedSuccess(RequestedFriend result);
 
   onGetRequestedFailed(String resCode);
+}
+
+abstract class IGetUserFriendListener {
+  onGetUserFriendsSuccess(UserFriendResult result);
+
+  onGetUserFriendsFailed(String resCode);
 }
 
 class FriendRepo {
@@ -55,6 +62,27 @@ class FriendRepo {
       listener.onSetAcceptSuccess(acceptFriendResult);
       return;
     }).catchError((error) => print("accept friend err: " + error.toString()));
+  }
+
+  void getAllFriends(int userId, IGetUserFriendListener listener) {
+    UserFriendResult userFriends;
+    String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
+
+    // SpUtil.getInstance();
+    var futureRes = _friendService.getUserFriends(userId, token).then((res) async {
+      userFriends = UserFriendResult.fromJson(res.data);
+      if (userFriends.code != "1000") {
+        listener.onGetUserFriendsFailed(userFriends.code);
+        return;
+      }
+      print("get requested success!");
+      listener.onGetUserFriendsSuccess(userFriends);
+      return;
+    }).catchError((error) {
+      print("all friend err: " + error.toString());
+      listener.onGetUserFriendsFailed(error.toString());
+      return;
+    });
   }
 }
 

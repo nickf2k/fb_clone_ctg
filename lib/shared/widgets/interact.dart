@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class GetInteration extends StatefulWidget {
+class PostInteration extends StatefulWidget {
   @override
-  _GetInterationState createState() => _GetInterationState();
+  _PostInterationState createState() => _PostInterationState();
 }
 
-class _GetInterationState extends State<GetInteration> {
+class _PostInterationState extends State<PostInteration> {
   bool _hasBeenPressed = false;
 
   @override

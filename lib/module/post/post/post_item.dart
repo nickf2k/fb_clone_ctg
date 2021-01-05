@@ -1,45 +1,63 @@
 import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/module/post/post/post_bloc.dart';
+import 'package:fb_clone_ctg/module/post/post/post_event.dart';
 import 'package:fb_clone_ctg/shared/entities/get_list_post_result.dart';
 import 'package:fb_clone_ctg/shared/entities/post_result.dart';
 import 'package:fb_clone_ctg/shared/widgets/interact.dart';
+import 'package:fb_clone_ctg/shared/widgets/loading_indicator.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class PostItem extends StatefulWidget {
-  final Post postData;
-  final Author author;
+  final int postId;
 
-  const PostItem({Key key, this.postData, this.author}) : super(key: key);
+  const PostItem({Key key, this.postId}) : super(key: key);
 
   _PostItemState createState() => _PostItemState();
 }
 
 class _PostItemState extends State<PostItem> {
+  PostBloc _postBloc;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          _getOwner(),
-          _getDescripbe(
-              descripbe: widget.postData != null
-                  ? widget.postData.described
-                  : MediaConstant.STATUS_1),
-          _getMedia(),
-          GetInteration(),
-        ],
-      ),
-    );
+    _postBloc = PostBloc();
+    _postBloc.setContext(context);
+    _postBloc.eventController.sink.add(InitEvent(postId: widget.postId));
+    return StreamBuilder<PostResult>(
+        stream: _postBloc.postStream,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) return Container();
+          PostData postData = snapshot.data.postData;
+          Author author = snapshot.data.author;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                _getOwner(author),
+                _getDescripbe(
+                    descripbe: postData != null
+                        ? postData.described
+                        : MediaConstant.STATUS_1,
+                    idPost: postData.id),
+                _getMedia(),
+                PostInteration(),
+              ],
+            ),
+          );
+        });
   }
 
-  Widget _getOwner() {
+  Widget _getOwner(Author author) {
+    if (!author.avatar.contains("http")) author.avatar = null;
     return Row(
       children: <Widget>[
-        ProfileAvatar(),
+        ProfileAvatar(
+          urlAvatarNetWork: author.avatar,
+        ),
         SizedBox(
           width: 8,
         ),
@@ -48,7 +66,7 @@ class _PostItemState extends State<PostItem> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                widget.author != null ? widget.author.name : MediaConstant.TOAN,
+                author != null ? author.name : MediaConstant.TOAN,
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               Row(
@@ -75,16 +93,19 @@ class _PostItemState extends State<PostItem> {
     );
   }
 
-  Widget _getDescripbe({String descripbe}) {
-    return MaterialButton(
-      onPressed: () => Navigator.pushNamed(context, RouteConstant.POST_DETAIL,
-          arguments: "id status"),
-      child: Text(
-        descripbe,
-        maxLines: 4,
-        overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          fontSize: 15,
+  Widget _getDescripbe({String descripbe, int idPost}) {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(context, RouteConstant.POST_DETAIL,
+            arguments: idPost),
+        child: Text(
+          descripbe,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: 15,
+          ),
         ),
       ),
     );

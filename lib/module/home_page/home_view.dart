@@ -5,8 +5,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fb_clone_ctg/constant/default_media.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 import 'package:fb_clone_ctg/constant/spref_constant.dart';
+import 'package:fb_clone_ctg/module/home_page/home_bloc.dart';
+import 'package:fb_clone_ctg/module/home_page/home_event.dart';
+import 'package:fb_clone_ctg/module/post/post/post_item.dart';
 
 import 'package:fb_clone_ctg/shared/entities/create_room_widget.dart';
+import 'package:fb_clone_ctg/shared/widgets/loading_indicator.dart';
 import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,12 +27,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  HomeBloc _homeBloc;
+
   @override
   Widget build(BuildContext context) {
+    _homeBloc = HomeBloc();
+    _homeBloc.setContext(context);
+    _homeBloc.eventController.sink.add(InitHomeEvent());
     return PageContainer(
       hasTopNavBar: true,
       child: Container(
         child: SingleChildScrollView(
+          physics: ScrollPhysics(),
           child: Column(
             children: <Widget>[
               Divider(height: 5, thickness: 5, color: Colors.grey[300]),
@@ -62,6 +72,23 @@ class _HomePageState extends State<HomePage> {
                 thickness: 8,
                 color: Color(0xffc9cbd1),
               ),
+              StreamBuilder<List<int>>(
+                  stream: _homeBloc.listIdPostStream,
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return LoadingIndicatorWidget();
+                    List<int> listIdPost = snapshot.data;
+                    return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: listIdPost.length,
+                      itemBuilder: (context, index) {
+                        return PostItem(
+                          postId: listIdPost[index],
+                        );
+                      },
+                    );
+                  }),
               // GetPostView(),
             ],
           ),
@@ -88,7 +115,8 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   _allSizebox(w: 7),
                   ProfileAvatar(
-                    urlAvatarAsset: MediaConstant.DEFAUT_AVATAR_1,
+                    urlAvatarNetWork:
+                        "${SpUtil.getString(SPrefCacheConstant.KEY_AVATAR_URL)}",
                   ),
                   _allSizebox(w: 15),
                   ClipRRect(

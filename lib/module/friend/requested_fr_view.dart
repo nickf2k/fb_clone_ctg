@@ -100,7 +100,8 @@ class _RequestedPageState extends State<RequestedPage> {
                                   children: <TextSpan>[
                                 TextSpan(text: "Lời mời kết bạn "),
                                 TextSpan(
-                                    text: "42",
+                                    text: snapshot.data.data.requested.length
+                                        .toString(),
                                     style: TextStyle(
                                         fontSize: 15, color: Colors.red)),
                               ])),

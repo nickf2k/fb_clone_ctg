@@ -2,9 +2,12 @@ import 'dart:ffi';
 
 import 'package:fb_clone_ctg/base/base_widget.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
+import 'package:fb_clone_ctg/constant/spref_constant.dart';
 import 'package:fb_clone_ctg/module/setting/setting_bloc.dart';
 import 'package:fb_clone_ctg/module/setting/setting_event.dart';
+import 'package:fb_clone_ctg/shared/widgets/profile_avatar.dart';
 import 'package:fb_clone_ctg/shared/widgets/top_nav_bar.dart';
+import 'package:fb_clone_ctg/untils/spref_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -72,11 +75,10 @@ class _SettingPageState extends State<SettingPage> {
                       onPressed: () {},
                       child: Row(
                         children: <Widget>[
-                          CircleAvatar(
-                            radius: 20,
-                            backgroundImage: AssetImage(
-                              'assets/icons/nghia.jpg',
-                            ),
+                          ProfileAvatar(
+                            hasBorder: false,
+                            urlAvatarNetWork:
+                                "${SpUtil.getString(SPrefCacheConstant.KEY_AVATAR_URL)}",
                           ),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
@@ -87,7 +89,8 @@ class _SettingPageState extends State<SettingPage> {
                                 textAlign: TextAlign.start,
                                 text: TextSpan(children: <TextSpan>[
                                   TextSpan(
-                                      text: "Phạm Tuấn Nghĩa",
+                                      text:
+                                          "${SpUtil.getString(SPrefCacheConstant.KEY_USERNAME)}",
                                       style: TextStyle(
                                           fontSize: 15,
                                           color: Colors.black,

@@ -12,6 +12,11 @@ class ListPostResult {
     data = json['data'] != null ? new Data.fromJson(json['data']) : null;
     lastId = json['last_id'];
   }
+   getListIdPost(){
+    List<int> listId =[];
+    data.posts.forEach((element) =>listId.add(element.id));
+    return listId;
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

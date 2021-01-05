@@ -84,7 +84,7 @@ class PostRepo {
 
   void getListPosts(int index, int count, IGetPostsListener listener) {
     String token = SpUtil.getString(SPrefCacheConstant.KEY_TOKEN);
-    String userId = SpUtil.getString(SPrefCacheConstant.KEY_USER_ID);
+    int userId = SpUtil.getInt(SPrefCacheConstant.KEY_USER_ID);
 
     ListPostResult listPostResult;
     var futures = _service.getListPost(token, userId, index, count).then((res) {
