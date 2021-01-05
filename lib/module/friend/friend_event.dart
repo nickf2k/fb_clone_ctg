@@ -10,9 +10,17 @@ class AcceptEvent extends BaseEvent {
 
   AcceptEvent(this.userId, this.isActive);
 }
+<<<<<<< HEAD
 
 class GetAllFriendEvent extends BaseEvent {
   final int userId;
 
   GetAllFriendEvent(this.userId);
 }
+=======
+class GetAllFriendEvent extends BaseEvent{
+  final int userId;
+
+  GetAllFriendEvent(this.userId);
+}
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508

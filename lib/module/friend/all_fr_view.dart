@@ -20,7 +20,10 @@ class _AllFriendPageState extends State<AllFriendPage> {
   FriendBloc _bloc;
 
   var _friendStyle = TextStyle(fontSize: 14, color: Colors.black);
+<<<<<<< HEAD
 
+=======
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
   @override
   Widget build(BuildContext context) {
     _bloc = FriendBloc();
@@ -103,6 +106,7 @@ class _AllFriendPageState extends State<AllFriendPage> {
                     ),
                   ],
                 ),
+<<<<<<< HEAD
                 snapshot.hasData
                     ? ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
@@ -112,11 +116,21 @@ class _AllFriendPageState extends State<AllFriendPage> {
                               listFriends[index].avatar);
                         })
                     : LoadingIndicatorWidget()
+=======
+                snapshot.hasData?ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                    itemCount: listFriends.length,
+                    itemBuilder: (context, index){
+                  return _getFriendItem(listFriends[index].username, listFriends[index].avatar);
+                }):LoadingIndicatorWidget()
+
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
               ],
             ),
           );
         },
       ),
+
     );
   }
 

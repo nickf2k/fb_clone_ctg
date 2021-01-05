@@ -55,7 +55,12 @@ class Friend {
   int sameFriends;
   String created;
 
+<<<<<<< HEAD
   Friend({this.id, this.username, this.avatar, this.sameFriends, this.created});
+=======
+  Friend(
+      {this.id, this.username, this.avatar, this.sameFriends, this.created});
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
 
   Friend.fromJson(Map<String, dynamic> json) {
     id = json['id'];

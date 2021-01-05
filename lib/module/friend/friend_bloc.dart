@@ -13,15 +13,24 @@ import '../friend/friend_event.dart';
 import 'package:fb_clone_ctg/constant/route_constant.dart';
 
 class FriendBloc extends BaseBloc
+<<<<<<< HEAD
     implements
         IGetRequestedListener,
         IGetAcceptListener,
         IGetUserFriendListener {
+=======
+    implements IGetRequestedListener, IGetAcceptListener, IGetUserFriendListener {
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
   FriendRepo _friendRepo = FriendRepo(frinedService: FriendService());
   StreamController _requestedController =
       new StreamController<RequestedFriend>();
 
+<<<<<<< HEAD
   StreamController allFriendCtrl = new StreamController<UserFriendResult>();
+=======
+  StreamController allFriendCtrl =
+  new StreamController<UserFriendResult>();
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
 
   Stream get requestedStream => _requestedController.stream;
 
@@ -40,7 +49,11 @@ class FriendBloc extends BaseBloc
     if (event is AcceptEvent) {
       _friendRepo.setAcceptFriend(event.userId, event.isActive, this);
     }
+<<<<<<< HEAD
     if (event is GetAllFriendEvent) {
+=======
+    if (event is GetAllFriendEvent){
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
       _friendRepo.getAllFriends(event.userId, this);
     }
     // TODO: implement eventHandle
@@ -85,5 +98,9 @@ class FriendBloc extends BaseBloc
   @override
   onGetUserFriendsSuccess(UserFriendResult result) {
     allFriendCtrl.sink.add(result);
+<<<<<<< HEAD
+=======
+
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
   }
 }

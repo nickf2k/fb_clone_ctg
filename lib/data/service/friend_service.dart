@@ -15,8 +15,22 @@ class FriendService {
     return FacebookAPIConnector.instance.dio
         .get(APIConstant.GET_USER_FRIENDS, queryParameters: queryParameter);
   }
+<<<<<<< HEAD
 
   Future<Response> setAcceptFriend(String token, int userId, int isAccept) {
+=======
+  Future<Response> getUserFriends(int id, String token){
+    var queryParameter = {
+      "id": id,
+      "token": token,
+      "index": 0,
+      "count": 20
+    };
+    return FacebookAPIConnector.instance.dio
+        .get(APIConstant.GET_USER_FRIENDS, queryParameters: queryParameter);
+  }
+  Future<Response> setAcceptFriend(String token, int userId, int isAccept){
+>>>>>>> c21167428c47d4ba0429a1228cfef1c550716508
     var queryParameter = {
       "token": token,
       "userId": userId,
