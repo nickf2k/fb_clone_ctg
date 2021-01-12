@@ -1,6 +1,6 @@
 # fb_clone_ctg
 
-A new Flutter application.
+A Flutter application that clone Facebook UI.
 
 ## Getting Started
 
