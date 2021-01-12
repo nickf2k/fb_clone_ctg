@@ -70,6 +70,7 @@ class FriendRepo {
 
     // SpUtil.getInstance();
     var futureRes = _friendService.getUserFriends(userId, token).then((res) async {
+
       userFriends = UserFriendResult.fromJson(res.data);
       if (userFriends.code != "1000") {
         listener.onGetUserFriendsFailed(userFriends.code);

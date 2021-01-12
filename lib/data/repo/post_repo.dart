@@ -103,16 +103,15 @@ class PostRepo {
     });
 
   }
+
 }
 
-
-  Future<MultipartFile> convertAssetToFile(Asset asset) async {
-    ByteData byteData = await asset.getByteData();
-    List<int> imageData = byteData.buffer.asUint8List();
-    MultipartFile multipartFile = MultipartFile.fromBytes(
-      imageData,
-      filename: asset.name,
-    );
-    return multipartFile;
-  }
-
+Future<MultipartFile> convertAssetToFile(Asset asset) async {
+  ByteData byteData = await asset.getByteData();
+  List<int> imageData = byteData.buffer.asUint8List();
+  MultipartFile multipartFile = MultipartFile.fromBytes(
+    imageData,
+    filename: asset.name,
+  );
+  return multipartFile;
+}

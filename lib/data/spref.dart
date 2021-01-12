@@ -2,6 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SPref {
   static final SPref instance = SPref._internal();
+
   SPref._internal();
 
   Future set(String key, String value) async {
